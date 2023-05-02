@@ -17,13 +17,13 @@ form{
 
 .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     background-color: #f1f1f1;
   }
 
   .tab button {
     background-color: inherit;
-    float: left;
+    float:none;
     border: none;
     outline: none;
     cursor: pointer;
@@ -45,7 +45,7 @@ form{
   .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-top: none;
   }
 
@@ -54,6 +54,6 @@ form{
     height: 400px;
     margin: 0 auto;
     background-color: #f2f2f2;
-    border: 1px solid #ff0000;
+    border: 1px solid #000000;
     padding: 20px;
   }
