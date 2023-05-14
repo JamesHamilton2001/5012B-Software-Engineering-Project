@@ -1,0 +1,29 @@
+extends layout
+
+block content
+
+  h1= title
+  
+  .panel
+    //- .tab
+    //-   button#defaultOpen.tablinks(onclick="openTab(event, 'Login')") Log in
+    //-   button.tablinks(onclick="openTab(event, 'Signup')") Sign up
+    
+    #Signup.tabcontent
+      form(action='#' method='post')
+        br
+        input#username(type='text' name='username' placeholder='Username')
+        br
+        br
+        input#email(type='email' name='email' placeholder='Email')
+        br
+        br
+        input#password(type='password' name='password' placeholder='Password')
+        br
+        br
+        //- input#ConfirmPassword(type='password' name='ConfirmPassword' placeholder='Confirm Password')
+        //- br
+        br
+        input(type='submit' value='Sign Up')
+        //- button(type='submit' value='Submit') 
+        //-   a(href = '/dashboard')  

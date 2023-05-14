@@ -21,7 +21,7 @@ form{
     background-color: #f1f1f1;
   }
 
-  .tab button {
+  button {
     background-color: inherit;
     float:none;
     border: none;
