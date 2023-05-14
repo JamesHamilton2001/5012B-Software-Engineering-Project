@@ -5,11 +5,11 @@ block content
   h1= title
   
   .panel
-    //- .tab
-    //-   button#defaultOpen.tablinks(onclick="openTab(event, 'Login')") Log in
-    //-   button.tablinks(onclick="openTab(event, 'Signup')") Sign up
+   
+    a.button(href = "/login") Log in
+    a.button(href = "/signup") Sign up
     
-    #Signup.tabcontent
+    #Signup
       form(action='#' method='post')
         br
         input#username(type='text' name='username' placeholder='Username')
