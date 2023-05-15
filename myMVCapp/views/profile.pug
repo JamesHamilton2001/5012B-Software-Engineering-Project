@@ -1,11 +1,25 @@
 extends login
 
 block content
-    form(action="profile" method='post')
-    input#(type='text' name='username' placeholder='Username')
+    h1= title
+    form(action="#" method='post')
+        label Current Weight:
+        input#currentWeight(type='text' name='cWeight' placeholder='Weight(KG)')
         br
         br
-        // <label for="password">Password:</label><br>
-        input#password(type='password' name='password' placeholder='Password')
+        label Target Weight:
+        input#targetWeight(type='text' name='tWeight' placeholder='Weight(KG)')
         br
         br
+        label Height:
+        input#height(type='text' name='height' placeholder='Height(cm)')
+        br
+        br
+        p1= bmi
+        br
+        br
+        Label Date of Birth:
+        input#dob(type='date' name='dob')
+        br
+        br
+        input(type='submit' value='Submit')

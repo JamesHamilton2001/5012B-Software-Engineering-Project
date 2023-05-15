@@ -1,5 +1,8 @@
 const fs = require("fs");
+const User = require('../login.json')
 const userInfo = JSON.parse(fs.readFileSync('./login.json'));
+
+
 
 exports.getUsers = () => {
     return userInfo;
@@ -18,3 +21,11 @@ exports.verifyCredentials = (username, password) => {
     }
     return check;
 }
+
+// function profile(req res){
+
+// }
+
+
+
+
