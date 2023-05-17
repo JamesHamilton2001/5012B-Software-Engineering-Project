@@ -193,3 +193,24 @@ CREATE TABLE IF NOT EXISTS groups_member (
 
 CREATE UNIQUE INDEX IF NOT EXISTS groups_member_index ON groups_member (groups_id, user_id);
 
+CREATE TABLE IF NOT EXISTS groups_invite (
+   id INTEGER PRIMARY KEY,
+   groups_id
+      INTEGER
+      NOT NULL,
+   user_id
+      INTEGER
+      NOT NULL,
+   code
+      TEXT
+      NOT NULL,
+   FOREIGN KEY (groups_id) REFERENCES groups(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+   FOREIGN KEY (user_id) REFERENCES user(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS groups_invite_index ON groups_invite (groups_id, user_id);
+
