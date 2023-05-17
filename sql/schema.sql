@@ -242,3 +242,32 @@ CREATE TABLE IF NOT EXISTS goal (
       ON UPDATE CASCADE
 );
 
+
+CREATE TABLE IF NOT EXISTS groups_goal (
+   id INTEGER PRIMARY KEY,
+   groups_id
+      INTEGER
+      NOT NULL,
+   excercise_type_id
+      INTEGER
+      NOT NULL,
+   target
+      NUMBER
+      NOT NULL
+      CHECK(target > 0.0),
+   start_time
+      INTEGER
+      NOT NULL
+      CHECK(start_time > 0),
+   end_time
+      INTEGER
+      NOT NULL
+      CHECK(end_time > 0),
+   FOREIGN KEY (groups_id) REFERENCES groups(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+   FOREIGN KEY (excercise_type_id) REFERENCES excercise_type(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
