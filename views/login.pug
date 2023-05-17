@@ -1,0 +1,49 @@
+extends layout
+
+block content
+
+  h1= title
+  
+  .panel
+    //- .tab
+    a.button(href = "/login") Log in
+    a.button(href = "/signup") Sign up
+    #Login
+      form(action='#' method='post')
+        br
+        // <label for="email">Email:</label><br>
+        input#username(type='text' name='username' placeholder='Username')
+        br
+        br
+        // <label for="password">Password:</label><br>
+        input#password(type='password' name='password' placeholder='Password')
+        br
+        br
+        input(type='submit' value='Log In')
+        //- button
+        //-     a(href = '/dashboard')
+    //- #Signup.tabcontent
+    //-   form(action='#' method='post')
+    //-     br
+    //-     input#username(type='text' name='username' placeholder='Username')
+    //-     br
+    //-     br
+    //-     input#email(type='email' name='email' placeholder='Email')
+    //-     br
+    //-     br
+    //-     input#password(type='password' name='password' placeholder='Password')
+    //-     br
+    //-     br
+    //-     //- input#ConfirmPassword(type='password' name='ConfirmPassword' placeholder='Confirm Password')
+    //-     //- br
+    //-     br
+    //-     input(type='submit' value='Sign Up')
+    //-     //- button(type='submit' value='Submit') 
+    //-     //-   a(href = '/dashboard')  
+
+
+  script(src="javascripts/tabManager.js") 
+  
+  
+    
+  
