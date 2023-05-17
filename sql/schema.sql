@@ -159,3 +159,17 @@ CREATE TABLE IF NOT EXISTS user_meal_custom_item (
       ON UPDATE CASCADE
 );
 
+
+CREATE TABLE IF NOT EXISTS group (
+   id INTEGER PRIMARY KEY,
+   user_id
+      INTEGER
+      NOT NULL,
+   name
+      TEXT
+      NOT NULL,
+   FOREIGN KEY (user_id) REFERENCES user(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
