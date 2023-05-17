@@ -214,3 +214,31 @@ CREATE TABLE IF NOT EXISTS groups_invite (
 
 CREATE UNIQUE INDEX IF NOT EXISTS groups_invite_index ON groups_invite (groups_id, user_id);
 
+
+CREATE TABLE IF NOT EXISTS goal (
+   id INTEGER PRIMARY KEY,
+   user_id
+      INTEGER
+      NOT NULL,
+   excercise_type_id
+      INTEGER,
+   target
+      NUMBER
+      NOT NULL
+      CHECK(target > 0.0),
+   start_time
+      INTEGER
+      NOT NULL
+      CHECK(start_time > 0),
+   end_time
+      INTEGER
+      NOT NULL
+      CHECK(end_time > 0),
+   FOREIGN KEY (user_id) REFERENCES user(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+   FOREIGN KEY (excercise_type_id) REFERENCES excercise_type(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
