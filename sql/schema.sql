@@ -173,5 +173,5 @@ CREATE TABLE IF NOT EXISTS groups (
       ON UPDATE CASCADE
 );
 
-CREATE UNIQUE INDEX IF NOT EXISTS group_owner_name_index ON group (user_id, name);
+CREATE UNIQUE INDEX IF NOT EXISTS groups_owner_name_index ON groups (user_id, name);
 
