@@ -271,3 +271,21 @@ CREATE TABLE IF NOT EXISTS groups_goal (
       ON UPDATE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS groups_goal_member (
+   id INTEGER NOT NULL,
+   groups_goal_id
+      INTEGER
+      NOT NULL,
+   user_id
+      INTEGER
+      NOT NULL,
+   FOREIGN KEY (groups_goal_id) REFERENCES groups_goal(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+   FOREIGN KEY (user_id) REFERENCES user(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS groups_goal_member_index ON groups_goal_member (groups_goal_id, user_id);
+
