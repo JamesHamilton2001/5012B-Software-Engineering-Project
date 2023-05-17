@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS user_meal_custom_item (
 );
 
 
-CREATE TABLE IF NOT EXISTS group (
+CREATE TABLE IF NOT EXISTS groups (
    id INTEGER PRIMARY KEY,
    user_id
       INTEGER
