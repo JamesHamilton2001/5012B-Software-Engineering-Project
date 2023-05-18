@@ -25,15 +25,15 @@ app.get('/' , (req, res) => {
 });
 
 app.get('/dashboard' , (req, res) => {
-  res.render('index', { title: 'My Dashboard' });
+  res.render('dashboard', { title: 'My Dashboard' });
 });
 
 app.get('/progress' , (req, res) => {
-  res.render('index', { title: 'My Progress' });
+  res.render('progress', { title: 'My Progress' });
 });
 
 app.get('/signup' , (req, res) => {
-  res.render('index', { title: 'HealthMate Signup' });
+  res.render('signup', { title: 'HealthMate Signup' });
 });
 
 app.use('/login', login);
