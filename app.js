@@ -33,6 +33,8 @@ app.use('/progress', progress);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  console.log(res);
+  console.log(req);
   next(createError(404));
 });
 
