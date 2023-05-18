@@ -6,10 +6,7 @@ const logger        = require('morgan');
 const Chart         = require("chart.js");
 
 const login         = require('./routes/login');
-const dashboard     = require('./routes/dashboard');
-const signup        = require('./routes/signup');
 const profile       = require('./routes/profile');
-const progress      = require('./routes/progress');
 
 const app = express();
 
@@ -27,11 +24,20 @@ app.get('/' , (req, res) => {
   res.render('index', { title: 'HealthMate App' });
 });
 
+app.get('/dashboard' , (req, res) => {
+  res.render('index', { title: 'My Dashboard' });
+});
+
+app.get('/progress' , (req, res) => {
+  res.render('index', { title: 'My Progress' });
+});
+
+app.get('/signup' , (req, res) => {
+  res.render('index', { title: 'HealthMate Signup' });
+});
+
 app.use('/login', login);
-app.use('/dashboard', dashboard);
-app.use('/signup', signup);
 app.use('/profile', profile);
-app.use('/progress', progress);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
