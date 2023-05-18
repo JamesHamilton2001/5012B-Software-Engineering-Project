@@ -5,7 +5,6 @@ const cookieParser  = require('cookie-parser');
 const logger        = require('morgan');
 const Chart         = require("chart.js");
 
-const indexRouter   = require('./routes/index');
 const login         = require('./routes/login');
 const dashboard     = require('./routes/dashboard');
 const signup        = require('./routes/signup');
@@ -24,7 +23,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.get('/' , (req, res) => {
+  res.render('index', { title: 'HealthMate App' });
+});
+
 app.use('/login', login);
 app.use('/dashboard', dashboard);
 app.use('/signup', signup);
