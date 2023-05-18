@@ -8,7 +8,7 @@ const Chart         = require("chart.js");
 const indexRouter   = require('./routes/index');
 const login         = require('./routes/login');
 const dashboard     = require('./routes/dashboard');
-const signup        = require('./routes/signUp');
+const signup        = require('./routes/signup');
 const profile       = require('./routes/profile');
 const progress      = require('./routes/progress');
 
