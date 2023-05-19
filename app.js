@@ -86,7 +86,13 @@ app.all('/signup', (req, res) => {
 
       // TODO: add new user to db, send out verification email, etc.
    }
-   res.render('signup', { title: 'HealthMate Signup' });
+   res.render('signup', {
+      title: 'HealthMate Signup',
+      username: req.body.username || '',
+      email: req.body.email || '',
+      password: req.body.password || '',
+      error: res.locals.error,
+   });
 });
 
 
