@@ -65,6 +65,23 @@ app.all('/login', async (req, res) => {
 });
 
 
+// TODO: probably also ship this out to a different file, which would also make it easier to split out functions
+app.all('/signup', (req, res) => {
+   if(req.method == 'POST') {
+      console.log('Signup page requested by POST...');
+      // TODO: validate username with some regex, possibly erroring out
+      // TODO: check if username is in use already, error out if so
+      // TODO: valid/available check email
+      // TODO: validate password
+      // TODO: real name
+      // TODO: height
+
+      // TODO: add new user to db, send out verification email, etc.
+   }
+   res.render('signup', { title: 'HealthMate Signup' });
+});
+
+
 app.get('/', (req, res) => {
   res.render('index', { title: 'HealthMate App' });
 });
@@ -77,9 +94,6 @@ app.get('/progress' , (req, res) => {
   res.render('progress', { title: 'My Progress' });
 });
 
-app.get('/signup' , (req, res) => {
-  res.render('signup', { title: 'HealthMate Signup' });
-});
 
 export { app as app };
 
