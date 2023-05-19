@@ -1,5 +1,5 @@
-const userModel = require('../model/User.js');
-var express = require('express');
+import express from 'express';
+
 var router = express.Router();
 
 var cWeight = '';
@@ -26,4 +26,4 @@ function bmiCalculator(cWeight,height){
 var bmi = bmiCalculator(cWeight,height);
 
 
-module.exports = router;
+export { router as profile };

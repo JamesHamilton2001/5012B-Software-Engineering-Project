@@ -1,13 +1,14 @@
-const userModel = require('../model/User.js');
-var express = require('express');
-var router = express.Router();
+import * as userModel from '../model/User.js';
+import express from 'express';
+
+const login = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+login.get('/', function(req, res, next) {
   res.render('login',{title: 'Healthmate Login'})
 });
 
-router.post('/', function(req, res, next){
+login.post('/', function(req, res, next){
   const username = req.body.username;
   const password = req.body.password;
 
@@ -21,4 +22,4 @@ router.post('/', function(req, res, next){
   }
 });
 
-module.exports = router;
+export { login as login };
