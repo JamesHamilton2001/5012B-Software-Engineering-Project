@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join('./', 'public')));
 
+
 // TODO: probably separate this back out to another file, but for now it's fine here.
 app.all('/login', async (req, res) => {
    if(req.body.username !== undefined) {
@@ -36,6 +37,7 @@ app.all('/login', async (req, res) => {
       error: res.locals.error,
    });
 });
+
 
 app.get('/', (req, res) => {
   res.render('index', { title: 'HealthMate App' });
