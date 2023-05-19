@@ -74,7 +74,9 @@ app.all('/signup', (req, res) => {
          if(!User.validUsername(req.body.username))
             return 'Username not valid.';
          // TODO: check if username is in use already, error out if so
-         // TODO: valid/available check email
+         if(!User.validEmail(req.body.email))
+            return 'Email not valid.';
+         // TODO: available email
          // TODO: validate password
          // TODO: real name
          // TODO: height
