@@ -29,7 +29,4 @@ app.get('/signup' , (req, res) => {
   res.render('signup', { title: 'HealthMate Signup' });
 });
 
-app.use('/login', login);
-app.use('/profile', profile);
-
 export { app as app };
