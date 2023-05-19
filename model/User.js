@@ -54,6 +54,20 @@ export default class User {
    }
 
 
+   // Check if a given height is 'valid'. This is defined by being either a number
+   // or a string which can be interpretted as a number of cm or feet & inches, as
+   // well as being within a range that isn't totally arbitrary.
+   static validHeight(height) {
+      if(isNaN(height))
+         height = User.stringToHeight(height);
+      if(isNaN(height))
+         return false;
+      // These new bounds are pulled from the supposed shortest woman and tallest
+      // man who ever lived. Feel free to object to my whimsy.
+      return height >= 61 && height <= 272;
+   }
+
+
    // Covert a string describing a height in either cm or feet & inches to an actual number in cm.
    // Returns NaN if the format of the string can't be recognised, or if not given a string.
    static stringToHeight(height) {
