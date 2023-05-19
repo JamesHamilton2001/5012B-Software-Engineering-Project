@@ -28,5 +28,14 @@ export default class User {
          return null;
       return new User(row);
    }
+
+
+   // Check if a given username is allowed. Returns true if the username is valid,
+   // otherwise false. The regex should match any validation performed by the database
+   // or during entry in the front-end forms.
+   static validUsername(username) {
+      // TODO: move the regex out somewhere more configurable & accessible?
+      return /^\w{4,16}$/.test(username);
+   }
 }
 
