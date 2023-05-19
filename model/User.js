@@ -43,5 +43,14 @@ export default class User {
    static validEmail(email) {
       return /^[\w%+.]+@[a-z\d.-]+\.[a-z]{2,}$/i.test(email);
    }
+
+
+   // Check if a given password meets some chosen criteria defined by a regex.
+   static validPassword(password) {
+      // The password is capped at 72 characters as that is the maximum possible
+      // length that won't be truncated by bcrypt (strictly it is 72 bytes, which
+      // could be truncated as low as 18 characters in utf-8).
+      return /^.{20,72}$/.test(password);
+   }
 }
 
