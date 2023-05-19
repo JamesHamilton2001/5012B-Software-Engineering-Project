@@ -52,6 +52,13 @@ export default class User {
    }
 
 
+   // Check if a given email already exists in the database. Case insensitive.
+   static async availableEmaul(email) {
+      const row = await db.get('SELECT COUNT(*) AS n FROM user WHERE email = ?', email);
+      return row['n'] == 0;
+   }
+
+
    // Check if a given password meets some chosen criteria defined by a regex.
    static validPassword(password) {
       // The password is capped at 72 characters as that is the maximum possible
