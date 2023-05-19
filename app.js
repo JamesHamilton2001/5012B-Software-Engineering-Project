@@ -49,6 +49,7 @@ app.all('/login', async (req, res) => {
          // Redirecting somewhere...
          // TODO: possibly redirect to the page the user was trying to access before
          res.redirect(418, 'dashboard');
+         return;
       }
       // Login failed; set an error message and re-render the login form.
       res.locals.error = 'Invalid username or password.';
