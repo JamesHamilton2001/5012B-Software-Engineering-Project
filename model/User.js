@@ -52,5 +52,22 @@ export default class User {
       // could be truncated as low as 18 characters in utf-8).
       return /^.{20,72}$/.test(password);
    }
+
+
+   // Covert a string describing a height in either cm or feet & inches to an actual number in cm.
+   // Returns NaN if the format of the string can't be recognised, or if not given a string.
+   static stringToHeight(height) {
+      // TODO: just return immediately if given a number?
+      if(typeof height === 'string' || height instanceof String) {
+         const cm = height.match(/^\s*(\d+(?:\.\d+)?) ?(?:cm\.?)?\s*$/i);
+         if(cm !== null)
+            return Number(cm[1]);
+
+         const ft_in = height.match(/^\s*(\d+)' ?(\d+(?:\.\d+)?) ?"?\s*$/);
+         if(ft_in !== null)
+            return (Number(ft_in[1]) * 12 + Number(ft_in[2])) * 2.54;
+      }
+      return NaN;
+   }
 }
 
