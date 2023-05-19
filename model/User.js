@@ -1,3 +1,4 @@
+import * as bcrypt from 'bcrypt';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
@@ -15,6 +16,10 @@ export default class User {
 
       // TODO: load things like groups, latest weight, etc. here? Probably best to load
       // those as requested instead perhaps..?
+   }
+
+   async matchPassword(password) {
+      return await bcrypt.compare(password, this.password);
    }
 
    // Main factory method. Pulls the basic user data associated with a given username
