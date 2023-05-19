@@ -2,10 +2,6 @@ import * as bcrypt from 'bcrypt';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
-global.db = await open({
-   filename: 'debug.db',
-   driver: sqlite3.cached.Database
-});
 
 export default class User {
    constructor(data) {
