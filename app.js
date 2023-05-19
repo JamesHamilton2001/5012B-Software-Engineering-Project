@@ -80,7 +80,8 @@ app.all('/signup', (req, res) => {
          if(!User.validPassword(req.body.password))
             return 'Password not valid.';
          // TODO: real name
-         // TODO: height
+         if(!User.validHeight(req.body.height))
+            return 'Height not valid.';
       })() || null;
       console.log('ERROR: ' + res.locals.error);
 
