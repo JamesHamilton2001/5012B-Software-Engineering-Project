@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS user (
    username
       TEXT
       UNIQUE
+      COLLATE NOCASE
       NOT NULL,
    password
       TEXT
