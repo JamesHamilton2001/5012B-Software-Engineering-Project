@@ -66,14 +66,15 @@ app.all('/login', async (req, res) => {
 
 
 // TODO: probably also ship this out to a different file, which would also make it easier to split out functions
-app.all('/signup', (req, res) => {
+app.all('/signup', async (req, res) => {
    if(req.method == 'POST') {
       console.log('Signup page requested by POST...');
       // TODO: should refactor this to be proper function or method somewhere
-      res.locals.error = (() => {
+      res.locals.error = await (async () => {
          if(!User.validUsername(req.body.username))
             return 'Username not valid.';
-         // TODO: check if username is in use already, error out if so
+         if(!await User.availableUsername(req.body.username))
+            return 'Username unavailable.';
          if(!User.validEmail(req.body.email))
             return 'Email not valid.';
          // TODO: available email
