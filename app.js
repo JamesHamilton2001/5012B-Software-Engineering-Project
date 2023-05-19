@@ -69,12 +69,17 @@ app.all('/login', async (req, res) => {
 app.all('/signup', (req, res) => {
    if(req.method == 'POST') {
       console.log('Signup page requested by POST...');
-      // TODO: validate username with some regex, possibly erroring out
-      // TODO: check if username is in use already, error out if so
-      // TODO: valid/available check email
-      // TODO: validate password
-      // TODO: real name
-      // TODO: height
+      // TODO: should refactor this to be proper function or method somewhere
+      res.locals.error = (() => {
+         if(!User.validUsername(req.body.username))
+            return 'Username not valid.';
+         // TODO: check if username is in use already, error out if so
+         // TODO: valid/available check email
+         // TODO: validate password
+         // TODO: real name
+         // TODO: height
+      })() || null;
+      console.log('ERROR: ' + res.locals.error);
 
       // TODO: add new user to db, send out verification email, etc.
    }
