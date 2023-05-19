@@ -38,6 +38,7 @@ app.all('*', async (req, res, next) => {
 
 // TODO: probably separate this back out to another file, but for now it's fine here.
 app.all('/login', async (req, res) => {
+   // TODO: redirect somewhere if the user is already logged in
    if(req.body.username !== undefined) {
       const u = await User.getByUsername(req.body.username);
       if(u !== null && await u.matchPassword(req.body.password)) {
