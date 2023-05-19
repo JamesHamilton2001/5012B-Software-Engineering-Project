@@ -34,22 +34,4 @@ app.get('/signup' , (req, res) => {
 app.use('/login', login);
 app.use('/profile', profile);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  console.log(res);
-  console.log(req);
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
 export { app as app };
