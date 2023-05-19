@@ -23,7 +23,7 @@ export default class User {
    // if and _when_ that error will fire, or exactly what will happen to node without
    // some testing.)
    static async getByUsername(username) {
-      var row = await db.get('SELECT * FROM user WHERE username = ?', username);
+      const row = await db.get('SELECT * FROM user WHERE username = ?', username);
       if(row === undefined)
          return null;
       return new User(row);
