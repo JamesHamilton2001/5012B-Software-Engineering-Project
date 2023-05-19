@@ -29,7 +29,7 @@ export default class User {
    static async getByUsername(username) {
       var row = await db.get('SELECT * FROM user WHERE username = ?', username);
       if(row === undefined)
-         throw new Error('User not found:' + username);
+         return null;
       return new User(row);
    }
 }
