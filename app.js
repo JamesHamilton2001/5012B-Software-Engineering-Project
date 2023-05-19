@@ -91,6 +91,8 @@ app.all('/signup', (req, res) => {
       username: req.body.username || '',
       email: req.body.email || '',
       password: req.body.password || '',
+      real_name: req.body.real_name || '',
+      height: req.body.height || '',
       error: res.locals.error,
    });
 });
