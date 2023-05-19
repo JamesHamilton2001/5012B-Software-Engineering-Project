@@ -21,7 +21,10 @@ app.all('/login', async (req, res) => {
    if(req.body.username !== undefined) {
       const u = await User.getByUsername(req.body.username);
       if(u !== null && await u.matchPassword(req.body.password)) {
-         // Successful login; redirecting somewhere...
+         // Successful login
+         // Setting aurhentication cookie...
+         res.cookie('auth', JSON.stringify({username: req.body.username, password: req.body.password}));
+         // Redirecting somewhere...
          // TODO: possibly redirect to the page the user was trying to access before
          res.redirect(418, 'dashboard');
       }
