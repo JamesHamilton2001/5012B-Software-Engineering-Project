@@ -15,6 +15,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join('./', 'public')));
 
+// TODO: probably separate this back out to another file, but for now it's fine here.
+app.all('/login', (req, res) => {
+   // Render the login form, potentially with the previously entered username re-filled.
+   // Should additionally show an error message if there appears to have been a failed
+   // login attempt.
+   res.render('login', {
+      title: 'Login ya cunt',
+      username: req.body.username || '',
+   });
+});
+
 app.get('/', (req, res) => {
   res.render('index', { title: 'HealthMate App' });
 });
