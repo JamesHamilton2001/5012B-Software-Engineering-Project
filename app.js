@@ -1,3 +1,4 @@
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import path from 'path';
 
@@ -14,6 +15,25 @@ app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join('./', 'public')));
+
+
+// Middleare so we dont' have to regex out our logic cookie ourselves
+app.use(cookieParser());
+
+// Check auth cookie before we go any further
+app.all('*', async (req, res, next) => {
+   if(req.cookies.auth) {
+      // auth cookie exists; parse it and check password
+      const auth = JSON.parse(req.cookies.auth);
+      const usr = await User.getByUsername(auth.username);
+      if(usr !== null && await usr.matchPassword(auth.password)) {
+         // Authentication successful; set the user object in the response locals
+         res.locals.user = usr;
+      }
+   }
+   // Proceed to the next middleware/route
+   next();
+});
 
 
 // TODO: probably separate this back out to another file, but for now it's fine here.
