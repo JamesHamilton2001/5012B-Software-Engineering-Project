@@ -11,6 +11,7 @@ block content
 
     #Signup
       form(action='#' method='post')
+        h2 #{error}
         input#username(type='text' name='username' placeholder='Username' value=`${username}`)
         input#email(type='email' name='email' placeholder='Email' value=`${email}`)
         input#password(type='password' name='password' placeholder='Password' value=`${password}`)
