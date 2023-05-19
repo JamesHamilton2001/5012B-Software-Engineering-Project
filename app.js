@@ -3,6 +3,8 @@ import path from 'path';
 
 import 'chart.js';
 
+import User from './model/User.js';
+
 const app = express();
 
 // view engine setup
