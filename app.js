@@ -77,7 +77,8 @@ app.all('/signup', (req, res) => {
          if(!User.validEmail(req.body.email))
             return 'Email not valid.';
          // TODO: available email
-         // TODO: validate password
+         if(!User.validPassword(req.body.password))
+            return 'Password not valid.';
          // TODO: real name
          // TODO: height
       })() || null;
