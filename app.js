@@ -77,7 +77,8 @@ app.all('/signup', async (req, res) => {
             return 'Username unavailable.';
          if(!User.validEmail(req.body.email))
             return 'Email not valid.';
-         // TODO: available email
+         if(!await User.availableEmail(req.body.email))
+            return 'Email unavailable.';
          if(!User.validPassword(req.body.password))
             return 'Password not valid.';
          if(!User.validRealName(req.body.real_name))
