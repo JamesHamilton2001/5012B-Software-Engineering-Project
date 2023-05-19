@@ -12,13 +12,13 @@ block content
     #Signup
       form(action='#' method='post')
         br
-        input#username(type='text' name='username' placeholder='Username')
+        input#username(type='text' name='username' placeholder='Username' value=`${username}`)
         br
         br
-        input#email(type='email' name='email' placeholder='Email')
+        input#email(type='email' name='email' placeholder='Email' value=`${email}`)
         br
         br
-        input#password(type='password' name='password' placeholder='Password')
+        input#password(type='password' name='password' placeholder='Password' value=`${password}`)
         br
         br
         //- input#ConfirmPassword(type='password' name='ConfirmPassword' placeholder='Confirm Password')
