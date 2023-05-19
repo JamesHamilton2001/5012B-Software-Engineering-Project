@@ -22,7 +22,7 @@ app.use(express.static(path.join('./', 'public')));
 app.use(cookieParser());
 
 // Check auth cookie before we go any further
-app.all('*', async (req, res, next) => {
+app.use(async (req, res, next) => {
    if(req.cookies.auth) {
       // auth cookie exists; parse it and check password
       const auth = JSON.parse(req.cookies.auth);
