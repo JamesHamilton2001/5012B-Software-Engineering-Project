@@ -39,6 +39,13 @@ export default class User {
    }
 
 
+   // Check if a given username already exists in the database. Case insensitive.
+   static async availableUsername(username) {
+      const row = await db.get('SELECT COUNT(*) AS n FROM user WHERE username = ?', username);
+      return row['n'] == 0;
+   }
+
+
    // Check if a given email is, if not _valid_, at least vaguely emaily looking.
    static validEmail(email) {
       return /^[\w%+.]+@[a-z\d.-]+\.[a-z]{2,}$/i.test(email);
