@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 // Check auth cookie before we go any further
 app.use(async (req, res, next) => {
-   if(req.cookies.auth) {
+   if('auth' in req.cookies) {
       // auth cookie exists; parse it and check password
       const auth = JSON.parse(req.cookies.auth);
       const usr = await User.getByUsername(auth.username);
