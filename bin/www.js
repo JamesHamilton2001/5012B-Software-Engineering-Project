@@ -5,7 +5,6 @@
  */
 
 import { app } from '../app.js';
-//var debug = require('debug')('mymvcapp:server');
 import * as http from 'http';
 
 /**
