@@ -37,5 +37,11 @@ export default class User {
       // TODO: move the regex out somewhere more configurable & accessible?
       return /^\w{4,16}$/.test(username);
    }
+
+
+   // Check if a given email is, if not _valid_, at least vaguely emaily looking.
+   static validEmail(email) {
+      return /^[\w%+.]+@[a-z\d.-]+\.[a-z]{2,}$/i.test(email);
+   }
 }
 
