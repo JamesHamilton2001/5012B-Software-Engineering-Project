@@ -2,8 +2,6 @@ import express from 'express';
 import path from 'path';
 
 import 'chart.js';
-import { login } from './routes/login.js';
-import { profile } from './routes/profile.js';
 
 const app = express();
 
