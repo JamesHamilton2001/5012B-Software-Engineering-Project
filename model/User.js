@@ -14,6 +14,20 @@ export default class User {
       // those as requested instead perhaps..?
    }
 
+
+   // Returns a collection of the user's weight data.
+   async getWeight(limit, start, end) {
+      const sql = 'SELECT weight, timestamp FROM user_weight WHERE user_id = :id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit';
+      const args = {
+         ':id': this.id,
+         ':limit': limit || 1,
+         ':start': start || 0,
+         ':end': end || Date.now(),
+      }
+      return db.all(sql, args);
+   }
+
+
    async matchPassword(password) {
       return await bcrypt.compare(password, this.password);
    }
