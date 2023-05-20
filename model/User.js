@@ -30,6 +30,13 @@ export default class User {
    }
 
 
+   // Add a new User to the database.
+   static async add(username, email, password, real_name, height) {
+      const sql = 'INSERT INTO user (username, email, password, real_name, height) VALUES (?, ?, ?, ?, ?)';
+      return db.run(sql, username, email, password, real_name, height);
+   }
+
+
    // Check if a given username is allowed. Returns true if the username is valid,
    // otherwise false. The regex should match any validation performed by the database
    // or during entry in the front-end forms.
