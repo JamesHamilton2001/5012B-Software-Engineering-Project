@@ -88,7 +88,9 @@ app.all('/signup', async (req, res) => {
       })() || null;
       console.log('ERROR: ' + res.locals.error);
 
-      // TODO: add new user to db, send out verification email, etc.
+      if(!res.locals.error) {
+         // TODO: add new user to db, send out verification email, etc.
+      }
    }
    res.render('signup', {
       title: 'HealthMate Signup',
