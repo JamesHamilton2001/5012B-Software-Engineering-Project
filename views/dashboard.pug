@@ -1,17 +1,27 @@
 extends layout
 
 block content
+  append head
+    link(rel="stylesheet" href="stylesheets/dashboard.css")
 
   header
     include navBar
 
   h1 Healthmate Dashboard
-  h2 Welcome #{title}
 
-  p Create a goal
-  //- Panel containing goal information (calories, )
-  p track exercise 
-  p track meals
-  p my progress 
-  p create group
-  a(href="/progress") Progress
+  div#container
+
+    //- sidebar
+    div#sideBar
+      ul#sideList
+        li#sideItem My Stats 
+        li#sideItem My Groups
+        li#sideItem Log Exercise
+        li#sideItem Log Meal 
+        li#sideItem Update Weigth 
+
+    //- current dispaly
+    div#display
+      h2 hello
+
+

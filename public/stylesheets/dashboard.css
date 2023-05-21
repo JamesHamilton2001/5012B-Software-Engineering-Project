@@ -1,0 +1,29 @@
+#container {
+  display: flex;
+}
+
+#sideBar {
+  width: 20vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#sideList {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  size: 100%;
+}
+
+#sideItem {
+
+}
+
+#display {
+  flex-grow: 1;
+}
