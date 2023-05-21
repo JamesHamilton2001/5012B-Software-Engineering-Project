@@ -1,29 +1,18 @@
-#container {
+
+#dashboard {
   display: flex;
+  height: 100%;
 }
 
 #sideBar {
-  width: 20vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-}
-
-#sideList {
-  list-style-type: none;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  size: 100%;
-}
-
-#sideItem {
-
+  justify-content: space-evenly;
+  width: 25%;
+  height: 100%;
 }
 
 #display {
-  flex-grow: 1;
+  width: 100%;
+  height: 100%;
 }

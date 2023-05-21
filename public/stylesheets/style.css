@@ -3,7 +3,12 @@ body {
   margin: 0;
   background-color:rgb(170, 159, 233);
 }
+div {
+  padding: 0;
+  margin: 0;
+}
 
+/* Page title: */
 h1{
   margin: 0;
   padding: .5em 0 .5em 0;

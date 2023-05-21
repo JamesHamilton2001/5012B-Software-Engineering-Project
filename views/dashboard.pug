@@ -3,24 +3,23 @@ extends layout
 block content
   append head
     link(rel="stylesheet" href="stylesheets/dashboard.css")
+    script(src="javascripts/dashboard.js")
 
   header
     include navBar
+    h1 Healthmate Dashboard
 
-  h1 Healthmate Dashboard
+  //- sidebar: select current display
+  div#dashboard
 
-  div#container
+    ul#sideBar
+      li#sideBarItem My Stats 
+      li#sideBarItem My Groups
+      li#sideBarItem Log Exercise
+      li#sideBarItem Log Meal 
+      li#sideBarItem Update Weigth 
 
-    //- sidebar
-    div#sideBar
-      ul#sideList
-        li#sideItem My Stats 
-        li#sideItem My Groups
-        li#sideItem Log Exercise
-        li#sideItem Log Meal 
-        li#sideItem Update Weigth 
-
-    //- current dispaly
+    //- current display, is to be determined by selection on sidebar
     div#display
       h2 hello
 
