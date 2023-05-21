@@ -1,0 +1,51 @@
+
+/* header:
+    - stick to top of screen
+    - fill width */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: lightslategrey;
+  /* padding: .25em 0; */
+}
+
+/* list of navbar locations:
+    - evenly spaced horizontally
+    - fill available space */
+#navList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+/* navbar list entry: */
+#navItem {
+  display: inline-block;
+  flex-grow: 1;
+  text-align: center;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+#navItem:hover {
+  background-color: thistle;
+}
+
+/* hyperlink text */
+#navLink {
+  color: black;
+  text-decoration: none;
+}
+#navLink:hover {
+  color:darkslateblue;
+}
+
+/* add padding to body for navbar room */
+body {
+  padding-top: 1.5em;
+}
