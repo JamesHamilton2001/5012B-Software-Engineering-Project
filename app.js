@@ -4,6 +4,7 @@ import path from 'path';
 
 import 'chart.js';
 
+import api from './api.js';
 import './db.js';
 import User from './model/User.js';
 
@@ -35,6 +36,10 @@ app.use(async (req, res, next) => {
    // Proceed to the next middleware/route
    next();
 });
+
+
+// Route all API requests to the api.js module
+app.use('/api', api);
 
 
 // TODO: probably separate this back out to another file, but for now it's fine here.
