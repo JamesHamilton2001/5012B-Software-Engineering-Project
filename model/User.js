@@ -15,6 +15,18 @@ export default class User {
    }
 
 
+   // Adds a new weight entry to the database for the user.
+   async addWeight(weight) {
+      const sql = 'INSERT INTO user_weight (user_id, weight, timestamp) VALUES (:id, :weight, :timestamp)';
+      const args = {
+         ':id': this.id,
+         ':weight': weight,
+         ':timestamp': Date.now(),
+      }
+      return db.run(sql, args);
+   }
+
+
    // Returns a collection of the user's weight data.
    async getWeight(limit, start, end) {
       const sql = 'SELECT weight, timestamp FROM user_weight WHERE user_id = :id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit';
