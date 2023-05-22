@@ -11,5 +11,11 @@ router.get('/', (req, res) => {
 });
 
 
+// Returns the currently logged in user, or null if no user is logged in.
+router.get('/user', (req, res) => {
+   res.json(res.locals.user);
+});
+
+
 export default router;
 
