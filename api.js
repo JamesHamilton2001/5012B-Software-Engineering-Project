@@ -17,5 +17,18 @@ router.get('/user', (req, res) => {
 });
 
 
+// Middleware to inject current user id for '/user/current(/*)' routes
+router.use('/user', (req, res, next) => {
+   if(req.url.startsWith('/current')) {
+      if(res.locals.user === undefined) {
+         res.status(401).json({error: 'Not logged in.'});
+         return;
+      }
+      req.url = req.url.replace(/^\/current/, '/' + res.locals.user.id);
+   }
+   next();
+});
+
+
 export default router;
 
