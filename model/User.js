@@ -32,7 +32,7 @@ export default class User {
       const sql = 'SELECT weight, timestamp FROM user_weight WHERE user_id = :id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit';
       const args = {
          ':id': this.id,
-         ':limit': limit || 1,
+         ':limit': limit || -1,
          ':start': start || 0,
          ':end': end || Math.floor(Date.now() / 1000),
       }
