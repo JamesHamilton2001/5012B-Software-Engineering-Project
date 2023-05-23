@@ -54,6 +54,15 @@ export default class User {
    }
 
 
+   // Alternate factory method. Pulls the basic user data associated with a given id.
+   static async getByID(id) {
+      const row = await db.get('SELECT * FROM user WHERE id = ?', id);
+      if(row === undefined)
+         return null;
+      return new User(row);
+   }
+
+
    // Add a new User to the database.
    static async add(username, email, password, real_name, height) {
       const sql = 'INSERT INTO user (username, email, password, real_name, height) VALUES (?, ?, ?, ?, ?)';
