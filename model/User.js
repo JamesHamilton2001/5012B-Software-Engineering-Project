@@ -21,7 +21,7 @@ export default class User {
       const args = {
          ':id': this.id,
          ':weight': weight,
-         ':timestamp': Date.now(),
+         ':timestamp': Math.floor(Date.now() / 1000),
       }
       return db.run(sql, args);
    }
@@ -34,7 +34,7 @@ export default class User {
          ':id': this.id,
          ':limit': limit || 1,
          ':start': start || 0,
-         ':end': end || Date.now(),
+         ':end': end || Math.floor(Date.now() / 1000),
       }
       return db.all(sql, args);
    }
