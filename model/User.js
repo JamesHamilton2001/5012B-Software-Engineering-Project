@@ -45,9 +45,7 @@ export default class User {
    }
 
    // Main factory method. Pulls the basic user data associated with a given username
-   // from the database, throwing an error if the user is not found. (Note, idk really
-   // if and _when_ that error will fire, or exactly what will happen to node without
-   // some testing.)
+   // from the database, or null if the username wasn't found.
    static async getByUsername(username) {
       const row = await db.get('SELECT * FROM user WHERE username = ?', username);
       if(row === undefined)
