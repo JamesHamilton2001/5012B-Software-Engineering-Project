@@ -44,7 +44,8 @@ router.get('/user/:id', async (req, res) => {
 // TODO: address the obvious security concerns here.
 router.get('/user/:id/weight', async (req, res) => {
    const usr = await User.getByID(req.params.id);
-   res.json((await usr.getWeight())[0]);
+   const data = await usr.getWeight(req.query.limit, req.query.start, req.query.end);
+   res.json(data);
 });
 
 
