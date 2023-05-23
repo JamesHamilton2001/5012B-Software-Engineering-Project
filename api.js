@@ -49,5 +49,14 @@ router.get('/user/:id/weight', async (req, res) => {
 });
 
 
+// Add a new weight record for a given user.
+// TODO: this should _absolutely_ only allow this for the current user when this is finalised!
+router.post('/user/:id/weight', async (req, res) => {
+   const usr = await User.getByID(req.params.id);
+   const data = await usr.addWeight(req.body.weight, Math.floor(Date.now() / 1000));
+   res.status(201).json("weight record added");
+});
+
+
 export default router;
 
