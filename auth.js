@@ -77,5 +77,21 @@ router.all('/signup', async (req, res) => {
 });
 
 
-export default router;
+// Check auth cookie so we can note the logged in user, if there is one.
+async function authCookie(req, res, next) {
+   if('auth' in req.cookies) {
+      // auth cookie exists; parse it and check password
+      const auth = JSON.parse(req.cookies.auth);
+      const usr = await User.getByUsername(auth.username);
+      if(usr !== null && await usr.matchPassword(auth.password)) {
+         // Authentication successful; set the user object in the response locals
+         res.locals.user = usr;
+      }
+   }
+   // Proceed to the next middleware/route
+   next();
+}
+
+
+export {router, authCookie};
 

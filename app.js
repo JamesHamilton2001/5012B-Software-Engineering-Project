@@ -5,7 +5,7 @@ import path from 'path';
 import 'chart.js';
 
 import api from './api.js';
-import auth from './auth.js';
+import {router as auth, authCookie} from './auth.js';
 import './db.js';
 import User from './model/User.js';
 
@@ -23,20 +23,9 @@ app.use(express.static(path.join('./', 'public')));
 // Middleare so we dont' have to regex out our logic cookie ourselves
 app.use(cookieParser());
 
-// Check auth cookie before we go any further
-app.use(async (req, res, next) => {
-   if('auth' in req.cookies) {
-      // auth cookie exists; parse it and check password
-      const auth = JSON.parse(req.cookies.auth);
-      const usr = await User.getByUsername(auth.username);
-      if(usr !== null && await usr.matchPassword(auth.password)) {
-         // Authentication successful; set the user object in the response locals
-         res.locals.user = usr;
-      }
-   }
-   // Proceed to the next middleware/route
-   next();
-});
+
+// Check if a user is logged in, and if so note them in res.locals.user
+app.use(authCookie);
 
 
 // Route all API requests to the api.js module
