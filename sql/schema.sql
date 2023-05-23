@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS user_weight (
 );
 
 
-CREATE TABLE IF NOT EXISTS excercise_type (
+CREATE TABLE IF NOT EXISTS exercise_type (
    id INTEGER PRIMARY KEY,
    name
       TEXT
@@ -60,12 +60,12 @@ CREATE TABLE IF NOT EXISTS excercise_type (
 );
 
 
-CREATE TABLE IF NOT EXISTS user_excercise_session (
+CREATE TABLE IF NOT EXISTS user_exercise_session (
    id INTEGER PRIMARY KEY,
    user_id
       INTEGER
       NOT NULL,
-   excercise_type_id
+   exercise_type_id
       INTEGER
       NOT NULL,
    timestamp
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS user_excercise_session (
    FOREIGN KEY (user_id) REFERENCES user(id)
       ON DELETE CASCADE
       ON UPDATE CASCADE,
-   FOREIGN KEY (excercise_type_id) REFERENCES excercise_type(id)
+   FOREIGN KEY (exercise_type_id) REFERENCES exercise_type(id)
       ON DELETE RESTRICT
       ON UPDATE CASCADE
 );
@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS goal (
    user_id
       INTEGER
       NOT NULL,
-   excercise_type_id
+   exercise_type_id
       INTEGER,
    target
       NUMBER
@@ -242,7 +242,7 @@ CREATE TABLE IF NOT EXISTS goal (
    FOREIGN KEY (user_id) REFERENCES user(id)
       ON DELETE CASCADE
       ON UPDATE CASCADE,
-   FOREIGN KEY (excercise_type_id) REFERENCES excercise_type(id)
+   FOREIGN KEY (exercise_type_id) REFERENCES exercise_type(id)
       ON DELETE CASCADE
       ON UPDATE CASCADE
 );
@@ -253,7 +253,7 @@ CREATE TABLE IF NOT EXISTS groups_goal (
    groups_id
       INTEGER
       NOT NULL,
-   excercise_type_id
+   exercise_type_id
       INTEGER
       NOT NULL,
    target
@@ -271,7 +271,7 @@ CREATE TABLE IF NOT EXISTS groups_goal (
    FOREIGN KEY (groups_id) REFERENCES groups(id)
       ON DELETE CASCADE
       ON UPDATE CASCADE,
-   FOREIGN KEY (excercise_type_id) REFERENCES excercise_type(id)
+   FOREIGN KEY (exercise_type_id) REFERENCES exercise_type(id)
       ON DELETE CASCADE
       ON UPDATE CASCADE
 );
