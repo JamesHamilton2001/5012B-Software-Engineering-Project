@@ -31,7 +31,7 @@ export default class Exercise {
 
    // Add new type of exercise to exercise_type table.
    static async addType(name, metric) {
-      const sql = 'INSERT INTO exercise_type(name, metric) VALUES(:name, :metric)';
+      const sql = 'INSERT INTO exercise_type(name, metric) VALUES(?, ?)';
       return db.run(sql, name, metric);
    }
 }
