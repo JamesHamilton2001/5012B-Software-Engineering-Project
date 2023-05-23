@@ -68,7 +68,6 @@ app.all('/login', async (req, res) => {
 // TODO: probably also ship this out to a different file, which would also make it easier to split out functions
 app.all('/signup', async (req, res) => {
    if(req.method == 'POST') {
-      console.log('Signup page requested by POST...');
       // TODO: should refactor this to be proper function or method somewhere
       res.locals.error = await (async () => {
          if(!User.validUsername(req.body.username))
@@ -86,7 +85,6 @@ app.all('/signup', async (req, res) => {
          if(!User.validHeight(req.body.height))
             return 'Height not valid.';
       })() || null;
-      console.log('ERROR: ' + res.locals.error);
 
       if(!res.locals.error) {
          // TODO: add new user to db, send out verification email, etc.
