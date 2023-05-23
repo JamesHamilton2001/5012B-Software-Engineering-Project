@@ -40,5 +40,13 @@ router.get('/user/:id', async (req, res) => {
 });
 
 
+// Return the latest weight data for a given user.
+// TODO: address the obvious security concerns here.
+router.get('/user/:id/weight', async (req, res) => {
+   const usr = await User.getByID(req.params.id);
+   res.json((await usr.getWeight())[0]);
+});
+
+
 export default router;
 
