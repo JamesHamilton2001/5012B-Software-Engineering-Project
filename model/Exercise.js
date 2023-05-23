@@ -14,8 +14,16 @@ export default class Exercise {
 
    // Main factory method. Pulls all exercise sessions associated with a given user
    // from the database, and returns them as an array of Exercise objects.
-   static async getByUserID(user_id) {
-      const rows = await db.all('SELECT * FROM user_exercise_session WHERE user_id = ?', user_id);
+   static async getByUserID(user_id, start, end, limit, offset) {
+      const sql = 'SELECT * FROM user_exercise_session WHERE user_id = :user_id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit OFFSET :offset';
+      const rows = await db.all(sql, {
+         ':user_id': user_id,
+         ':start': start || 0,
+         ':end': end || Math.floor(Date.now() / 1000),
+         ':limit': limit || -1,
+         ':offset': offset || 0,
+      });
+      // TODO: reconsider this check
       if(rows === undefined)
          return null;
       return rows.map(x => new Exercise(x));
