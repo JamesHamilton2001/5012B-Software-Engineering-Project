@@ -2,8 +2,8 @@ extends layout
 
 block content
   append head
-    link(rel="stylesheet" href="stylesheets/dashboard.css")
-    script(src="javascripts/dashboard.js")
+    link(rel="stylesheet" href="stylesheets/dashboard.css")/
+    script(src="javascripts/dashboard.js")/
 
   header
     include navBar
@@ -12,16 +12,17 @@ block content
   //- sidebar: select current display
   div#dashboard
 
+    //- ! problem with links, write some js to detect click and insert template into display
     ul#sideBar
-      li#sideBarItem My Stats 
-      li#sideBarItem My Groups
-      li#sideBarItem My Goals
-      li#sideBarItem Log Exercise
-      li#sideBarItem Log Meal 
-      li#sideBarItem Update Weigth 
+      li(class="sideBarItem" display-view="stats") Stats 
+      li(class="sideBarItem" display-view="groups") Groups
+      li(class="sideBarItem" display-view="goals") Goals
+      li(class="sideBarItem" display-view="exercise") Exercise
+      li(class="sideBarItem" display-view="meals") Meals
+      li(class="sideBarItem" display-view="weight") Weigth 
 
     //- current display, is to be determined by selection on sidebar
     div#display
-      p this is where we will render the selection on the sidebar
+      //- this is where we will render the selection on the sidebar
 
 
