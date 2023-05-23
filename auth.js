@@ -38,23 +38,7 @@ router.all('/login', async (req, res) => {
 // Handles user signup attempts.
 router.all('/signup', async (req, res) => {
    if(req.method == 'POST') {
-      // TODO: should refactor this to be proper function or method somewhere
-      res.locals.error = await (async () => {
-         if(!User.validUsername(req.body.username))
-            return 'Username not valid.';
-         if(!await User.availableUsername(req.body.username))
-            return 'Username unavailable.';
-         if(!User.validEmail(req.body.email))
-            return 'Email not valid.';
-         if(!await User.availableEmail(req.body.email))
-            return 'Email unavailable.';
-         if(!User.validPassword(req.body.password))
-            return 'Password not valid.';
-         if(!User.validRealName(req.body.real_name))
-            return 'Name not valid.';
-         if(!User.validHeight(req.body.height))
-            return 'Height not valid.';
-      })() || null;
+      res.locals.error = await checkSignupData(req.body.username, req.body.email, req.body.password, req.body.real_name, req.body.height);
 
       if(!res.locals.error) {
          await User.add(req.body.username, req.body.email, req.body.password, req.body.real_name, req.body.height);
@@ -75,6 +59,26 @@ router.all('/signup', async (req, res) => {
       error: res.locals.error,
    });
 });
+
+
+// Check signup data and return the most pressing error, or null if there are none.
+async function checkSignupData(username, email, password, real_name, height) {
+   if(!User.validUsername(username))
+      return 'Username not valid.';
+   if(!await User.availableUsername(username))
+      return 'Username unavailable.';
+   if(!User.validEmail(email))
+      return 'Email not valid.';
+   if(!await User.availableEmail(email))
+      return 'Email unavailable.';
+   if(!User.validPassword(password))
+      return 'Password not valid.';
+   if(!User.validRealName(real_name))
+      return 'Name not valid.';
+   if(!User.validHeight(height))
+      return 'Height not valid.';
+   return null;
+}
 
 
 // Check auth cookie so we can note the logged in user, if there is one.
