@@ -1,6 +1,7 @@
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import path from 'path';
+import sass from 'sass';
 
 import 'chart.js';
 
@@ -17,8 +18,18 @@ app.set('view engine', 'pug');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join('./', 'public')));
 
+
+// Rough SASS preprocessor
+app.get('/css/*.scss', (req, res) => {
+   const compiled = sass.compile('public' + req.url);
+   res.set('Content-Type', 'text/css');
+   res.send(compiled.css);
+});
+
+
+// Serve anything else in /public as static
+app.use(express.static(path.join('./', 'public')));
 
 // Middleare so we dont' have to regex out our logic cookie ourselves
 app.use(cookieParser());
