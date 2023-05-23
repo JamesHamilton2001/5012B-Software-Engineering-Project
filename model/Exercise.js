@@ -12,6 +12,20 @@ export default class Exercise {
    }
 
 
+   // Add new exercise session of given type for given user.
+   static async add(user_id, exercise_type_id, value) {
+      const sql = 'INSERT INTO user_exercise_session(user_id, exercise_type_id, timestamp, value) VALUES(:user_id, :exercise_type_id, :timestamp, :value)';
+      const args = {
+         ':user_id': user_id,
+         ':exercise_type_id': exercise_type_id,
+         ':timestamp': Math.floor(Date.now() / 1000),
+         ':value': value,
+      };
+      const data = db.run(sql, args);
+      return data;
+   }
+
+
    // Main factory method. Pulls all exercise sessions associated with a given user
    // from the database, and returns them as an array of Exercise objects.
    static async getByUserID(user_id, start, end, limit, offset) {
