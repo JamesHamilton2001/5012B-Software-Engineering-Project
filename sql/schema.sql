@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS user (
    username
       TEXT
       UNIQUE
+      COLLATE NOCASE
       NOT NULL,
    password
       TEXT
@@ -15,6 +16,7 @@ CREATE TABLE IF NOT EXISTS user (
    email
       TEXT
       UNIQUE
+      COLLATE NOCASE
       NOT NULL,
    height
       INTEGER
@@ -49,6 +51,7 @@ CREATE TABLE IF NOT EXISTS excercise_type (
    name
       TEXT
       UNIQUE
+      COLLATE NOCASE
       NOT NULL,
    metric
       TEXT
@@ -86,6 +89,7 @@ CREATE TABLE IF NOT EXISTS meal_type (
    name
       TEXT
       UNIQUE
+      COLLATE NOCASE
       NOT NULL
 );
 
@@ -114,6 +118,7 @@ CREATE TABLE IF NOT EXISTS food_type (
    name
       TEXT
       UNIQUE
+      COLLATE NOCASE
       NOT NULL,
    calories_per_100g
       REAL
@@ -173,7 +178,7 @@ CREATE TABLE IF NOT EXISTS groups (
       ON UPDATE CASCADE
 );
 
-CREATE UNIQUE INDEX IF NOT EXISTS groups_owner_name_index ON groups (user_id, name);
+CREATE UNIQUE INDEX IF NOT EXISTS groups_owner_name_index ON groups (user_id, name COLLATE NOCASE);
 
 CREATE TABLE IF NOT EXISTS groups_member (
    id INTEGER PRIMARY KEY,

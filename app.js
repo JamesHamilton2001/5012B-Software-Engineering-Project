@@ -66,19 +66,44 @@ app.all('/login', async (req, res) => {
 
 
 // TODO: probably also ship this out to a different file, which would also make it easier to split out functions
-app.all('/signup', (req, res) => {
+app.all('/signup', async (req, res) => {
    if(req.method == 'POST') {
-      console.log('Signup page requested by POST...');
-      // TODO: validate username with some regex, possibly erroring out
-      // TODO: check if username is in use already, error out if so
-      // TODO: valid/available check email
-      // TODO: validate password
-      // TODO: real name
-      // TODO: height
+      // TODO: should refactor this to be proper function or method somewhere
+      res.locals.error = await (async () => {
+         if(!User.validUsername(req.body.username))
+            return 'Username not valid.';
+         if(!await User.availableUsername(req.body.username))
+            return 'Username unavailable.';
+         if(!User.validEmail(req.body.email))
+            return 'Email not valid.';
+         if(!await User.availableEmail(req.body.email))
+            return 'Email unavailable.';
+         if(!User.validPassword(req.body.password))
+            return 'Password not valid.';
+         if(!User.validRealName(req.body.real_name))
+            return 'Name not valid.';
+         if(!User.validHeight(req.body.height))
+            return 'Height not valid.';
+      })() || null;
 
-      // TODO: add new user to db, send out verification email, etc.
+      if(!res.locals.error) {
+         await User.add(req.body.username, req.body.email, req.body.password, req.body.real_name, req.body.height);
+         res.render('signup_success', {
+            title: 'Signup Success',
+            email: req.body.email,
+         });
+         return;
+      }
    }
-   res.render('signup', { title: 'HealthMate Signup' });
+   res.render('signup', {
+      title: 'HealthMate Signup',
+      username: req.body.username || '',
+      email: req.body.email || '',
+      password: req.body.password || '',
+      real_name: req.body.real_name || '',
+      height: req.body.height || '',
+      error: res.locals.error,
+   });
 });
 
 
