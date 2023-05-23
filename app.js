@@ -87,7 +87,12 @@ app.all('/signup', async (req, res) => {
       })() || null;
 
       if(!res.locals.error) {
-         // TODO: add new user to db, send out verification email, etc.
+         await User.add(req.body.username, req.body.email, req.body.password, req.body.real_name, req.body.height);
+         res.render('signup_success', {
+            title: 'Signup Success',
+            email: req.body.email,
+         });
+         return;
       }
    }
    res.render('signup', {
