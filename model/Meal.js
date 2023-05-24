@@ -29,6 +29,13 @@ export default class Meal {
    }
 
 
+   // Attach the list of items comprising this meal to the object.
+   async loadItems() {
+      this.items = await this.getItems();
+      return this;
+   }
+
+
    // Add new meal record for the given user
    static async add(user_id, meal_type_id, timestamp) {
       const sql = 'INSERT INTO user_meal(user_id, meal_type_id, timestamp) VALUES(:user_id, :meal_type_id, :timestamp)';
