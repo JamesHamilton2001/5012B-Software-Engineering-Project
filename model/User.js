@@ -32,7 +32,7 @@ export default class User {
       const sql = 'SELECT weight, timestamp FROM user_weight WHERE user_id = :id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit';
       const args = {
          ':id': this.id,
-         ':limit': limit || 1,
+         ':limit': limit || -1,
          ':start': start || 0,
          ':end': end || Math.floor(Date.now() / 1000),
       }
@@ -48,6 +48,15 @@ export default class User {
    // from the database, or null if the username wasn't found.
    static async getByUsername(username) {
       const row = await db.get('SELECT * FROM user WHERE username = ?', username);
+      if(row === undefined)
+         return null;
+      return new User(row);
+   }
+
+
+   // Alternate factory method. Pulls the basic user data associated with a given id.
+   static async getByID(id) {
+      const row = await db.get('SELECT * FROM user WHERE id = ?', id);
       if(row === undefined)
          return null;
       return new User(row);
