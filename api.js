@@ -96,5 +96,12 @@ router.get('/meal/foodTypes', async (req, res) => {
 });
 
 
+// Return a list of meal records for the logged in user.
+router.get('/meal', async (req, res) => {
+   const data = await Meal.getByUserID(req.user.id, req.query.start, req.query.end, req.query.limit, req.query.offset);
+   res.json(data);
+});
+
+
 export default router;
 
