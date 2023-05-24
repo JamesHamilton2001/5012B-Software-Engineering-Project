@@ -4,6 +4,11 @@ import { open } from 'sqlite';
 
 
 export default class User {
+   // Validation regexes. These are used internally for backend validation, and also
+   // can be supplied to the frontend via the API for DRYness.
+   static USERNAME_REGEX = /^\w{4,16}$/;
+   static PASSWORD_REGEX = /^.{20,72}$/;
+
    constructor(data) {
       // JCopy/clone the properties from the given object to the new User object.
       // This should be considered garbage in; garbage out, so the factory method(s)
@@ -75,7 +80,7 @@ export default class User {
    // or during entry in the front-end forms.
    static validUsername(username) {
       // TODO: move the regex out somewhere more configurable & accessible?
-      return /^\w{4,16}$/.test(username);
+      return this.USERNAME_REGEX.test(username);
    }
 
 
@@ -104,7 +109,7 @@ export default class User {
       // The password is capped at 72 characters as that is the maximum possible
       // length that won't be truncated by bcrypt (strictly it is 72 bytes, which
       // could be truncated as low as 18 characters in utf-8).
-      return /^.{20,72}$/.test(password);
+      return this.PASSWORD_REGEX.test(password);
    }
 
 
