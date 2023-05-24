@@ -19,41 +19,16 @@ router.get('/user', (req, res) => {
 });
 
 
-// Middleware to inject current user id for '/user/current(/*)' routes
-router.use('/user', (req, res, next) => {
-   if(req.url.startsWith('/current')) {
-      if(res.locals.user === undefined) {
-         res.status(401).json({error: 'Not logged in.'});
-         return;
-      }
-      req.url = req.url.replace(/^\/current/, '/' + res.locals.user.id);
-   }
-   next();
-});
-
-
-// Return all the details for a given user.
-// TODO: address the obvious security concerns here.
-router.get('/user/:id', async (req, res) => {
-   const usr = await User.getByID(req.params.id);
-   res.json(usr);
-});
-
-
-// Return the latest weight data for a given user.
-// TODO: address the obvious security concerns here.
-router.get('/user/:id/weight', async (req, res) => {
-   const usr = await User.getByID(req.params.id);
-   const data = await usr.getWeight(req.query.limit, req.query.start, req.query.end);
+// Return weight data for the currently logged in user.
+router.get('/user/weight', async (req, res) => {
+   const data = await res.locals.user.getWeight(req.query.limit, req.query.start, req.query.end);
    res.json(data);
 });
 
 
-// Add a new weight record for a given user.
-// TODO: this should _absolutely_ only allow this for the current user when this is finalised!
-router.post('/user/:id/weight', async (req, res) => {
-   const usr = await User.getByID(req.params.id);
-   const data = await usr.addWeight(req.body.weight, Math.floor(Date.now() / 1000));
+// Add a new weight record for the currently logged in user.
+router.post('/user/weight', async (req, res) => {
+   const data = await res.locals.user.addWeight(req.body.weight, Math.floor(Date.now() / 1000));
    res.status(201).json("weight record added");
 });
 
