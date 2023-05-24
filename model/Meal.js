@@ -16,11 +16,7 @@ export default class Meal {
 
    // Get list of items comprising this meal from the database.
    async getItems() {
-      const sql = 'SELECT * FROM user_meal_item WHERE user_meal_id = ?';
-      const data = await db.all(sql, this.id);
-      // TODO: process. perhaps a MealItem class or such?
-      // TODO: merge in custom items. a MealItem class could abstract both?
-      return data;
+      return await MealItem.getByMealID(this.id);
    }
 
 
