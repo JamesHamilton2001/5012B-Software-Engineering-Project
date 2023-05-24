@@ -4,6 +4,9 @@ import { open } from 'sqlite';
 import MealItem from './MealItem.js';
 
 export default class Meal {
+   // Alternate/cleaner access point to MealItem
+   static Item = MealItem;
+
    constructor(data) {
       // Copy/clone the properties from the given object to the new Meal object.
       // This should be considered garbage in; garbage out, so the factory method(s)
