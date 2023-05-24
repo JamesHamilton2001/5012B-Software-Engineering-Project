@@ -3,6 +3,7 @@
 import express from 'express';
 
 import Exercise from './model/Exercise.js';
+import Meal from './model/Meal.js';
 import User from './model/User.js';
 
 const router = express.Router();
@@ -77,6 +78,13 @@ router.route('/exercise')
 // Get a list of all the exercise types currently in the database.
 router.get('/exercise/types', async (req, res) => {
    const data = await Exercise.getTypes();
+   res.json(data);
+});
+
+
+// Get a list of all the meal types currently in the database.
+router.get('/meal/types', async (req, res) => {
+   const data = await Meal.getTypes();
    res.json(data);
 });
 
