@@ -1,6 +1,8 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
+import MealItem from './MealItem.js';
+
 export default class Meal {
    constructor(data) {
       // Copy/clone the properties from the given object to the new Meal object.
