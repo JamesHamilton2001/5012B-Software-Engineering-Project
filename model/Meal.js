@@ -14,6 +14,12 @@ export default class Meal {
    }
 
 
+   // Add a new item to this meal
+   addItem(type, quantity) {
+      MealItem.add(this.id, type, quantity);
+   }
+
+
    // Get list of items comprising this meal from the database.
    async getItems() {
       return await MealItem.getByMealID(this.id);

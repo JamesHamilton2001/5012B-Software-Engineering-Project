@@ -12,6 +12,18 @@ export default class MealItem {
    }
 
 
+   // Add a new item record to the given meal
+   async static add(meal_id, type, quantity) {
+      const sql = 'INSERT INTO user_meal_item(user_meal_id, food_type_id, quantity) VALUES(:user_meal_id, :food_type_id, :quantity)';
+      const data = await db.run(sql, {
+         ':user_meal_id': meal_id,
+         ':food_type_id': food_type_id,
+         ':quantity': quantity,
+      });
+      return data;
+   }
+
+
    // Main factory method. Pulls all meal item records associated with a given meal 
    // from the database, and returns them as an array of MealItem objects.
    static async getByMealID(meal_id) {
