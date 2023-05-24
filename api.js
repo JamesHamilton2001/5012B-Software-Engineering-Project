@@ -14,14 +14,19 @@ router.get('/', (req, res) => {
 });
 
 
+// Route User-related API requests to a dedicated sub-router
+const user = express.Router();
+router.use('/user', user);
+
+
 // Returns the currently logged in user, or null if no user is logged in.
-router.get('/user', (req, res) => {
+user.get('/', (req, res) => {
    res.json(res.locals.user);
 });
 
 
 // Access the current user's weight data.
-router.route('/user/weight')
+user.route('/weight')
    // Return weight data for the currently logged in user.
    .get(async (req, res) => {
       const data = await res.locals.user.getWeight(req.query.limit, req.query.start, req.query.end);
