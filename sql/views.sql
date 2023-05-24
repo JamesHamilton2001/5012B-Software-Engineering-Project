@@ -12,7 +12,7 @@ CREATE VIEW exercise_view AS
       ON exercise_type_id = exercise_type.id
 ;
 
-CREATE VIEW meal_item_view AS
+CREATE VIEW IF NOT EXISTS meal_item_view AS
    SELECT
       user_meal_item.id,
       user_meal_id
