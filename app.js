@@ -24,7 +24,7 @@ app.use(express.static(path.join('./', 'public')));
 app.use(cookieParser());
 
 
-// Check if a user is logged in, and if so note them in res.locals.user
+// Check if a user is logged in, and if so note them in req.user
 app.use(auth.cookie);
 
 

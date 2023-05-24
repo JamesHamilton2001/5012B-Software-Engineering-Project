@@ -21,7 +21,7 @@ router.use('/user', user);
 
 // Error if there is no user logged in.
 user.use((req, res, next) => {
-   if(!res.locals.user) {
+   if(!req.user) {
       res.status(401).json({error: 'No user logged in.'});
       return;
    }
@@ -31,7 +31,7 @@ user.use((req, res, next) => {
 
 // Returns the currently logged in user, or null if no user is logged in.
 user.get('/', (req, res) => {
-   res.json(res.locals.user);
+   res.json(req.user);
 });
 
 
@@ -39,12 +39,12 @@ user.get('/', (req, res) => {
 user.route('/weight')
    // Return weight data for the currently logged in user.
    .get(async (req, res) => {
-      const data = await res.locals.user.getWeight(req.query.limit, req.query.start, req.query.end);
+      const data = await req.user.getWeight(req.query.limit, req.query.start, req.query.end);
       res.json(data);
    })
    // Add a new weight record for the currently logged in user.
    .post(async (req, res) => {
-      const data = await res.locals.user.addWeight(req.body.weight, Math.floor(Date.now() / 1000));
+      const data = await req.user.addWeight(req.body.weight, Math.floor(Date.now() / 1000));
       res.status(201).json("weight record added");
    })
 

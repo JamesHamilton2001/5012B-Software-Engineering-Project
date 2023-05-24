@@ -89,7 +89,7 @@ async function authCookie(req, res, next) {
       const usr = await User.getByUsername(auth.username);
       if(usr !== null && await usr.matchPassword(auth.password)) {
          // Authentication successful; set the user object in the response locals
-         res.locals.user = usr;
+         req.user = usr;
       }
    }
    // Proceed to the next middleware/route
