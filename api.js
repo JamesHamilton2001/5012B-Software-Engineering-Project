@@ -19,6 +19,14 @@ const user = express.Router();
 router.use('/user', user);
 
 
+// Error if there is no user logged in.
+user.use((req, res, next) => {
+   if(!res.locals.user)
+      res.status(401).json({error: 'No user logged in.'});
+   next();
+});
+
+
 // Returns the currently logged in user, or null if no user is logged in.
 user.get('/', (req, res) => {
    res.json(res.locals.user);
