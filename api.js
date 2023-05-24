@@ -14,6 +14,16 @@ router.get('/', (req, res) => {
 });
 
 
+// Access validation regexes etc. to keep validation DRY between client and server.
+router.get('/validation/username', async (req, res) => {
+   res.json(User.USERNAME_REGEX.toString());
+});
+
+router.get('/validation/password', async (req, res) => {
+   res.json(User.PASSWORD_REGEX.toString());
+});
+
+
 // Route User-related API requests to a dedicated sub-router
 const user = express.Router();
 router.use('/user', user);
