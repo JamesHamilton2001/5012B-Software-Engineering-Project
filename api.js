@@ -89,5 +89,12 @@ router.get('/meal/types', async (req, res) => {
 });
 
 
+// Get a list of all the food types currently in the database.
+router.get('/meal/foodTypes', async (req, res) => {
+   const data = await Meal.Item.getTypes();
+   res.json(data);
+});
+
+
 export default router;
 
