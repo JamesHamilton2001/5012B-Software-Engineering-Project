@@ -21,8 +21,10 @@ router.use('/user', user);
 
 // Error if there is no user logged in.
 user.use((req, res, next) => {
-   if(!res.locals.user)
+   if(!res.locals.user) {
       res.status(401).json({error: 'No user logged in.'});
+      return;
+   }
    next();
 });
 
