@@ -12,6 +12,20 @@ CREATE VIEW exercise_view AS
       ON exercise_type_id = exercise_type.id
 ;
 
+CREATE VIEW IF NOT EXISTS meal_view AS
+   SELECT
+      user_meal.id,
+      user_id,
+      meal_type_id
+         AS type_id,
+      meal_type.name
+         AS type,
+      timestamp
+   FROM user_meal
+   INNER JOIN meal_type
+      ON meal_type_id = meal_type.id
+;
+
 CREATE VIEW IF NOT EXISTS meal_item_view AS
    SELECT
       user_meal_item.id,
