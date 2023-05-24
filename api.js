@@ -8,6 +8,7 @@ const router = express.Router();
 
 
 // Test the top level /api route
+// TODO: remove this route. respond instead with some error code
 router.get('/', (req, res) => {
    res.json({message: 'Hello from the API!'});
 });
