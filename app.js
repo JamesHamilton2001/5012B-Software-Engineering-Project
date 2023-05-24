@@ -22,6 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Rough SASS preprocessor
 app.get('/css/*.scss', (req, res) => {
+   // TODO: decide where SASS files should actually live; public is probably not really appropriate
    const compiled = sass.compile('public' + req.url);
    res.set('Content-Type', 'text/css');
    res.send(compiled.css);
