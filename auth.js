@@ -97,5 +97,8 @@ async function authCookie(req, res, next) {
 }
 
 
-export {router, authCookie};
+export default {
+   router: router,
+   cookie: authCookie,
+};
 

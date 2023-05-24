@@ -5,7 +5,7 @@ import path from 'path';
 import 'chart.js';
 
 import api from './api.js';
-import {router as auth, authCookie} from './auth.js';
+import auth from './auth.js';
 import './db.js';
 import User from './model/User.js';
 
@@ -25,7 +25,7 @@ app.use(cookieParser());
 
 
 // Check if a user is logged in, and if so note them in res.locals.user
-app.use(authCookie);
+app.use(auth.cookie);
 
 
 // Route all API requests to the api.js module
@@ -33,7 +33,7 @@ app.use('/api', api);
 
 
 // User login/signup/etc.
-app.use('/auth', auth);
+app.use('/auth', auth.router);
 
 
 app.get('/', (req, res) => {
