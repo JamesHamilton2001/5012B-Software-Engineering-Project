@@ -34,7 +34,7 @@ export default class Meal {
          ':meal_type_id': meal_type_id,
          ':timestamp': timestamp || Math.floor(Date.now() / 1000),
       };
-      const data = db.run(sql, args);
+      const data = await db.run(sql, args);
       return data;
    }
 
