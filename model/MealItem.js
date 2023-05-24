@@ -28,9 +28,9 @@ export default class MealItem {
    // from the database, and returns them as an array of MealItem objects.
    static async getByMealID(meal_id) {
       // TODO: consider a view merging both user_meal_item and user_meal_custom_item
-      const sql = 'SELECT * FROM user_meal_item WHERE user_meal_id = :user_meal_id';
+      const sql = 'SELECT * FROM meal_item_view WHERE meal_id = :meal_id';
       const rows = await db.all(sql, {
-         ':user_meal_id': meal_id,
+         ':meal_id': meal_id,
       });
       // TODO: reconsider this check
       if(rows === undefined)
