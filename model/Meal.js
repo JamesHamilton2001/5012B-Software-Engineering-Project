@@ -63,7 +63,7 @@ export default class Meal {
       // TODO: reconsider this check
       if(rows === undefined)
          return null;
-      return rows.map(x => new Meal(x));
+      return await Promise.all(rows.map(async x => await new Meal(x).loadItems()));
    }
 
 
