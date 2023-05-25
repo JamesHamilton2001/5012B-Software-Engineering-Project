@@ -96,8 +96,21 @@ async function authCookie(req, res, next) {
 }
 
 
+// Redirecrt unauthenticated requests to the login page
+function redirectUnauthenticated(req, res, next) {
+   if(!req.user) {
+      // Note where the user was trying to go so we can redirect after login
+      res.cookie('redirect', req.url);
+      res.redirect(302, '/auth/login');
+      return;
+   }
+   next();
+}
+
+
 export default {
    router: router,
    cookie: authCookie,
+   redirectUnauthenticated,
 };
 
