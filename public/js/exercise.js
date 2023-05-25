@@ -40,7 +40,6 @@ function createForm() {
    typeSelect.id = 'typeSelect';
    valueBox.id = 'valueBox';
    valueInput.id = 'valueInput';
-   valueInput.value = '17.52';
    metricLabel.id = 'metricLabel';
    form.style.border = '1px solid black';
    return form;
