@@ -10,7 +10,7 @@ const router = express.Router();
 // Handles user login attempts.
 router.all('/login', async (req, res) => {
    // TODO: redirect somewhere if the user is already logged in
-   if(req.body.username !== undefined) {
+   if(req.method == 'POST') {
       const u = await User.getByUsername(req.body.username);
       if(u !== null && await u.matchPassword(req.body.password)) {
          // Successful login
