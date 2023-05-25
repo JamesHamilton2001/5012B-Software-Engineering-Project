@@ -54,7 +54,7 @@ export default class Meal {
       items?.forEach(i => {
          MealItem.add(data.lastID, i);
       });
-      return data;
+      return Meal.getByID(data.lastID);
    }
 
 
