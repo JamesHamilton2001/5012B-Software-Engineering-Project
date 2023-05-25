@@ -30,6 +30,8 @@ function createForm() {
    const valueBox = form.appendChild(document.createElement('div'));
    const valueInput = valueBox.appendChild(document.createElement('input'));
    valueBox.append(metricLabel);
+
+   // Set the unique id attributes for the form elements
    form.id = 'exerciseForm';
    typeSelect.id = 'typeSelect';
    valueBox.id = 'valueBox';
