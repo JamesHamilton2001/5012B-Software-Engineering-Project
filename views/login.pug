@@ -9,7 +9,7 @@ block content
     a.button(href = "/login") Log in
     a.button(href = "/signup") Sign up
     #Login
-      form(action='#' method='post')
+      form(method='post')
         //- TODO: determine best tag for this possible error message
         h2 #{error}
         br
@@ -25,7 +25,7 @@ block content
         //- button
         //-     a(href = '/dashboard')
     //- #Signup.tabcontent
-    //-   form(action='#' method='post')
+    //-   form(method='post')
     //-     br
     //-     input#username(type='text' name='username' placeholder='Username')
     //-     br

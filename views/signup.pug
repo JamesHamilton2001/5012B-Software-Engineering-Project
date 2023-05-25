@@ -10,7 +10,7 @@ block content
     a.button(href = "/signup") Sign up
 
     #Signup
-      form(action='#' method='post')
+      form(method='post')
         h2 #{error}
         input#username(type='text' name='username' placeholder='Username' value=`${username}`)
         input#email(type='email' name='email' placeholder='Email' value=`${email}`)
