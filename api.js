@@ -14,6 +14,17 @@ router.get('/', (req, res) => {
 });
 
 
+// Route availability checks before authentication, as it has to be possible
+// when not logged in.
+router.get('/user/availableUsername/:username', async (req, res) => {
+   res.json(await User.availableUsername(req.params.username));
+});
+
+router.get('/user/availableEmail/:email', async (req, res) => {
+   res.json(await User.availableEmail(req.params.email));
+});
+
+
 // Error if there is no user logged in.
 router.use((req, res, next) => {
    if(!req.user) {
