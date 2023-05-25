@@ -31,6 +31,10 @@ function createForm() {
    const valueInput = valueBox.appendChild(document.createElement('input'));
    valueBox.append(metricLabel);
 
+   // Disable the value input box until a type is selected
+   valueInput.disabled = true;
+   typeSelect.addEventListener('change', () => valueInput.disabled = false, {once: true});
+
    // Set the unique id attributes for the form elements
    form.id = 'exerciseForm';
    typeSelect.id = 'typeSelect';
