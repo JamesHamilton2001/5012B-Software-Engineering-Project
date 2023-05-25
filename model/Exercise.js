@@ -12,6 +12,18 @@ export default class Exercise {
    }
 
 
+   // Filter out unneeded properties when serialising for the client
+   toJSON() {
+      return {
+         id: this.id,
+         type: this.name,
+         value: this.value,
+         metric: this.metric,
+         timestamp: this.timestamp,
+      };
+   }
+
+
    // Add new exercise session of given type for given user.
    static async add(user_id, exercise_type_id, value) {
       const sql = 'INSERT INTO user_exercise_session(user_id, exercise_type_id, timestamp, value) VALUES(:user_id, :exercise_type_id, :timestamp, :value)';
