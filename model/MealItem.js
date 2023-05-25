@@ -12,8 +12,19 @@ export default class MealItem {
    }
 
 
-   // Add a new item record to the given meal
-   static async add(meal_id, type, quantity) {
+   // Attempt to add an item from an object representing either a pre-defined or
+   // custom food item, as might be sent from the client.
+   static add(meal_id, item) {
+      if('id' in item && 'quantity' in item)
+         return this.addPreset(meal_id, item.id, item.quantity);
+      if('name' in item && 'calories' in item)
+         return this.addCustom(meal_id, item.name, item.calories);
+      return new Error('Invalid item format');
+   }
+
+
+   // Add a new preset item record to the given meal
+   static async addPreset(meal_id, type, quantity) {
       const sql = 'INSERT INTO user_meal_item(user_meal_id, food_type_id, quantity) VALUES(:user_meal_id, :food_type_id, :quantity)';
       const data = await db.run(sql, {
          ':user_meal_id': meal_id,
