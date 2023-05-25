@@ -2,6 +2,8 @@ import * as bcrypt from 'bcrypt';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
+import Exercise from './Exercise.js';
+
 
 export default class User {
    // Validation regexes. These are used internally for backend validation, and also
@@ -17,6 +19,12 @@ export default class User {
 
       // TODO: load things like groups, latest weight, etc. here? Probably best to load
       // those as requested instead perhaps..?
+   }
+
+
+   // Returns a collection of the user's exercise data.
+   async getExercise(start, end, limit, offset) {
+      return Exercise.getByUserID(this.id, start, end, limit, offset);
    }
 
 
