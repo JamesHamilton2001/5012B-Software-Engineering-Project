@@ -71,8 +71,14 @@ export default class User {
 
    // Add a new User to the database.
    static async add(username, email, password, real_name, height) {
-      const sql = 'INSERT INTO user (username, email, password, real_name, height) VALUES (?, ?, ?, ?, ?)';
-      return db.run(sql, username, email, password, real_name, height);
+      const sql = 'INSERT INTO user (username, email, password, real_name, height) VALUES (:username, :email, :password, :real_name, :height)';
+      return db.run(sql, {
+         ':username': username,
+         ':email': email,
+         ':password': await this.hashPassword(password),
+         ':real_name': real_name,
+         ':height': height,
+      });
    }
 
 
