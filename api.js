@@ -14,11 +14,6 @@ router.get('/', (req, res) => {
 });
 
 
-// Route User-related API requests to a dedicated sub-router
-const user = express.Router();
-router.use('/user', user);
-
-
 // Error if there is no user logged in.
 user.use((req, res, next) => {
    if(!req.user) {
@@ -27,6 +22,11 @@ user.use((req, res, next) => {
    }
    next();
 });
+
+
+// Route User-related API requests to a dedicated sub-router
+const user = express.Router();
+router.use('/user', user);
 
 
 // Returns the currently logged in user, or null if no user is logged in.
