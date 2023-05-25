@@ -43,3 +43,17 @@ CREATE VIEW IF NOT EXISTS meal_item_view AS
    INNER JOIN food_type
       ON food_type_id = food_type.id
 ;
+
+CREATE VIEW IF NOT EXISTS basic_meal_item_view AS
+   SELECT
+      meal_id,
+      type,
+      calories
+   FROM meal_item_view
+   UNION
+   SELECT
+      user_meal_id,
+      name,
+      calories
+   FROM user_meal_custom_item
+;
