@@ -30,7 +30,6 @@ router.all('/login', async (req, res) => {
    res.render('login', {
       title: 'Login ya cunt',
       username: req.body.username || '',
-      error: res.locals.error,
    });
 });
 
