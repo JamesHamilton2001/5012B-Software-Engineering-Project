@@ -17,7 +17,7 @@ export default class MealItem {
       const sql = 'INSERT INTO user_meal_item(user_meal_id, food_type_id, quantity) VALUES(:user_meal_id, :food_type_id, :quantity)';
       const data = await db.run(sql, {
          ':user_meal_id': meal_id,
-         ':food_type_id': food_type_id,
+         ':food_type_id': type,
          ':quantity': quantity,
       });
       return data;
