@@ -105,7 +105,7 @@ router.get('/meal', async (req, res) => {
 
 // Insert a new mael record into the database for the logged in user.
 router.post('/meal', async (req, res) => {
-   const meal = await Meal.add(req.user.id, req.body.meal_type_id, req.body.timestamp, req.body.items);
+   const meal = await Meal.add(req.user.id, req.body.meal_type_id, req.body.timestamp);
    req.body.items?.forEach(i => {
       if('food_type_id' in i && 'quantity' in i)
          meal.addItem(i.food_type_id, i.quantity);
