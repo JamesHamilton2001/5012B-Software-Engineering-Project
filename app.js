@@ -35,6 +35,7 @@ app.get('/css/*.scss', (req, res) => {
 // Serve anything in /public as static
 app.use(express.static(path.join('./', 'public')));
 
+
 // Middleare so we dont' have to regex out our logic cookie ourselves
 app.use(cookieParser());
 
