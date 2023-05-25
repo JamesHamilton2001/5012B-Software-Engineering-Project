@@ -46,7 +46,7 @@ export default class Meal {
       };
       const data = await db.run(sql, args);
       items?.forEach(i => {
-         MealItem.add(data.lastID, i.type, i.quantity);
+         MealItem.add(data.lastID, i);
       });
       return data;
    }
