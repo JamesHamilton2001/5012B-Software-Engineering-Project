@@ -18,7 +18,7 @@ router.all('/login', async (req, res) => {
          res.cookie('auth', JSON.stringify({username: req.body.username, password: req.body.password}));
          // Redirecting somewhere...
          // TODO: possibly redirect to the page the user was trying to access before
-         res.redirect(418, '/dashboard');
+         res.redirect(302, '/dashboard');
          return;
       }
       // Login failed; set an error message and re-render the login form.
