@@ -33,13 +33,14 @@ export default class User {
 
 
    // Returns a collection of the user's weight data.
-   async getWeight(limit, start, end) {
-      const sql = 'SELECT weight, timestamp FROM user_weight WHERE user_id = :id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit';
+   async getWeight(start, end, limit, offset) {
+      const sql = 'SELECT weight, timestamp FROM user_weight WHERE user_id = :id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit OFFSET :offset';
       const args = {
          ':id': this.id,
-         ':limit': limit || -1,
          ':start': start || 0,
          ':end': end || Math.floor(Date.now() / 1000),
+         ':limit': limit || -1,
+         ':offset': offset || 0,
       }
       return db.all(sql, args);
    }

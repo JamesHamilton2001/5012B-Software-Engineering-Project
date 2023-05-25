@@ -39,7 +39,7 @@ user.get('/', (req, res) => {
 user.route('/weight')
    // Return weight data for the currently logged in user.
    .get(async (req, res) => {
-      const data = await req.user.getWeight(req.query.limit, req.query.start, req.query.end);
+      const data = await req.user.getWeight(req.query.start, req.query.end, req.query.limit, req.query.offset);
       res.json(data);
    })
    // Add a new weight record for the currently logged in user.
