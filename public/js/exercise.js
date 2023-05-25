@@ -19,6 +19,8 @@ export function createTypeSelect(cb) {
    return sel;
 };
 
+
+// Constructs a standard widget thing for entering exercise data.
 function createForm() {
    const form = document.createElement('form');
    const metricLabel = document.createElement('span');
