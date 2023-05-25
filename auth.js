@@ -7,6 +7,16 @@ import User from './model/User.js';
 const router = express.Router();
 
 
+// Redirect authenticated users to the home page
+router.use((req, res, next) => {
+   if(req.user) {
+      res.redirect('/');
+      return;
+   }
+   next();
+});
+
+
 // Handles user login attempts.
 router.all('/login', async (req, res) => {
    // TODO: redirect somewhere if the user is already logged in
