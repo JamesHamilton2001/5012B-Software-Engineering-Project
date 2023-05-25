@@ -11,15 +11,10 @@ block content
       form(method='post')
         //- TODO: determine best tag for this possible error message
         h2 #{error}
-        br
         // <label for="email">Email:</label><br>
         input#username(type='text' name='username' placeholder='Username' value=`${username}`)
-        br
-        br
         // <label for="password">Password:</label><br>
         input#password(type='password' name='password' placeholder='Password')
-        br
-        br
         input(type='submit' value='Log In')
 
   script(src="/javascripts/tabManager.js")
