@@ -36,7 +36,7 @@ app.get('/css/*.scss', (req, res) => {
 app.use(express.static(path.join('./', 'public')));
 
 
-// Middleare so we dont' have to regex out our logic cookie ourselves
+// Middleware so we don't have to regex out our login cookie ourselves
 app.use(cookieParser());
 
 
