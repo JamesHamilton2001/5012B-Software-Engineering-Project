@@ -48,6 +48,10 @@ app.use('/api', api);
 app.use('/auth', auth.router);
 
 
+// Redirect all unauthenticated requests to the login page
+app.use(auth.redirectUnauthenticated);
+
+
 app.get('/', (req, res) => {
   res.render('index', { title: 'HealthMate App' });
 });
