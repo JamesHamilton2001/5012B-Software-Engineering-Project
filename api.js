@@ -64,7 +64,7 @@ user.route('/weight')
 // Access the current user's exercise data.
 router.route('/exercise')
    .get(async (req, res) => {
-      const data = await Exercise.getByUserID(req.user.id, req.query.start, req.query.end, req.query.limit, req.query.offset);
+      const data = await req.user.getExercise(req.query.start, req.query.end, req.query.limit, req.query.offset);
       res.json(data);
    })
    .post(async (req, res) => {
