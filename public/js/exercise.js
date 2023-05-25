@@ -41,6 +41,7 @@ function createForm() {
    valueBox.id = 'valueBox';
    valueInput.id = 'valueInput';
    metricLabel.id = 'metricLabel';
+
    form.style.border = '1px solid black';
    return form;
 }
