@@ -19,7 +19,7 @@ export default class Meal {
 
    // Add a new item to this meal
    addItem(type, quantity) {
-      MealItem.add(this.id, type, quantity);
+      MealItem.addPreset(this.id, type, quantity);
    }
 
 
