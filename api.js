@@ -61,13 +61,6 @@ user.route('/weight')
    })
 
 
-// Get a list of all the exercise types currently in the database.
-router.get('/exercise/types', async (req, res) => {
-   const data = await Exercise.getTypes();
-   res.json(data);
-});
-
-
 // Access the current user's exercise data.
 router.route('/exercise')
    .get(async (req, res) => {
@@ -79,6 +72,13 @@ router.route('/exercise')
       // TODO: check for errors
       res.status(201).json("exercise record added");
    })
+
+
+// Get a list of all the exercise types currently in the database.
+router.get('/exercise/types', async (req, res) => {
+   const data = await Exercise.getTypes();
+   res.json(data);
+});
 
 
 export default router;
