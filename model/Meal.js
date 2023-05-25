@@ -58,6 +58,15 @@ export default class Meal {
    }
 
 
+   // Return a single meal record from the database.
+   static async getByID(id) {
+      const sql = 'SELECT * FROM meal_view WHERE id = ?';
+      const data = await db.get(sql, id);
+      const meal = new Meal(data);
+      return meal;
+   }
+
+
    // Main factory method. Pulls all meal records associated with a given user
    // from the database, and returns them as an array of Meal objects.
    static async getByUserID(user_id, start, end, limit, offset) {
