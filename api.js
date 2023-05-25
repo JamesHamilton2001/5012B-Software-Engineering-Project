@@ -103,5 +103,12 @@ router.get('/meal', async (req, res) => {
 });
 
 
+// Insert a new mael record into the database for the logged in user.
+router.post('/meal', async (req, res) => {
+   const data = await Meal.add(req.user.id, req.body.meal_type_id, req.body.timestamp, req.body.items);
+   res.status(201).json(data);
+});
+
+
 export default router;
 
