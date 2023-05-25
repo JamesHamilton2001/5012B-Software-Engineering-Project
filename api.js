@@ -2,6 +2,7 @@
 // sending out JSON data to the client on request.
 import express from 'express';
 
+import Exercise from './model/Exercise.js';
 import User from './model/User.js';
 
 const router = express.Router();
@@ -58,6 +59,26 @@ user.route('/weight')
       const data = await req.user.addWeight(req.body.weight, Math.floor(Date.now() / 1000));
       res.status(201).json("weight record added");
    })
+
+
+// Access the current user's exercise data.
+router.route('/exercise')
+   .get(async (req, res) => {
+      const data = await req.user.getExercise(req.query.start, req.query.end, req.query.limit, req.query.offset);
+      res.json(data);
+   })
+   .post(async (req, res) => {
+      const data = await Exercise.add(req.user.id, req.body.type, req.body.value);
+      // TODO: check for errors
+      res.status(201).json("exercise record added");
+   })
+
+
+// Get a list of all the exercise types currently in the database.
+router.get('/exercise/types', async (req, res) => {
+   const data = await Exercise.getTypes();
+   res.json(data);
+});
 
 
 export default router;
