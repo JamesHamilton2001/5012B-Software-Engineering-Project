@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 
 // Error if there is no user logged in.
-user.use((req, res, next) => {
+router.use((req, res, next) => {
    if(!req.user) {
       res.status(401).json({error: 'No user logged in.'});
       return;
