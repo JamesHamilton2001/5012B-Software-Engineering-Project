@@ -1,4 +1,4 @@
-CREATE VIEW exercise_view AS
+CREATE VIEW IF NOT EXISTS exercise_view AS
    SELECT
       user_exercise_session.id,
       user_id,
