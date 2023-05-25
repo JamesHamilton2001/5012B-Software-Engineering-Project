@@ -76,6 +76,13 @@ export default class User {
    }
 
 
+   // Hash a given password using bcrypt.
+   static async hashPassword(password) {
+      // TODO: move the salt rounds out somewhere more configurable & accessible?
+      return await bcrypt.hash(password, 10);
+   }
+
+
    // Check if a given username is allowed. Returns true if the username is valid,
    // otherwise false. The regex should match any validation performed by the database
    // or during entry in the front-end forms.
