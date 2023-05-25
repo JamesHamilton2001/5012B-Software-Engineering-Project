@@ -37,7 +37,7 @@ export default class Meal {
 
 
    // Add new meal record for the given user
-   static async add(user_id, meal_type_id, timestamp) {
+   static async add(user_id, meal_type_id, timestamp, items) {
       const sql = 'INSERT INTO user_meal(user_id, meal_type_id, timestamp) VALUES(:user_id, :meal_type_id, :timestamp)';
       const args = {
          ':user_id': user_id,
@@ -45,6 +45,9 @@ export default class Meal {
          ':timestamp': timestamp || Math.floor(Date.now() / 1000),
       };
       const data = await db.run(sql, args);
+      items?.forEach(i => {
+         MealItem.add(data.lastID, i.type, i.quantity);
+      });
       return data;
    }
 
