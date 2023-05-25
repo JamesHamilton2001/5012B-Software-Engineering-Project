@@ -24,6 +24,18 @@ export default class MealItem {
    }
 
 
+   // Add a new custom item record to the given meal
+   static async addCustom(meal_id, name, calories) {
+      const sql = 'INSERT INTO user_meal_custom_item(user_meal_id, name, calories) VALUES(:user_meal_id, :name, :calories)';
+      const data = await db.run(sql, {
+         ':user_meal_id': meal_id,
+         ':name': name,
+         ':calories': calories,
+      });
+      return data;
+   }
+
+
    // Main factory method. Pulls all meal item records associated with a given meal 
    // from the database, and returns them as an array of MealItem objects.
    static async getByMealID(meal_id) {
