@@ -3,8 +3,6 @@ import express from 'express';
 import path from 'path';
 import sass from 'sass';
 
-import 'chart.js';
-
 import api from './api.js';
 import auth from './auth.js';
 import './db.js';
