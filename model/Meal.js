@@ -23,6 +23,12 @@ export default class Meal {
    }
 
 
+   // Add a new custom item to this meal.
+   addCustom(name, calories) {
+      MealItem.addCustom(this.id, name, calories);
+   }
+
+
    // Get list of items comprising this meal from the database.
    async getItems() {
       return await MealItem.getByMealID(this.id);
