@@ -7,6 +7,14 @@ import User from './model/User.js';
 const router = express.Router();
 
 
+// Logging out has to be the highest priority route to avoid redirection
+router.all('/logout', (req, res) => {
+   res.clearCookie('auth');
+   res.redirect('/');
+   return;
+});
+
+
 // Redirect authenticated users to the home page
 router.use((req, res, next) => {
    if(req.user) {
