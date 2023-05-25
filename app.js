@@ -16,6 +16,9 @@ const app = express();
 app.set('views', path.join('./', 'views'));
 app.set('view engine', 'pug');
 
+// Don't render all the HTML on a single line...
+app.locals.pretty = true;
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
