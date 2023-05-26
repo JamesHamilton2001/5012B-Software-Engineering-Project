@@ -1,12 +1,33 @@
 html {
    font-size: 1.6em;
 }
+
+
+$khaki: hsla(122, 15%, 30%, 0.9);
+
+
 #exerciseForm {
    display: flex;
    flex-direction: row;
    font-family: sans-serif;
    width: max-content;
    margin: auto;
+
+   border: 2px solid #2f4858ff;
+   border-radius: 6px;
+   $mint-green: hsla(166, 100%, 93%, 1);
+   background-color: $mint-green;
+
+      &::before {
+         color: hsla(122, 15%, 30%, 0.9);
+         content: '⮋';
+         position: absolute;
+         //position: relative;
+         //left: 0.575rem;
+         //top: 0.135rem;
+         pointer-events: none;
+         text-indent: 0.25em;
+      }
 
    #typeSelect {
       flex: 1 1 auto;
