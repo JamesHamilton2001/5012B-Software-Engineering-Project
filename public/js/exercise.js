@@ -31,15 +31,16 @@ function createForm() {
    const valueInput = valueBox.appendChild(document.createElement('input'));
    valueBox.append(metricLabel);
 
-   // Disable the value input box until a type is selected
-   valueInput.disabled = true;
-   typeSelect.addEventListener('change', () => valueInput.disabled = false, {once: true});
 
    // Attempt to prevent non-numeric input
    valueInput.addEventListener('input', () => {
       // TODO: see if it's possible to stop this jumping the cursor to the end of the input
       valueInput.value = valueInput.value.replaceAll(/[^\d.]/g, '');
    });
+
+   // Disable the value input box until a type is selected
+   valueInput.disabled = true;
+   typeSelect.addEventListener('change', () => valueInput.disabled = false, {once: true});
 
    // Set the unique id attributes for the form elements
    form.id = 'exerciseForm';
