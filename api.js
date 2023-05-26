@@ -3,6 +3,7 @@
 import express from 'express';
 
 import Exercise from './model/Exercise.js';
+import Meal from './model/Meal.js';
 import User from './model/User.js';
 
 const router = express.Router();
@@ -79,6 +80,40 @@ router.get('/exercise/types', async (req, res) => {
    const data = await Exercise.getTypes();
    res.json(data);
 });
+
+
+// Get a list of all the meal types currently in the database.
+router.get('/meal/types', async (req, res) => {
+   const data = await Meal.getTypes();
+   res.json(data);
+});
+
+
+// Get a list of all the food types currently in the database.
+router.get('/meal/foodTypes', async (req, res) => {
+   const data = await Meal.Item.getTypes();
+   res.json(data);
+});
+
+
+// Access the current user's meal data.
+router.route('/meal')
+   // Return a list of meal records for the logged in user.
+   .get(async (req, res) => {
+      const data = await Meal.getByUserID(req.user.id, req.query.start, req.query.end, req.query.limit, req.query.offset);
+      res.json(data);
+   })
+   // Insert a new meal record into the database for the logged in user.
+   .post(async (req, res) => {
+      const meal = await Meal.add(req.user.id, req.body.meal_type_id, req.body.timestamp);
+      req.body.items?.forEach(i => {
+         if('food_type_id' in i && 'quantity' in i)
+            meal.addItem(i.food_type_id, i.quantity);
+         else if('name' in i && 'calories' in i)
+            meal.addCustom(i.name, i.calories);
+      });
+      res.status(201).json(meal);
+   })
 
 
 export default router;
