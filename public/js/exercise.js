@@ -36,7 +36,7 @@ function createForm() {
    typeSelect.addEventListener('change', () => valueInput.disabled = false, {once: true});
 
    // Attempt to prevent non-numeric input
-   valueInput.addEventListener('input', e => {
+   valueInput.addEventListener('input', () => {
       // TODO: see if it's possible to stop this jumping the cursor to the end of the input
       valueInput.value = valueInput.value.replaceAll(/[^\d.]/g, '');
    });
