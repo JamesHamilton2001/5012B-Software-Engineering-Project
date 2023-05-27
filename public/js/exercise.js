@@ -35,9 +35,12 @@ export function createFieldset(cb) {
       valueInput.value = valueInput.value.replaceAll(/[^\d.]|(?<=\.)\./g, '');
    });
 
-   // Disable the value input box until a type is selected
+   // Disable the value input box until a type is selected, and focus it so the yser can start typing
    valueInput.disabled = true;
-   typeSelect.addEventListener('change', () => valueInput.disabled = false, {once: true});
+   typeSelect.addEventListener('change', () => {
+      valueInput.disabled = false;
+      valueInput.focus();
+   });
 
    // Set the unique id attributes for the form elements
    fieldset.id = 'exerciseFieldset';
