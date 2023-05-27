@@ -45,7 +45,6 @@ export function createFieldset(cb) {
    valueInput.id = 'valueInput';
    metricLabel.id = 'metricLabel';
 
-   //form.style.border = '1px solid black';
    return fieldset;
 }
 
