@@ -21,7 +21,7 @@ export function createTypeSelect(cb) {
 
 
 // Constructs a standard widget thing for entering exercise data.
-function createForm(cb) {
+export function createForm(cb) {
    const form = document.createElement('fieldset');
    const metricLabel = document.createElement('span');
    const typeSelect = form.appendChild(createTypeSelect(e => {
