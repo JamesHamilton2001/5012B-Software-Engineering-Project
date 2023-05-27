@@ -52,6 +52,3 @@ export function createFieldset(cb) {
    return fieldset;
 }
 
-const cont = document.getElementById('container');
-cont.appendChild(createForm());
-
