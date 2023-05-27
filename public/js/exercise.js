@@ -23,13 +23,11 @@ export function createTypeSelect(cb) {
 // Constructs a standard widget thing for entering exercise data.
 export function createFieldset(cb) {
    const fieldset = document.createElement('fieldset');
-   const metricLabel = document.createElement('span');
    const typeSelect = fieldset.appendChild(createTypeSelect(e => {
       metricLabel.textContent = e.exercise.metric;
    }));
-   const valueBox = fieldset.appendChild(document.createElement('div'));
-   const valueInput = valueBox.appendChild(document.createElement('input'));
-   valueBox.append(metricLabel);
+   const valueInput = fieldset.appendChild(document.createElement('input'));
+   const metricLabel = fieldset.appendChild(document.createElement('span'));
 
    // Attempt to prevent non-numeric input
    valueInput.addEventListener('input', () => {
@@ -44,7 +42,6 @@ export function createFieldset(cb) {
    // Set the unique id attributes for the form elements
    fieldset.id = 'exerciseFieldset';
    typeSelect.id = 'typeSelect';
-   valueBox.id = 'valueBox';
    valueInput.id = 'valueInput';
    metricLabel.id = 'metricLabel';
 
