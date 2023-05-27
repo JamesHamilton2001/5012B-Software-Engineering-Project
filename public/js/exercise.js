@@ -54,7 +54,4 @@ function createForm(cb) {
 
 const cont = document.getElementById('container');
 cont.appendChild(createForm());
-//cont.appendChild(createTypeSelect(e => {
-//   console.log(e.exercise);
-//}));
 
