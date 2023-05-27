@@ -28,7 +28,7 @@ header {
 /* navbar list entry:
     - grows to fit space 
     - scales to viewport height */
-#navItem {
+.navItem {
   display: inline-block;
   flex-grow: 1;
   text-align: center;
@@ -39,15 +39,15 @@ header {
   padding: .5em .5em;
   background-color: mediumslateblue;
 }
-#navItem:hover {
+.navItem:hover {
   background-color: slateblue;
 }
 
 /* hyperlink text */
-#navLink {
+.navLink {
   color: black;
   text-decoration: none;
 }
-#navLink:hover {
+.navLink:hover {
   color: lavender;
 }
