@@ -45,6 +45,15 @@ export function createFieldset(cb) {
    valueInput.id = 'valueInput';
    metricLabel.id = 'metricLabel';
 
+   // Finally attach a nice way to extract the data from the fieldset
+   // TODO: validate input
+   fieldset.getData = () => {
+      return {
+         type: parseInt(typeSelect.value),
+         value: parseFloat(valueInput.value),
+      };
+   };
+
    return fieldset;
 }
 
