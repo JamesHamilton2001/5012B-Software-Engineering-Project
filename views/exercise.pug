@@ -1,0 +1,14 @@
+extends layout
+
+block head
+   link(rel='stylesheet' href='/css/exercise.scss')
+   script(type='module').
+      import { createFieldset } from '/js/exercise.js';
+
+      const cont = document.getElementById('container');
+      cont.appendChild(createFieldset());
+
+block content
+   h1 Exercise
+   div#container
+
