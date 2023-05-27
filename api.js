@@ -3,6 +3,7 @@
 import express from 'express';
 
 import User from './model/User.js';
+import Goal from './model/Goal.js';
 
 const router = express.Router();
 

@@ -8,6 +8,7 @@ import api from './api.js';
 import auth from './auth.js';
 import './db.js';
 import User from './model/User.js';
+import Goal from './model/Goal.js';
 
 const app = express();
 
@@ -40,6 +41,10 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'HealthMate App' });
 });
 
+app.get('/login' ,  (req, res) => {
+  res.render('login', { title: 'Login' });
+});
+
 app.get('/dashboard' , (req, res) => {
   res.render('dashboard', { title: 'My Dashboard' });
 });
@@ -47,6 +52,10 @@ app.get('/dashboard' , (req, res) => {
 app.get('/progress' , (req, res) => {
   res.render('progress', { title: 'My Progress' });
 });
+
+app.get('/goal', (req, res) => {
+  res.render('goal' ,{title: 'New Goal'});
+})
 
 
 export { app as app };
