@@ -18,6 +18,7 @@ $khaki: hsla(122, 15%, 30%, 0.9);
    border-radius: 6px;
    $mint-green: hsla(166, 100%, 93%, 1);
    background-color: $mint-green;
+   background-clip: content-box;
 
       &::before {
          color: hsla(122, 15%, 30%, 0.9);
@@ -59,7 +60,13 @@ $khaki: hsla(122, 15%, 30%, 0.9);
       font-size: 0.9rem;
       border: none;
       $pigment-green: hsla(122, 39%, 49%, 0.1);
-      border-inline: 4px ridge $pigment-green;
+      $valueInput-border: 4px ridge $pigment-green;
+      border-inline: $valueInput-border;
+
+      &:focus {
+         outline: none;
+         border-inline: $valueInput-border;
+      }
    }
 
    #metricLabel {
