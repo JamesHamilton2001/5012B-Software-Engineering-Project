@@ -5,6 +5,7 @@ import express from 'express';
 import Exercise from './model/Exercise.js';
 import Meal from './model/Meal.js';
 import User from './model/User.js';
+import Goal from './model/Goal.js';
 
 const router = express.Router();
 

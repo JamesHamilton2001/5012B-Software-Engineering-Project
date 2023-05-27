@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h1= title
+
+    form(action="newGoal", method="post") 
+      br
+      br
+      label Exercise Type:
+      input#exerciseType(type='text' name='exercise' placeholder='Type of exercise' required)
+      br
+      br
+      label Target Weight:
+      //Need to check if target is weight or time on an exercise?
+      //Weight can link to meals and calories
+      input#target(type='number' name='Target' placeholder='Target Weight (KG)' required)
+      br
+      br
+      label Target Date:
+      input#endTime(type='date' name='endTime' required)
+      br
+      br
+      input(type='submit' value='Create Goal')
