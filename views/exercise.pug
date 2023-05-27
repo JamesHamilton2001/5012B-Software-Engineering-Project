@@ -4,6 +4,7 @@ block head
    link(rel='stylesheet' href='/css/exercise.scss')
    script(type='module').
       import { createFieldset } from '/js/exercise.js';
+      import * as api from '/js/api.js';
 
       const cont = document.getElementById('container');
       const exercise = cont.appendChild(createFieldset());
@@ -13,6 +14,13 @@ block head
       button.addEventListener('click', () => {
          const data = exercise.getData();
          console.log(data);
+      });
+
+      const button2 = cont.appendChild(document.createElement('button'));
+      button2.textContent = 'Push data';
+      button2.addEventListener('click', () => {
+         const data = exercise.getData();
+         api.post('exercise', data);
       });
 
 block content
