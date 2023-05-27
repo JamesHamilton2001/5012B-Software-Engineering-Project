@@ -59,10 +59,6 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'HealthMate App' });
 });
 
-app.get('/login' ,  (req, res) => {
-  res.render('login', { title: 'Login' });
-});
-
 app.get('/dashboard' , (req, res) => {
   res.render('dashboard', { title: 'My Dashboard' });
 });
@@ -79,6 +75,16 @@ app.get('/exercise' , (req, res) => {
 app.get('/goal', (req, res) => {
   res.render('goal' ,{title: 'New Goal'});
 })
+
+// app.post('/newGoal', (req,res) => {
+//   res.send('Goal data recieved')
+   
+//   let exerciseType = req.body.exerciseType
+//   let target = req.
+//   console.log(target)
+//   //Goal.add();
+//   // console.log(res)
+// })
 
 
 export { app as app };
