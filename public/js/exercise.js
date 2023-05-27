@@ -31,8 +31,6 @@ function createForm() {
    const valueInput = valueBox.appendChild(document.createElement('input'));
    valueBox.append(metricLabel);
 
-   valueInput.type = 'number';
-
    // Attempt to prevent non-numeric input
    valueInput.addEventListener('input', () => {
       // TODO: see if it's possible to stop this jumping the cursor to the end of the input
