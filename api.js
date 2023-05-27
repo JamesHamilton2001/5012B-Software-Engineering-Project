@@ -48,6 +48,8 @@ user.route('/weight')
       const data = await req.user.addWeight(req.body.weight, Math.floor(Date.now() / 1000));
       res.status(201).json("weight record added");
    })
+
+//help needed here
 //access current user goal data  
 user.route('/goal')
 
