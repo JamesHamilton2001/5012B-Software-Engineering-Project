@@ -66,16 +66,6 @@ user.route('/weight')
 //access current user goal data  
 user.route('/goal')
 
-router.post('/newGoal', (req,res) => {
-    res.send('Goal data recieved')
-     
-    let exerciseType = req.body.exerciseType
-    let target = req.
-    console.log(target)
-    //Goal.add();
-    // console.log(res)
-  })
-
 
 // Access the current user's exercise data.
 router.route('/exercise')
