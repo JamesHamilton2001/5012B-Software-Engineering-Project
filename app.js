@@ -1,6 +1,7 @@
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import path from 'path';
+import bodyParser from 'body-parser';
 
 import 'chart.js';
 
@@ -53,15 +54,38 @@ app.get('/goal', (req, res) => {
   res.render('goal' ,{title: 'New Goal'});
 })
 
-// app.post('/newGoal', (req,res) => {
-//   res.send('Goal data recieved')
-   
-//   let exerciseType = req.body.exerciseType
-//   let target = req.
-//   console.log(target)
-//   //Goal.add();
-//   // console.log(res)
-// })
+app.get('/goal_created', (req,res) => {
+  res.render('goal_created');
+})
+
+var today = new Date();
+var dd = String(today.getDate());
+var mm = String(today.getMonth() + 1); //January is 0!
+var yyyy = today.getFullYear();
+
+today =  yyyy + '-' + mm + '-' + dd;
+
+
+//Method that handles POST request from goal page
+app.post('/newGoal', (req,res) => {
+  let exerciseType = req.body.exercise;
+  let target = req.body.target;
+  let start_time = today;
+  let endTime = req.body.endTime;
+  
+  console.log(exerciseType)
+  console.log(target)
+  console.log(start_time)
+  console.log(endTime)
+  
+
+  //res.send('Goal data recieved')
+  res.render('goal_created')
+  return;
+  
+  //Goal.add();
+  // console.log(res)
+})
 
 
 export { app as app };
