@@ -2,6 +2,7 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import path from 'path';
 import sass from 'sass';
+import pug from 'pug';
 
 import api from './api.js';
 import auth from './auth.js';
@@ -64,6 +65,26 @@ app.get('/dashboard' , (req, res) => {
 
 app.get('/progress' , (req, res) => {
   res.render('progress', { title: 'My Progress' });
+});
+
+// html get requests for dashboard dynamic display
+app.get("/dashboard/exercise", (req, res) => {
+  res.render("dashboard/exercise");
+});
+app.get("/dashboard/goals", (req, res) => {
+  res.render("dashboard/goals");
+});
+app.get("/dashboard/groups", (req, res) => {
+  res.render("dashboard/groups");
+});
+app.get("/dashboard/meals", (req, res) => {
+  res.render("dashboard/meals");
+});
+app.get("/dashboard/stats", (req, res) => {
+  res.render("dashboard/stats");
+});
+app.get("/dashboard/weight", (req, res) => {
+  res.render("dashboard/weight");
 });
 
 
