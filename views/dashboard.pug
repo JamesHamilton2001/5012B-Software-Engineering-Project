@@ -1,13 +1,28 @@
 extends layout
 
 block content
-  h1 Healthmate Dashboard
-  h2 Welcome #{title}
+  append head
+    link(rel="stylesheet" href="stylesheets/dashboard.css")/
+    script(src="javascripts/dashboard.js")/
 
-  p Create a goal
-  //- Panel containing goal information (calories, )
-  p track exercise 
-  p track meals
-  p my progress 
-  p create group
-  a(href="/progress") Progress
+  header
+    include navBar
+    h1 Healthmate Dashboard
+
+  //- sidebar: select current display
+  div#dashboard
+
+    //- ! problem with links, write some js to detect click and insert template into display
+    ul#sideBar
+      li(class="sideBarItem" display-view="stats") Stats 
+      li(class="sideBarItem" display-view="groups") Groups
+      li(class="sideBarItem" display-view="goals") Goals
+      li(class="sideBarItem" display-view="exercise") Exercise
+      li(class="sideBarItem" display-view="meals") Meals
+      li(class="sideBarItem" display-view="weight") Weigth 
+
+    //- current display, is to be determined by selection on sidebar
+    div#display
+      //- this is where we will render the selection on the sidebar
+
+

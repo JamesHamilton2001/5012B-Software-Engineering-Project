@@ -1,25 +1,31 @@
 extends login
 
 block content
-    h1= title
-    form(method='post')
-        label Current Weight:
-        input#currentWeight(type='text' name='cWeight' placeholder='Weight(KG)')
-        br
-        br
-        label Target Weight:
-        input#targetWeight(type='text' name='tWeight' placeholder='Weight(KG)')
-        br
-        br
-        label Height:
-        input#height(type='text' name='height' placeholder='Height(cm)')
-        br
-        br
-        p1= bmi
-        br
-        br
-        Label Date of Birth:
-        input#dob(type='date' name='dob')
-        br
-        br
-        input(type='submit' value='Submit')
+  append head 
+    //- stylesheets and scripts
+  
+  header 
+    include navbar 
+    h1 Profile
+
+  form(action="#" method='post')
+    label Current Weight:
+    input#currentWeight(type='text' name='cWeight' placeholder='Weight(KG)')
+    br
+    br
+    label Target Weight:
+    input#targetWeight(type='text' name='tWeight' placeholder='Weight(KG)')
+    br
+    br
+    label Height:
+    input#height(type='text' name='height' placeholder='Height(cm)')
+    br
+    br
+    p1= bmi
+    br
+    br
+    Label Date of Birth:
+    input#dob(type='date' name='dob')
+    br
+    br
+    input(type='submit' value='Submit')
