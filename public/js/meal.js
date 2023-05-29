@@ -40,8 +40,10 @@ async function createItemFieldset() {
    legend.textContent = 'Food item';
 
    const type = fieldset.appendChild(ui.createTypeSelect(await api.get('meal/foodTypes'), 'Food type...'));
+   type.classList.add('type');
 
    const quantity = fieldset.appendChild(ui.createNumericInput());
+   quantity.classList.add('quantity');
 
    const unit = fieldset.appendChild(document.createElement('span'));
    unit.classList.add('unit');
@@ -49,7 +51,7 @@ async function createItemFieldset() {
 
    const remove = fieldset.appendChild(document.createElement('button'));
    remove.type = 'button';
-   remove.classList.add('removeItem');
+   remove.classList.add('remove');
    remove.textContent = 'Remove';
    remove.addEventListener('click', () => fieldset.remove(), {once: true});
 
