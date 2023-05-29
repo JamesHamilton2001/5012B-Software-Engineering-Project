@@ -3,12 +3,13 @@ extends layout
 block head 
   script(type='module').
     import * as api from '/js/api.js';
-    const button = document.createElement('button');
+    api.post('/newGoal');
+    //- const button = document.createElement('button');
     
     
-    button.addEventListener('click', () => {
-      api.post('/newGoal');
-    })
+    //- button.addEventListener('click', () => {
+    //-   api.post('/newGoal');
+    //- })
 
 
 block content
@@ -19,7 +20,9 @@ block content
       br
       br
       label Exercise Type:
-      input#exerciseType(type='text' name='exercise' placeholder='Type of exercise')
+      select#exerciseType(type='text' name='exercise' placeholder='Type of exercise')
+        each exercise in exercises  
+          exercise(value = exercise.)= exerciseType.name
       br
       br
       label Target Weight:
