@@ -14,6 +14,9 @@ export function createTypeSelect(types, placeholder, callback) {
    sel.addEventListener('change', e => e.selection = types.find(x => x.id == sel.value));
    sel.addEventListener('change', callback);
 
+   // Default to required for form validation checking & reporting
+   sel.required = true;
+
    return sel;
 };
 
