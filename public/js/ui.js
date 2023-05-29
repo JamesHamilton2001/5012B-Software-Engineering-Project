@@ -15,3 +15,20 @@ export function createTypeSelect(types, placeholder, callback) {
    sel.addEventListener('change', callback);
    return sel;
 };
+
+
+// Create an inout element which only accepts numeric input.
+export function createNumericInput() {
+   const input = document.createElement('input');
+
+   // TODO: setup built-in html validation
+
+   // Attempt to prevent non-numeric input
+   input.addEventListener('input', () => {
+      // TODO: see if it's possible to stop this jumping the cursor to the end of the input
+      input.value = input.value.replaceAll(/[^\d.]|(?<=\.)\./g, '');
+   });
+
+   return input;
+};
+
