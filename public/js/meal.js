@@ -27,6 +27,15 @@ export async function createMealForm() {
    // TODO: perhaps add logic to allow only one 'unifished' item at a time?
    addItem.addEventListener('click', async () => fieldset.insertBefore(await createItemFieldset(), addItem));
 
+   // Return data suitable for POSTing to the JSON API.
+   // TODO: validate input?
+   form.getData = () => {
+      return {
+         type: parseInt(type.value),
+         items: Array.from(form.getElementsByClassName('mealItem')).map(x => x.getData()),
+      };
+   };
+
    return form;
 }
 
