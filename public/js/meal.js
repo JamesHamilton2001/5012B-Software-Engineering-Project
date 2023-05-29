@@ -37,7 +37,7 @@ export async function createMealForm() {
    };
 
    // Add a button to the form to submit the data to the API.
-   const submit = form.appendChild(document.createElement('button'));
+   const submit = fieldset.appendChild(document.createElement('button'));
    submit.type = 'button';
    submit.classList.add('addMeal');
    submit.textContent = 'Add Meal';
