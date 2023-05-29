@@ -36,6 +36,17 @@ export async function createMealForm() {
       };
    };
 
+   // Add a button to the form to submit the data to the API.
+   const submit = form.appendChild(document.createElement('button'));
+   submit.type = 'button';
+   submit.classList.add('addMeal');
+   submit.textContent = 'Add Meal';
+   submit.addEventListener('click', async () => {
+      if(!form.checkValidity())
+         return form.reportValidity();
+      // TODO: actually POST to the API
+   });
+
    return form;
 }
 
