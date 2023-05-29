@@ -41,7 +41,7 @@ async function createItemFieldset() {
 
    const type = fieldset.appendChild(ui.createTypeSelect(await api.get('meal/foodTypes'), 'Food type...'));
 
-   const amount = fieldset.appendChild(ui.createNumericInput());
+   const quantity = fieldset.appendChild(ui.createNumericInput());
 
    const unit = fieldset.appendChild(document.createElement('span'));
    unit.classList.add('unit');
