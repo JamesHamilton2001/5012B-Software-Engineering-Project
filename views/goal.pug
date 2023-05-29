@@ -1,5 +1,16 @@
 extends layout
 
+block head 
+  script(type='module').
+    import * as api from '/js/api.js';
+    const button = document.createElement('button');
+    
+    
+    button.addEventListener('click', () => {
+      api.post('/newGoal');
+    })
+
+
 block content
 
   h1= title
