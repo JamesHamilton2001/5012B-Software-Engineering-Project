@@ -3,7 +3,7 @@
 // Generate a selection box suitable to selecting exercise/meal/food types.
 export function createTypeSelect(types, placeholder, callback) {
    const sel = document.createElement('select');
-   const ph = sel.appendChild(new Option(placeholder, 0, true, true));
+   const ph = sel.appendChild(new Option(placeholder, '', true, true));
    sel.append(...types.map(t => new Option(t.name, t.id, false, false)));
 
    // Hide the placeholder option from the actual dropdown box/list
