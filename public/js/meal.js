@@ -42,6 +42,7 @@ export async function createMealForm() {
    submit.classList.add('addMeal');
    submit.textContent = 'Add Meal';
    submit.addEventListener('click', async () => {
+      // Short circuit out if the form is invalid
       if(!form.checkValidity())
          return form.reportValidity();
       // TODO: actually POST to the API
