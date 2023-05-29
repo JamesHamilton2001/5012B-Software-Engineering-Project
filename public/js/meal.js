@@ -31,7 +31,7 @@ export async function createMealForm() {
    // TODO: validate input?
    form.getData = () => {
       return {
-         type: parseInt(type.value),
+         meal_type_id: parseInt(type.value),
          items: Array.from(form.getElementsByClassName('mealItem')).map(x => x.getData()),
       };
    };
