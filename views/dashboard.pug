@@ -1,13 +1,13 @@
 extends layout
 
 block content
+
+  -var pageTitle = "My Dashboard"
+  include navBar
+
   append head
     link(rel="stylesheet" href="stylesheets/dashboard.css")/
-    script(src="javascripts/dashboard.js")/
-
-  header
-    include navBar
-    h1 Healthmate Dashboard
+    script(src="javascripts/dashboard.js")
 
   //- sidebar: select current display
   div#dashboard

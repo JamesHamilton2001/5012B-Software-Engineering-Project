@@ -4,9 +4,8 @@ block content
   append head 
     //- stylesheets and scripts
   
-  header 
-    include navbar 
-    h1 Profile
+  -var pageTitle = "My Profile"
+  include navBar
 
   form(action="#" method='post')
     label Current Weight:
