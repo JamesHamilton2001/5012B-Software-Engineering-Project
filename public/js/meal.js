@@ -45,7 +45,14 @@ export async function createMealForm() {
       // Short circuit out if the form is invalid
       if(!form.checkValidity())
          return form.reportValidity();
-      // TODO: actually POST to the API
+
+      // Disable changes to prevent e.g. multiple submissions
+      fieldset.disabled = true;
+
+      // Send the data to the API
+      const response = await api.post('meal', form.getData());
+      // TODO: handle response better than just logging
+      console.log(response);
    });
 
    return form;
