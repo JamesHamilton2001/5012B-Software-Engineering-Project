@@ -71,6 +71,11 @@ app.get('/exercise' , (req, res) => {
    });
 });
 
+app.get('/meal' , (req, res) => {
+   res.render('meal', {
+   });
+});
+
 
 export { app as app };
 

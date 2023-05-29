@@ -1,0 +1,13 @@
+extends layout
+
+block head
+   script(type='module' src='/js/meal.js')
+   script(type='module' defer).
+      import * as meal from '/js/meal.js';
+      const container = document.getElementById('container');
+      const form = container.appendChild(await meal.createMealForm());
+
+block content
+   h1 Meal 
+   div#container
+
