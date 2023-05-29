@@ -13,6 +13,7 @@ export function createTypeSelect(types, placeholder, callback) {
    sel.addEventListener('change', e => e.target.remove(0), {once: true});
    sel.addEventListener('change', e => e.selection = types.find(x => x.id == sel.value));
    sel.addEventListener('change', callback);
+
    return sel;
 };
 
