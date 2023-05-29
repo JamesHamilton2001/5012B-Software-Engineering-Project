@@ -53,6 +53,7 @@ async function createItemFieldset() {
 
    const quantity = fieldset.appendChild(ui.createNumericInput());
    quantity.classList.add('quantity');
+   quantity.required = true;
 
    const unit = fieldset.appendChild(document.createElement('span'));
    unit.classList.add('unit');
