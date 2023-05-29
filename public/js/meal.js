@@ -55,6 +55,15 @@ async function createItemFieldset() {
    remove.textContent = 'Remove';
    remove.addEventListener('click', () => fieldset.remove(), {once: true});
 
+   // Return data suitable for POSTing to the JSON API.
+   // TODO: validate input?
+   fieldset.getData = () => {
+      return {
+         food_type_id: parseInt(type.value),
+         quantity: parseFloat(quantity.value),
+      };
+   };
+
    return fieldset;
 }
 
