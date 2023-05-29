@@ -3,15 +3,12 @@ var firstDomLoad = true;
 
 // will fix size of dashboard body to only take up available space. no scrolling!
 function fixDashboardBody() {
-  console.log("func");
   var headerHeight = document.querySelector("header").offsetHeight;
   var windowHeight = window.innerHeight;
   document.body.style.height = (windowHeight - headerHeight) + "px";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  console.log("dom");
 
   //  only assign functions on first load: (loads twice, temporary fix)
   if (firstDomLoad) {

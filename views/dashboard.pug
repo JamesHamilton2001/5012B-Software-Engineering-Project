@@ -8,11 +8,11 @@ block content
   append head
     link(rel="stylesheet" href="stylesheets/dashboard.css")/
     script(src="javascripts/dashboard.js")
+    script(src="javascripts/dashboard/weight.js")
 
-  //- sidebar: select current display
   div#dashboard
 
-    //- ! problem with links, write some js to detect click and insert template into display
+    //- sidebar: select current display
     ul#sideBar
       li(class="sideBarItem" display-view="stats") Stats 
       li(class="sideBarItem" display-view="groups") Groups
@@ -23,6 +23,6 @@ block content
 
     //- current display, is to be determined by selection on sidebar
     div#display
-      //- this is where we will render the selection on the sidebar
+      //- this is where we will render the view chosen on the sidebar
 
 
