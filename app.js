@@ -87,6 +87,13 @@ app.get("/dashboard/weight", (req, res) => {
   res.render("dashboard/weight");
 });
 
+app.get('/exercise' , (req, res) => {
+  res.render('exercise', {});
+});
+
+app.get('/meal', (req, res) => {
+  res.render('meal', {})
+});
 
 export { app as app };
 

@@ -8,18 +8,18 @@ block content
   append head
     link(rel="stylesheet" href="stylesheets/dashboard.css")/
     script(src="javascripts/dashboard.js")
-    script(src="javascripts/dashboard/weight.js")
+    script(src="https://cdn.jsdelivr.net/npm/chart.js")
 
   div#dashboard
 
     //- sidebar: select current display
     ul#sideBar
-      li(class="sideBarItem" display-view="stats") Stats 
-      li(class="sideBarItem" display-view="groups") Groups
-      li(class="sideBarItem" display-view="goals") Goals
-      li(class="sideBarItem" display-view="exercise") Exercise
-      li(class="sideBarItem" display-view="meals") Meals
-      li(class="sideBarItem" display-view="weight") Weigth 
+      li(class="sideBarItem" display_view="stats") Stats 
+      li(class="sideBarItem" display_view="groups") Groups
+      li(class="sideBarItem" display_view="goals") Goals
+      li(class="sideBarItem" display_view="exercise") Exercise
+      li(class="sideBarItem" display_view="meals") Meals
+      li(class="sideBarItem" display_view="weight") Weigth 
 
     //- current display, is to be determined by selection on sidebar
     div#display
