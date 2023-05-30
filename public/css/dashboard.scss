@@ -1,0 +1,39 @@
+body {
+   // Include border in sizing
+   box-sizing: border-box;
+
+   // Header, sidebar, main content, and footer
+   display: grid;
+   grid-template-areas: "header header" "sidebar main" "footer footer";
+   grid-template-columns: max-content 1fr;
+   grid-template-rows: max-content 1fr max-content;
+
+   // Fill height like an app boss
+   height: 100vh;
+
+   // Shrinkrwrap up this shit
+   margin: 0;
+   padding: 0;
+
+   // Header area; span full width
+   header {
+      grid-area: header;
+   }
+
+   // Footer area; span full width
+   footer {
+      grid-area: footer;
+   }
+
+   // Semantically, this is a terrible id...
+   #sideBar {
+      grid-area: sidebar;
+   }
+
+   // This is also semantically questionable... Isn't this _all_ the dashboard?
+   #dashboard {
+      grid-area: main;
+      overflow-x: hidden;
+      overflow-y: scroll;
+   }
+}
