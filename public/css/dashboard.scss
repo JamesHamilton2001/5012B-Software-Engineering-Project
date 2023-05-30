@@ -28,6 +28,13 @@ body {
    // Semantically, this is a terrible id...
    #sideBar {
       grid-area: sidebar;
+
+      li {
+         background-color: rgb(162, 150, 231);
+         &:hover {
+            background-color: rgb(158, 145, 231);
+         }
+      }
    }
 
    // This is also semantically questionable... Isn't this _all_ the dashboard?
