@@ -1,15 +1,15 @@
 extends layout
 
 block head 
-  script(type='module').
-    import * as api from '/js/api.js';
-    api.post('/newGoal');
-    //- const button = document.createElement('button');
+  //- script(type='module').
+  //-   import * as api from '/js/api.js';
+  //-   //api.post('/newGoal');
+  //-   //- const button = document.createElement('button');
     
     
-    //- button.addEventListener('click', () => {
-    //-   api.post('/newGoal');
-    //- })
+  //-   //- button.addEventListener('click', () => {
+  //-   //-   api.post('/newGoal');
+  //-   //- })
 
 
 block content
@@ -20,15 +20,16 @@ block content
       br
       br
       label Exercise Type:
-      select#exerciseType(type='text' name='exercise' placeholder='Type of exercise')
-        each exercise in exercises  
-          exercise(value = exercise.)= exerciseType.name
+      input#exercise_type(type='text' name='exercise' placeholder='Type of exercise')
+      //-   each exercise in exercises  
+      //-     exercise(value = exercise.)= exerciseType.name
       br
       br
       label Target Weight:
+
       //Need to check if target is weight or time on an exercise?
       //Weight can link to meals and calories
-      input#target(type='number' name='target' placeholder='Target Weight (KG)' #{target} required)
+      input#target(type='number' name='target' placeholder='Target Weight (KG)' required)
       br
       br
       label Target Date:

@@ -12,12 +12,12 @@ export default class Goal {
    //user_id, target, exercise_type_id, end_time
    //from goal form
    //!needs testing!
-   static async add(user_id, target, exercise_type_id, end_time){
+   static async add(user_id,  exercise_type_id, target, end_time){
     const sql = 'INSERT INTO goal(user_id, exercise_type_id, target, start_time, end_time) VALUES(:user_id, :exercise_type_id, :target, :start_time, :end_time)';
     const args = {
       ':user_id': user_id,
-      ':target': target,
       ':exercise_type_id': exercise_type_id,
+      ':target': target,
       ':start_time': Math.floor(Date.now() / 1000),
       ':end_time': end_time,
    };

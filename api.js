@@ -64,15 +64,12 @@ user.route('/weight')
 
 //help needed here
 //access current user goal data  
-user.route('/newGoal')
-  
+router.route('/newGoal')
   .post(async (req,res) => {
-    let exerciseType = req.body.exercise;
-    let target = req.body.target;
-    let startTime = Math.floor(Date.now() / 1000)
-    let endTime = req.body.endTime;
-
-    const data = await Goal.add(req.user.id, target, exerciseType, startTime, endTime );
+    console.log(req.user.id)
+    console.log(req.body.exerciseType)
+    console.log(req.body.endTime)
+    const data = await Goal.add(req.user.id, req.body.exerciseType, req.body.target, req.body.endTime );
     res.render('goal_created')
     res.status(201).json("goal record added");
     return;
