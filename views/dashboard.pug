@@ -1,13 +1,24 @@
 extends layout
+include navBar
+
+block append head
+  link(rel="stylesheet" href="/stylesheets/dashboard.css")/
+  script(src="/javascripts/dashboard.js")
+  script(src="https://cdn.jsdelivr.net/npm/chart.js")
+  +navBarLinkAndScripts()
 
 block content
-  h1 Healthmate Dashboard
-  h2 Welcome #{title}
+  +navBar("My Dashboard")
 
-  p Create a goal
-  //- Panel containing goal information (calories, )
-  p track exercise 
-  p track meals
-  p my progress 
-  p create group
-  a(href="/progress") Progress
+  div#dashboard
+
+  ul#sideBar
+    li#slct_stats(class="sideBarItem") Stats 
+    li#slct_groups(class="sideBarItem") Groups
+    li#slct_goals(class="sideBarItem") Goals
+    li#slct_exercise(class="sideBarItem") Exercise
+    li#slct_meals(class="sideBarItem") Meals
+    li#slct_weight(class="sideBarItem") Weigth 
+
+    div#display
+
