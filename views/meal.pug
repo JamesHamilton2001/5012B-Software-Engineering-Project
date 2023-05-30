@@ -1,0 +1,19 @@
+extends layout
+
+block head
+   script(type='module' src='/js/meal.js')
+   script(type='module' defer).
+      import * as meal from '/js/meal.js';
+      const container = document.getElementById('container');
+      const form = container.appendChild(await meal.createMealForm());
+
+      const logButton = container.appendChild(document.createElement('button'));
+      logButton.type = 'button';
+      logButton.textContent = 'Log data';
+      logButton.addEventListener('click', () => console.log(form.getData()));
+      logButton.addEventListener('click', () => console.log(JSON.stringify(form.getData())));
+
+block content
+   h1 Meal
+   div#container
+
