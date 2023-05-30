@@ -1,32 +1,24 @@
 extends layout
+include navBar
+
+block head
+  link(rel="stylesheet" href="stylesheets/dashboard.css")/
+  script(src="/javascripts/dashboard.js")
+  script(src="https://cdn.jsdelivr.net/npm/chart.js")
+  +navBarLinkAndScripts()
 
 block content
-
-  //- -var pageTitle = "My Dashboard"
-  include navBar
-
-
-  block head
-    link(rel="stylesheet" href="stylesheets/dashboard.css")/
-    script(src="javascripts/dashboard.js")
-    script(src="https://cdn.jsdelivr.net/npm/chart.js")
-    +navBarLinkAndScripts()
-
   +navBar("My Dashboard")
 
   div#dashboard
 
-    //- sidebar: select current display
-    ul#sideBar
-      li#slct_stats(class="sideBarItem") Stats 
-      li#slct_groups(class="sideBarItem") Groups
-      li#slct_goals(class="sideBarItem") Goals
-      li#slct_exercise(class="sideBarItem") Exercise
-      li#slct_meals(class="sideBarItem") Meals
-      li#slct_weight(class="sideBarItem") Weigth 
+  ul#sideBar
+    li#slct_stats(class="sideBarItem") Stats 
+    li#slct_groups(class="sideBarItem") Groups
+    li#slct_goals(class="sideBarItem") Goals
+    li#slct_exercise(class="sideBarItem") Exercise
+    li#slct_meals(class="sideBarItem") Meals
+    li#slct_weight(class="sideBarItem") Weigth 
 
-    //- current display, is to be determined by selection on sidebar
     div#display
-      //- this is where we will render the view chosen on the sidebar
-
 
