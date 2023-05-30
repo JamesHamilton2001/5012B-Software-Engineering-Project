@@ -26,7 +26,30 @@ document.addEventListener("DOMContentLoaded", () => {
   // add event listener to each sidebar item, that changes the dashboard display accordingly
   document.querySelectorAll(".sideBarItem").forEach((item) => {
     item.addEventListener("mousedown", function() {
-      var selection = this.getAttribute("display_view");
+      // var selection = this.getAttribute("display_view");
+      var selection;
+      switch(this.id)
+      {
+         case "slct_stats": {
+          selection = "stats";
+          break;
+        } case "slct_groups": {
+          selection = "groups";
+          break;
+        } case "slct_goals": {
+          selection = "goals";
+          break;
+        } case "slct_exercise": {
+          selection = "exercise";
+          break;
+        } case "slct_meals": {
+          selection = "meals";
+          break;
+        } case "slct_weight": {
+          selection = "weight";
+          break;
+        }
+      }
 
       // fetch dashboard display html corresponding to sidebar selection
       fetch("/dashboard/" + selection)
