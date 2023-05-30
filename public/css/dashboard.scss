@@ -27,10 +27,20 @@ body {
 
    // Semantically, this is a terrible id...
    #sideBar {
+      display: flex;
+      flex-direction: column;
       grid-area: sidebar;
+      justify-content: space-evenly;
+      list-style: none;
+      margin: 0;
+      padding: 0;
 
       li {
+         align-items: center;
          background-color: rgb(162, 150, 231);
+         display: flex;
+         height: 100%;
+         margin: auto 0;
          &:hover {
             background-color: rgb(158, 145, 231);
          }
