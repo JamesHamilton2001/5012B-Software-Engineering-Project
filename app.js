@@ -66,6 +66,10 @@ app.get('/progress' , (req, res) => {
   res.render('progress', { title: 'My Progress' });
 });
 
+app.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
 // html get requests for dashboard dynamic display
 app.get("/dashboard/exercise", (req, res) => {
   res.render("dashboard/exercise");

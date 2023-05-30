@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // convert html prototype into text
         .then((response) => { return response.text(); })
 
-        // insert html text into display div inner html
+        // insert html text into display div inner html and load script
         .then((html) => {
           document.querySelector("#display").innerHTML = html;
           executeSelectionScript(selection);
