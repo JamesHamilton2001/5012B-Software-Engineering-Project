@@ -1,8 +1,28 @@
-append head 
-  link(rel='stylesheet' href='stylesheets/navBar.css')/
-  script(src="javascripts/navBar.js")
+//- append head 
+//-   link(rel='stylesheet' href='stylesheets/navBar.css')/
+//-   script(src="javascripts/navBar.js")
 
-block navBar
+//- block navBar
+//-   header
+//-     nav
+//-       ul#navList
+//-         li.navItem
+//-           a.navLink(href="/dashboard") Dashboard
+//-         li.navItem
+//-           a.navLink(href="/progress") Progress
+//-         li.navItem
+//-           a.navLink(href="/profile") Profile
+//-         li.navItem
+//-           a.navLink(href="/tempPage2") Temp_Page_2
+//-         li.navItem
+//-           a.navLink(href="/tempPage3") Temp_Page_3
+//-     h1= pageTitle
+
+mixin navBarLinkAndScripts()
+  link(rel='stylesheet' href='/stylesheets/navBar.css')
+  script(src="/javascripts/navBar.js")
+
+mixin navBar(pageTitle)
   header
     nav
       ul#navList
