@@ -24,9 +24,8 @@ export async function createForm() {
    metricSelect.classList.add('metric');
    metricSelect.appendChild(new Option('kg', 'kg', true, true));
    metricSelect.appendChild(new Option('lb', 'lb', false, false));
-   // TODO: reenable to allow entry in st & lb
-   //metricSelect.disabled = true;
 
+   // Unit cconversion logic
    metricSelect.addEventListener('change', () => {
       if(!value.value)
          return;
