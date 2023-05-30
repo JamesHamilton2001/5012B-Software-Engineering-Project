@@ -1,0 +1,14 @@
+extends layout
+
+block head
+   script(type='module').
+      import * as weight from '/js/weight.js';
+
+      const container = document.getElementById('container');
+
+      const form = container.appendChild(await weight.createForm());
+
+block content
+   h1 Exercise
+   div#container
+
