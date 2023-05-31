@@ -1,0 +1,11 @@
+script(type='module').
+   import * as meal from '/js/meal.js';
+
+   const slot = document.getElementById('formContainer');
+
+   const form = slot.appendChild(await meal.createMealForm());
+
+block display
+   h2 Meal
+   slot#formContainer
+

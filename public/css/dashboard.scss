@@ -1,0 +1,79 @@
+/* Mobile (portrait) or other narrow screen styles */
+$breakpoint-phone: 500px;
+
+body {
+   // Include border in sizing
+   box-sizing: border-box;
+
+   // Header, sidebar, main content, and footer
+   display: grid;
+   grid-template-areas: "header header" "sidebar main" "footer footer";
+   grid-template-columns: max-content 1fr;
+   grid-template-rows: max-content 1fr max-content;
+
+   @media screen and (max-width: $breakpoint-phone) {
+      grid-template-areas: "header" "sidebar" "main" "footer";
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content max-content 1fr max-content;
+   }
+
+   // Fill height like an app boss
+   height: 100vh;
+
+   // Shrinkrwrap up this shit
+   margin: 0;
+   padding: 0;
+
+   // Header area; span full width
+   header {
+      grid-area: header;
+   }
+
+   // Footer area; span full width
+   footer {
+      grid-area: footer;
+   }
+
+   menu {
+      display: flex;
+      flex-direction: column;
+      grid-area: sidebar;
+      justify-content: space-evenly;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      @media screen and (max-width: $breakpoint-phone) {
+         flex-direction: row;
+         justify-content: normal;
+         overflow-x: auto;
+         width: 100vw;
+      }
+
+      li {
+         align-items: center;
+         background-color: rgb(162, 150, 231);
+         display: flex;
+         font-weight: bold;
+         height: 100%;
+         margin: auto 0;
+         padding: 0 3rem;
+
+         @media screen and (max-width: $breakpoint-phone) {
+            height: max-content;
+            padding: 0.2rem 1rem;
+         }
+
+         &:hover {
+            background-color: rgb(158, 145, 231);
+         }
+      }
+   }
+
+   main {
+      grid-area: main;
+      overflow-x: hidden;
+      overflow-y: auto;
+   }
+}
+

@@ -1,18 +1,17 @@
 doctype html
-html(lang='en-GB')
-   head
-      title HealthMate
+
+//- !! get rid of xmlns on release !!
+html(xmlns="http://www.w3.org/1999/xhtml")
+  head
+    block head
+      title Health Mate
       meta(charset='UTF-8')/
       meta(name='viewport' content='width=device-width, initial-scale=1.0')/
       link(rel='stylesheet' href='/stylesheets/style.css')/
 
-      block head
+  body
+    block content
 
-   body
-      block content
-
-      footer
-         block footer
-
-         a(href='/auth/logout') Logout
+  footer
+    block footer
 
