@@ -80,8 +80,8 @@ app.get("/dashboard/goals", (req, res) => {
 app.get("/dashboard/groups", (req, res) => {
   res.render("dashboard/groups");
 });
-app.get("/dashboard/meals", (req, res) => {
-  res.render("dashboard/meals");
+app.get("/dashboard/meal", (req, res) => {
+  res.render("dashboard/meal");
 });
 app.get("/dashboard/stats", (req, res) => {
   res.render("dashboard/stats");
