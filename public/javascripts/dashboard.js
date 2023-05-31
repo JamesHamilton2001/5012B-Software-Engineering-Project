@@ -18,7 +18,8 @@ document.querySelectorAll('menu > li').forEach((item) => {
       .then((response) => { return response.text(); })
       // insert html text into display div inner html and load script
       .then((html) => {
-        displayElement.innerHTML = html;
+         const fragment = document.createRange().createContextualFragment(html);
+         displayElement.replaceChildren(fragment);
       })
       // catch and log error (if that somehow happens...)
       .catch((error) => { console.error("Unable to load template: ", error); });
