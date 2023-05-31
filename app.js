@@ -67,7 +67,7 @@ app.get('/progress' , (req, res) => {
 });
 
 app.get('/weight' , (req, res) => {
-   res.render('weight', {
+   res.render('weight');
 });
 
 app.get("/profile", (req, res) => {
@@ -100,8 +100,7 @@ app.get('/exercise' , (req, res) => {
 });
 
 app.get('/meal' , (req, res) => {
-   res.render('meal', {
-   });
+   res.render('meal');
 });
 
 export { app as app };

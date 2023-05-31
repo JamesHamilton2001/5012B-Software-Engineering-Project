@@ -25,6 +25,11 @@ export function createTypeSelect(types, placeholder, callback) {
 export function createNumericInput() {
    const input = document.createElement('input');
 
+   // Instruct e.g. phones to display a numeric keypad.
+   input.setAttribute('inputmode', 'decimal');
+
+   input.pattern = /^-?\d*\.?\d+$/;
+
    // TODO: setup built-in html validation
 
    // Attempt to prevent non-numeric input

@@ -2,7 +2,10 @@ extends layout
 
 block head
    script(type='module').
+      console.log('foo');
       import * as weight from '/js/weight.js';
+      import {chart} from 'https://cdn.jsdelivr.net/npm/chart.js/auto';
+      console.log(chart);
 
       const container = document.getElementById('container');
 
