@@ -59,11 +59,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/dashboard' , (req, res) => {
-  res.render('dashboard', { title: 'My Dashboard' });
+  res.render('dashboard');
 });
 
 app.get('/progress' , (req, res) => {
-  res.render('progress', { title: 'My Progress' });
+  res.render('progress');
 });
 
 app.get("/profile", (req, res) => {
