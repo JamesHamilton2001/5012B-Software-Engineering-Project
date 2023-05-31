@@ -24,3 +24,4 @@ document.querySelectorAll('menu > li').forEach((item) => {
       .catch((error) => { console.error("Unable to load template: ", error); });
  });
 });
+
