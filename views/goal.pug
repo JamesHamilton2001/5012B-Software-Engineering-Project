@@ -1,39 +1,62 @@
 extends layout
 
 block head 
-  //- script(type='module').
-  //-   import * as api from '/js/api.js';
-  //-   //api.post('/newGoal');
-  //-   //- const button = document.createElement('button');
-    
-    
-  //-   //- button.addEventListener('click', () => {
-  //-   //-   api.post('/newGoal');
-  //-   //- })
+  link(rel='stylesheet' href='/css/exercise.scss')
+  script(type='module').
+      import { createFieldset } from '/js/exercise.js';
+      import * as api from '/js/api.js';
+
+      const cont = document.getElementById('container');
+      const exercise = cont.appendChild(createFieldset());
+
+      const button2 = cont.appendChild(document.createElement('button'));
+      button2.textContent = 'Push data';
+      button2.addEventListener('click', () => {
+         const data = exercise.getData();
+         api.post('exercise', data);
+      });
+
+      
 
 
 block content
+  script(type='module').
+      document.addEventListener("DOMContentLoaded", function() {
+        const weightOption = document.getElementById("weightOption");
+        const exerciseOption = document.getElementById("exerciseOption");
+        const weightContent = document.getElementById("weightContent");
+        const exerciseContent = document.getElementById("exerciseContent");
 
-  h1= title
+        weightOption.addEventListener("change", function() {
+          weightContent.style.display = "block";
+          exerciseContent.style.display = "none";
+        });
 
-    form(action="/newGoal", method="post") 
-      br
-      br
-      label Exercise Type:
-      input#exercise_type(type='text' name='exercise' placeholder='Type of exercise')
-      //-   each exercise in exercises  
-      //-     exercise(value = exercise.)= exerciseType.name
-      br
-      br
-      label Target Weight:
+        exerciseOption.addEventListener("change", function() {
+          weightContent.style.display = "none";
+          exerciseContent.style.display = "block";
+        });
+      });
 
-      //Need to check if target is weight or time on an exercise?
-      //Weight can link to meals and calories
-      input#target(type='number' name='target' placeholder='Target Weight (KG)' required)
-      br
-      br
-      label Target Date:
-      input#endTime(type='date' name='endTime' required)
-      br
-      br
-      input(type='submit' value='Create Goal')
+
+  h2= title
+  br
+  input#weightOption(type="radio", name="goalOption", value="weight") 
+  label(for="weight") Weight Goal
+  br
+  input#exerciseOption(type="radio", name="goalOption", value="exercise")
+  label(for="exercise") Exercise Goal
+  br
+  form(action="/api/newGoal", method="post") 
+    label#weightContent(style="display: none;") Target Weight:
+      input#weightTarget(type='number' name='target' placeholder='Target Weight (KG)' required)
+      input#weightEndTime(type='date' name='endTime' required) 
+  
+
+    label#exerciseContent(style="display: none;") Exercise Type:
+      div#container
+      input#exerciseEndTime(type='date' name='endTime' required)
+      
+  input(type='submit' value='Create Goal')
+      
+  
