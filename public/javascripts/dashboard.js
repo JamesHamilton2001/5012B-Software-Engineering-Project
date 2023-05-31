@@ -1,7 +1,3 @@
-
-// init display element for other dashboard scripts to access
-var displayElement;
-
 function executeSelectionScript(name) {
   var script = document.createElement("script");
   script.src = "javascripts/dashboard/" + name + ".js";
@@ -10,7 +6,7 @@ function executeSelectionScript(name) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  displayElement = document.getElementById("display");
+  const displayElement = document.getElementById("display");
 
   // add event listener to each sidebar item, that changes the dashboard display accordingly
   document.querySelectorAll(".sideBarItem").forEach((item) => {
