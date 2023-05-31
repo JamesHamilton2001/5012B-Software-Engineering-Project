@@ -1,5 +1,6 @@
 import cookieParser from 'cookie-parser';
 import express from 'express';
+import fs from 'fs';
 import path from 'path';
 import sass from 'sass';
 
@@ -70,24 +71,13 @@ app.get("/profile", (req, res) => {
   res.render("profile");
 });
 
-// html get requests for dashboard dynamic display
-app.get("/dashboard/exercise", (req, res) => {
-  res.render("dashboard/exercise");
-});
-app.get("/dashboard/goals", (req, res) => {
-  res.render("dashboard/goals");
-});
-app.get("/dashboard/groups", (req, res) => {
-  res.render("dashboard/groups");
-});
-app.get("/dashboard/meal", (req, res) => {
-  res.render("dashboard/meal");
-});
-app.get("/dashboard/stats", (req, res) => {
-  res.render("dashboard/stats");
-});
-app.get("/dashboard/weight", (req, res) => {
-  res.render("dashboard/weight");
+// Middleware to dynamically render any dashboard partial which actually exists.
+// TODO: probably move to /dashboard/partials/:name or similar
+app.use('/dashboard/:name', (req, res, next) => {
+   const fullpath = path.join(app.get('views'), 'dashboard', req.params.name + '.pug');
+   if(fs.existsSync(fullpath))
+      res.render(path.join('dashboard', req.params.name));
+   next();
 });
 
 app.get('/exercise' , (req, res) => {
