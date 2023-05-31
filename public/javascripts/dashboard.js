@@ -25,7 +25,6 @@ document.querySelectorAll('menu > li').forEach((item) => {
  item.addEventListener('click', () => {
     // fetch dashboard display html corresponding to sidebar selection
     fetch("/dashboard/" + selection)
-
       // convert html prototype into text
       .then((response) => { return response.text(); })
 
