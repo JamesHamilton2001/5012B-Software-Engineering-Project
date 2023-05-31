@@ -59,7 +59,10 @@ export async function createForm() {
       // Send the data to the API
       // TODO: handle response better than just logging!
       const response = await api.post('user/weight', form.getData());
-      console.log(response);
+
+      const message = document.createElement('p');
+      message.textContent = response;
+      form.replaceWith(message);
    });
 
    return form;
