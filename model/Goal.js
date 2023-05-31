@@ -13,6 +13,7 @@ export default class Goal {
    //from goal form
    //!needs testing!
    static async add(user_id,  exercise_type_id, target, end_time){
+    
     const sql = 'INSERT INTO goal(user_id, exercise_type_id, target, start_time, end_time) VALUES(:user_id, :exercise_type_id, :target, :start_time, :end_time)';
     const args = {
       ':user_id': user_id,

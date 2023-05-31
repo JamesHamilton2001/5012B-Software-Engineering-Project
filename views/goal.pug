@@ -9,54 +9,78 @@ block head
       const cont = document.getElementById('container');
       const exercise = cont.appendChild(createFieldset());
 
-      const button2 = cont.appendChild(document.createElement('button'));
-      button2.textContent = 'Push data';
-      button2.addEventListener('click', () => {
-         const data = exercise.getData();
-         api.post('exercise', data);
-      });
+      //- const button2 = cont.appendChild(document.createElement('button'));
+      //- button2.textContent = 'Push data';
+      //- button2.addEventListener('click', () => {
+      //-    const data = exercise.getData();
+      //-    api.post('exercise', data);
+      //- });
 
       
 
 
 block content
   script(type='module').
-      document.addEventListener("DOMContentLoaded", function() {
-        const weightOption = document.getElementById("weightOption");
-        const exerciseOption = document.getElementById("exerciseOption");
-        const weightContent = document.getElementById("weightContent");
-        const exerciseContent = document.getElementById("exerciseContent");
+    document.addEventListener("DOMContentLoaded", function() {
+      // Get DOM elements
+      const weightOption = document.getElementById("weightOption");
+      const exerciseOption = document.getElementById("exerciseOption");
+      const weightContent = document.getElementById("weightContent");
+      const exerciseContent = document.getElementById("exerciseContent");
+      const form = document.querySelector("form");
 
-        weightOption.addEventListener("change", function() {
-          weightContent.style.display = "block";
-          exerciseContent.style.display = "none";
-        });
-
-        exerciseOption.addEventListener("change", function() {
-          weightContent.style.display = "none";
-          exerciseContent.style.display = "block";
-        });
+      // Event listener for weight option change
+      weightOption.addEventListener("change", function() {
+        weightContent.style.display = "block";
+        exerciseContent.style.display = "none";
       });
 
+      // Event listener for exercise option change
+      exerciseOption.addEventListener("change", function() {
+        weightContent.style.display = "none";
+        exerciseContent.style.display = "block";
+      });
+    });
+
+    // Event listener for form submission
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const goalOption = document.querySelector('input[name="goalOption"]:checked').value;
+
+        if (goalOption === "weight") {
+          const target = document.getElementById("weightTarget").value;
+          const endTime = document.getElementById("weightEndTime").value;
+          api.post('/api/newGoal', { target, endTime });
+        } else if (goalOption === "exercise") {
+          const exerciseType = document.getElementById("exerciseType").value;
+          const endTime = document.getElementById("exerciseEndTime").value;
+          api.post('/api/newGoal', {exerciseType, endTime });
+        }
+        
+        // Add any additional logic or actions you want to perform after form submission
+        
+        // Optionally, reset the form fields after submission
+        form.reset();
+      });
+    
 
   h2= title
-  br
-  input#weightOption(type="radio", name="goalOption", value="weight") 
-  label(for="weight") Weight Goal
-  br
-  input#exerciseOption(type="radio", name="goalOption", value="exercise")
-  label(for="exercise") Exercise Goal
-  br
-  form(action="/api/newGoal", method="post") 
-    label#weightContent(style="display: none;") Target Weight:
-      input#weightTarget(type='number' name='target' placeholder='Target Weight (KG)' required)
-      input#weightEndTime(type='date' name='endTime' required) 
-  
+    br
+    input#weightOption(type="radio", name="goalOption", value="weight") 
+    label(for="weight") Weight Goal
+    br
+    input#exerciseOption(type="radio", name="goalOption", value="exercise")
+    label(for="exercise") Exercise Goal
+    br
+    form(action="/api/newGoal", method="post") 
+      label#weightContent(style="display: none;") Target Weight:
+        input#weightTarget(type='number' name='target' placeholder='Target Weight (KG)')
+        input#weightEndTime(type='date' name='endTime') 
+        input(type='submit' value='Create Goal')
+      label#exerciseContent(style="display: none;") Exercise Type:
+        div#container
+        input#exerciseEndTime(type='date' name='endTime')
+        input(type='submit' value='Create Goal')
 
-    label#exerciseContent(style="display: none;") Exercise Type:
-      div#container
-      input#exerciseEndTime(type='date' name='endTime' required)
-      
-  input(type='submit' value='Create Goal')
-      
   
