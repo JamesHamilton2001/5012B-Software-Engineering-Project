@@ -25,8 +25,7 @@ body {
       grid-area: footer;
    }
 
-   // Semantically, this is a terrible id...
-   #sideBar {
+   menu {
       display: flex;
       flex-direction: column;
       grid-area: sidebar;
