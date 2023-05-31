@@ -68,7 +68,30 @@ app.get('/progress' , (req, res) => {
 
 app.get('/weight' , (req, res) => {
    res.render('weight', {
-   });
+});
+
+app.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
+// html get requests for dashboard dynamic display
+app.get("/dashboard/exercise", (req, res) => {
+  res.render("dashboard/exercise");
+});
+app.get("/dashboard/goals", (req, res) => {
+  res.render("dashboard/goals");
+});
+app.get("/dashboard/groups", (req, res) => {
+  res.render("dashboard/groups");
+});
+app.get("/dashboard/meals", (req, res) => {
+  res.render("dashboard/meals");
+});
+app.get("/dashboard/stats", (req, res) => {
+  res.render("dashboard/stats");
+});
+app.get("/dashboard/weight", (req, res) => {
+  res.render("dashboard/weight");
 });
 
 app.get('/exercise' , (req, res) => {
@@ -80,7 +103,6 @@ app.get('/meal' , (req, res) => {
    res.render('meal', {
    });
 });
-
 
 export { app as app };
 
