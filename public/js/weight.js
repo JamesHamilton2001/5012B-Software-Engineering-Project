@@ -54,7 +54,7 @@ export async function createForm() {
          return form.reportValidity();
 
       // Disable changes to prevent e.g. multiple submissions
-      form.disabled = true;
+      fieldset.disabled = true;
 
       // Send the data to the API
       // TODO: handle response better than just logging!
