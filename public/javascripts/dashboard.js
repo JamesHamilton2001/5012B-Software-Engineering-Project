@@ -6,14 +6,14 @@ document.querySelectorAll('menu > li').forEach((item) => {
     // fetch dashboard display html corresponding to sidebar selection
     fetch("/dashboard/" + item.dataset.display)
       // convert html prototype into text
-      .then((response) => { return response.text(); })
+      .then(response => response.text())
       // insert html text into display div inner html and load script
-      .then((html) => {
+      .then(html => {
          const fragment = document.createRange().createContextualFragment(html);
          displayElement.replaceChildren(fragment);
       })
       // catch and log error (if that somehow happens...)
-      .catch((error) => { console.error("Unable to load template: ", error); });
+      .catch(error => console.error("Unable to load template: ", error));
  });
 });
 
