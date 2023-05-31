@@ -27,12 +27,10 @@ document.querySelectorAll('menu > li').forEach((item) => {
     fetch("/dashboard/" + selection)
       // convert html prototype into text
       .then((response) => { return response.text(); })
-
       // insert html text into display div inner html and load script
       .then((html) => {
         displayElement.innerHTML = html;
       })
-
       // catch and log error (if that somehow happens...)
       .catch((error) => { console.error("Unable to load template: ", error); });
  });
