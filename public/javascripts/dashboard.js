@@ -5,13 +5,12 @@ function executeSelectionScript(name) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const displayElement = document.getElementById("display");
 
   // add event listener to each sidebar item, that changes the dashboard display accordingly
   document.querySelectorAll(".sideBarItem").forEach((item) => {
     item.addEventListener("mousedown", function() {
-      
+
       var selection;
       switch(this.id)
       {
