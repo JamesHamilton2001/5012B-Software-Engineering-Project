@@ -55,7 +55,7 @@ app.use(auth.redirectUnauthenticated);
 
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'HealthMate App' });
+   res.redirect('/dashboard');
 });
 
 app.get('/dashboard' , (req, res) => {
