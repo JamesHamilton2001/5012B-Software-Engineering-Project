@@ -67,9 +67,9 @@ user.route('/weight')
 router.route('/newGoal')
   .post(async (req,res) => {
     
-    console.log(req.body.exerciseType)
-    console.log(req.body.endTime)
-    console.log(req.body.target)
+    console.log("Exercise Type: " + req.body.exerciseType)
+    console.log("End time: " + req.body.endTime)
+    console.log("Target: " + req.body.target)
     
     const data = await Goal.add(req.user.id, req.body.exerciseType, req.body.target, req.body.endTime );
     //res.status(201).json("goal record added");
