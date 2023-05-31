@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // insert html text into display div inner html and load script
         .then((html) => {
-          document.querySelector("#display").innerHTML = html;
+          displayElement.innerHTML = html;
           executeSelectionScript(selection);
         })
 
