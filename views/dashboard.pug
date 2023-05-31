@@ -2,23 +2,23 @@ extends layout
 include navBar
 
 block append head
-  link(rel="stylesheet" href="/stylesheets/dashboard.css")/
-  script(src="/javascripts/dashboard.js")
+  link(rel='stylesheet' href='/css/dashboard.scss')/
+  script(src="/javascripts/dashboard.js" defer)
   script(src="https://cdn.jsdelivr.net/npm/chart.js")
   +navBarLinkAndScripts()
 
 block content
   +navBar("My Dashboard")
 
-  div#dashboard
+  menu
+    li(data-display='stats') Stats
+    li(data-display='groups') Groups
+    li(data-display='goals') Goals
+    li(data-display='exercise') Exercise
+    li(data-display='meals') Meals
+    li(data-display='weight') Weight
 
-    ul#sideBar
-      li#slct_stats(class="sideBarItem") Stats 
-      li#slct_groups(class="sideBarItem") Groups
-      li#slct_goals(class="sideBarItem") Goals
-      li#slct_exercise(class="sideBarItem") Exercise
-      li#slct_meals(class="sideBarItem") Meals
-      li#slct_weight(class="sideBarItem") Weigth 
+  main
 
-    div#display
+block footer
 
