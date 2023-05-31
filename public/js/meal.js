@@ -53,6 +53,10 @@ export async function createMealForm() {
       const response = await api.post('meal', form.getData());
       // TODO: handle response better than just logging
       console.log(response);
+      // TODO: go fix the api.post() function to return a better object (e.g. include status, etc?)
+      const message = document.createElement('p');
+      message.textContent = 'Meal added successfully!';
+      form.replaceWith(message);
    });
 
    return form;
