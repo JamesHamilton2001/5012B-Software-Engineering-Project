@@ -12,7 +12,6 @@ import User from './model/User.js';
 const app = express();
 
 // view engine setup
-app.set('views', path.join('./', 'views'));
 app.set('view engine', 'pug');
 
 // Don't render all the HTML on a single line...
