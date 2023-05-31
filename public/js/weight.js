@@ -37,9 +37,10 @@ export async function createForm() {
 
    // Return data suitable for POSTing to the JSON API.
    form.getData = () => {
-      return {
-         weight: parseFloat(value.value),
-      };
+      let weight = parseFloat(value.value);
+      if(metricSelect.value == 'lb')
+         weight *= KG_PER_LB;
+      return { weight };
    };
 
    // Add a button to the form to submit the data to the API.
