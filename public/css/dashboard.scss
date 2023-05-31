@@ -48,8 +48,7 @@ body {
       }
    }
 
-   // This is also semantically questionable... Isn't this _all_ the dashboard?
-   #dashboard {
+   #display {
       grid-area: main;
       overflow-x: hidden;
       overflow-y: scroll;
