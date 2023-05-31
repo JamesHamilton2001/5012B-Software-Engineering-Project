@@ -1,3 +1,7 @@
 
 block display
-  h2 statiscal madness
+  script(src="https://cdn.jsdelivr.net/npm/chart.js")
+  script(type="module" src="/javascripts/dashboard/stats.js")
+
+  div#chart_div
+    canvas#chart_canvas
