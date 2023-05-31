@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const displayElement = document.querySelector('body > main');
 
   // add event listener to each sidebar item, that changes the dashboard display accordingly
-  document.querySelectorAll(".sideBarItem").forEach((item) => {
+  document.querySelectorAll('menu > li').forEach((item) => {
     item.addEventListener("mousedown", function() {
 
       var selection;
