@@ -10,8 +10,7 @@ const displayElement = document.querySelector('body > main');
 // add event listener to each sidebar item, that changes the dashboard display accordingly
 document.querySelectorAll('menu > li').forEach((item) => {
  var selection;
- switch(item.id)
- {
+ switch(item.id) {
    case "slct_stats":    { selection = "stats"; break; }
    case "slct_groups":   { selection = "groups"; break; }
    case "slct_goals":    { selection = "goals"; break; }
