@@ -28,7 +28,7 @@ export function createNumericInput() {
    // Instruct e.g. phones to display a numeric keypad.
    input.setAttribute('inputmode', 'decimal');
 
-   // Reasonably accurate regex to prevent multiple decimal points
+   // Reasonably accurate regex to match a decimal
    input.pattern = /^-?\d*\.?\d+$/.toString().slice(1, -1);
 
    // Attempt to prevent non-numeric input
