@@ -34,7 +34,9 @@ export function createNumericInput() {
    // Attempt to prevent non-numeric input
    input.addEventListener('input', () => {
       // TODO: see if it's possible to stop this jumping the cursor to the end of the input
-      input.value = input.value.replaceAll(/[^\d.]|(?<=\.)\./g, '');
+      input.value = input.value
+         .replaceAll(/[^\d.]|(?<=\.)\./g, '')
+         .replace(/^(-?\d*\.\d+)(\.)(\d*)/, '$1$3')
    });
 
    return input;
