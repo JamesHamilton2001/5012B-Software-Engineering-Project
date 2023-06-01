@@ -65,6 +65,10 @@ user.route('/weight')
 //help needed here
 //access current user goal data  
 router.route('/newGoal')
+  .get(async (req, res) => {
+    const data = await req.Goal.getByUserID(req.user.id)
+    res.json(data);
+  })
   .post(async (req,res) => {
     
     console.log("Exercise Type: " + req.body.exerciseType)

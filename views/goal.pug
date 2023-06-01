@@ -9,12 +9,12 @@ block head
       const cont = document.getElementById('container');
       const exercise = cont.appendChild(createFieldset());
 
-      //- const button2 = cont.appendChild(document.createElement('button'));
-      //- button2.textContent = 'Push data';
-      //- button2.addEventListener('click', () => {
-      //-    const data = exercise.getData();
-      //-    api.post('exercise', data);
-      //- });
+      const button2 = cont.appendChild(document.createElement('button'));
+      button2.textContent = 'Push data';
+      button2.addEventListener('click', () => {
+         const data = exercise.getData();
+         api.post('exercise', data);
+      });
 
       
 
@@ -50,7 +50,7 @@ block content
         if (goalOption === "weight") {
           const target = document.getElementById("weightTarget").value;
           const endTime = document.getElementById("weightEndTime").value;
-          console.log("target before post: " + { target, endTime }.)
+          console.log("target before post: " + { target, endTime })
           api.post('newGoal', { target, endTime });
         } else if (goalOption === "exercise") {
           const exerciseType = document.getElementById("exerciseType").getData();
