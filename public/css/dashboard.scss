@@ -89,8 +89,34 @@ body {
             padding: 0.2rem 1rem;
          }
 
+         // Wrapping the menu items allows for a nice gradient effect, plus better
+         // control over transitions, apparently.
+         span {
+            transition: color 1s ease;
+            transition: transform 0.5s ease;
+         }
+
          &:hover {
             background-color: rgb(158, 145, 231);
+
+            // TODO: write this up as a mixin or some shit like that, got sass after all
+            &:nth-child(3n+1) > span {
+               background-image: linear-gradient(to right, $accent-b-0, $accent-b-1);
+            }
+            &:nth-child(3n+2) > span {
+               background-image: linear-gradient(to right, $accent-b-1, $accent-b-2);
+            }
+            &:nth-child(3n+3) > span {
+               background-image: linear-gradient(to right, $accent-b-2, $accent-b-0);
+            }
+
+            span {
+               transform: scale(1.25);
+               background-clip: text;
+               -webkit-background-clip: text;
+               color: transparent;
+               text-shadow: none;
+            }
          }
       }
    }
