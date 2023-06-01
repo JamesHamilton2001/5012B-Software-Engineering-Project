@@ -1,0 +1,43 @@
+// Tokyonight example palette.
+// With these colours named generically like this, it should be pretty easy
+// to swao them out for another palette when that gets decided.
+$bg-colour-0: #16161e;
+$bg-colour-1: #1a1b27;
+$bg-colour-2: #1f2335;
+$bg-colour-3: #24283b;
+$bg-colour-4: #292e42;
+$mid-colour-0: #3b4261;
+$mid-colour-1: #414868;
+$mid-colour-2: #545c7e;
+$fg-colour-0: #737aa2;
+$fg-colour-1: #a9b1d6;
+$fg-colour-2: #c0caf5;
+$fg-alt-colour-0: #536c9e;
+$fg-alt-colour-1: #6183bb;
+$hl-colour-0: #394b70;
+$hl-colour-1: #3d59a1;
+$hl-colour-2: #7aa2f7;
+$hl-colour-3: #0db9d7;
+$hl-colour-4: #2ac3de;
+$hl-colour-5: #7dcfff;
+$hl-colour-6: #89ddff;
+$hl-colour-7: #b4f9f8;
+$vibrant-accent: #ff007c;
+$accent-a-0: #9d7cd8;
+$accent-a-1: #bb9af7;
+$accent-b-0: #ff9e64;
+$accent-b-1: #e0af68;
+$accent-b-2: #9ece6a;
+$accent-c-0: #266d6a;
+$accent-c-1: #449dab;
+$accent-c-2: #41a6b5;
+$accent-c-3: #1abc9c;
+$accent-c-4: #73daca;
+$accent-d-0: #914c54;
+$accent-d-1: #b2555b;
+$accent-d-2: #db4b4b;
+$accent-d-3: #f7768e;
+
+
+// Some gradients, which may or may not survive the palette switch
+$bg-gradient-0: linear-gradient($bg-colour-0 0%, $bg-colour-2 33%, $bg-colour-4 100%);
