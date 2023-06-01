@@ -1,7 +1,9 @@
+script(src="https://cdn.jsdelivr.net/npm/chart.js")
+script(type="module").
+  import * as statChart from "/javascripts/dashboard/stats.js";
+  const chartManager = new statChart.ChartManager();
+  console.log(chartManager);
 
 block display
-  script(src="https://cdn.jsdelivr.net/npm/chart.js")
-  script(type="module" src="/javascripts/dashboard/stats.js")
-
   div#chart_div
     canvas#chart_canvas
