@@ -16,7 +16,7 @@ export async function createForm() {
    const legend = fieldset.appendChild(document.createElement('legend'));
    legend.textContent = 'New Weight';
 
-   const value = fieldset.appendChild(ui.createNumericInput());
+   const value = fieldset.appendChild(ui.createNumericInput(20, 635));
    value.classList.add('value');
    value.required = true;
 
