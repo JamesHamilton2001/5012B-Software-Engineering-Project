@@ -2,35 +2,38 @@
 export class ChartManager
 {
   constructor() {
-    this.chart;  
+    this.chart;
     this.chartData;
     this.chartOptions;
-    this.weight;
+    this.context = document.getElementById("chart_canvas").getContext("2d");
 
-    const context = document.getElementById("chart_canvas").getContext("2d");
-
-    this.chartData = {
-      labels: ["one", "two", "tre", "for"],
-      datasets: [{
-        label:        "data",
-        data:         [1,2,3,4],
-        borderColor:  "rgb(0, 255, 0)"
-      }, {
-        label:        "atad",
-        data:         [4,-3,2,-1],
-        borderColor:  "rgb(255, 0, 0)"
-      }]
-    };
+    // no grid lines, 
     this.chartOptions = {
       scales: {
         x: { grid: { display: false } },
         y: { grid: { display: false } }
       }
     };
-    this.chart = new Chart(context, {
+    // initialise (line) chart
+    this.chart = new Chart(this.context, {
       type:    "line",
       data:    this.chartData,
       options: this.chartOptions
     });
+    this.setData("No Data Loaded to Graph...", [4,2], ["4","2"]);
   }
+
+  // comments itself
+  setData(nameStr, xDataArr, yDataArr, colourStr)
+  {
+    this.chart.data = {
+      labels: yDataArr,
+      datasets: [{
+        label: nameStr,
+        data: xDataArr,
+        borderColor: colourStr
+      }]
+    };
+    this.chart.update();
+  } 
 }
