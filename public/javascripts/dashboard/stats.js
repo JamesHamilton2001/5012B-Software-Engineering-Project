@@ -43,12 +43,12 @@ export class ChartManager
   // get user weight data specified by args, formats and graph data into chart
   async graphWeight(startDate, endDate, entryLimit, utsOffset)
   {
-    // get entries, only provide api args if argc > 0, sort ascending by uts/date
+    // get entries, only provide api args if argc > 0, reverse to make ascending by uts/date
     const entries = ((!startDate && !endDate && !entryLimit && !utsOffset)
         ? await api.get("user/weight")
         : await api.get("user/weight", { start: startDate, end: endDate, limit: entryLimit, offset: utsOffset })
-    ).sort((a,b) => a.timestamp - b.timestamp);
-
+    ).reverse();
+    
     // just weight values
     const valueArr = entries.map(entry => entry.weight);
 
