@@ -25,6 +25,9 @@ export function createTypeSelect(types, placeholder, callback) {
 export function createNumericInput(min = Number.MIN_VALUE, max = Number.MAX_VALUE, unit = '') {
    const input = document.createElement('input');
 
+   // Default to required for form validation checking & reporting
+   input.required = true;
+
    // Instruct e.g. phones to display a numeric keypad.
    input.setAttribute('inputmode', 'decimal');
 
