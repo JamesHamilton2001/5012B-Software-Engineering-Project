@@ -70,10 +70,10 @@ router.route('/newGoal')
     console.log("Exercise Type: " + req.body.exerciseType)
     console.log("End time: " + req.body.endTime)
     console.log("Target: " + req.body.target)
-    
+    //goalType = req.
     const data = await Goal.add(req.user.id, req.body.exerciseType, req.body.target, req.body.endTime );
     //res.status(201).json("goal record added");
-    res.render('goal_created')
+    res.json(data);
     return;
 })
 
