@@ -5,6 +5,7 @@ export class ChartManager
     this.chart;  
     this.chartData;
     this.chartOptions;
+    this.weight;
 
     const context = document.getElementById("chart_canvas").getContext("2d");
 

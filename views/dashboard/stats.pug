@@ -1,8 +1,24 @@
 script(src="https://cdn.jsdelivr.net/npm/chart.js")
 script(type="module").
+
   import * as statChart from "/javascripts/dashboard/stats.js";
+  import * as api from "/js/api.js";
+
+  const fetchWeightData = async () => {
+    return await api.get("user/weight", { start: 1674434000, end: 1675796400 });
+  };
+
+  const weightData = await fetchWeightData();
+  console.log(weightData);
+
   const chartManager = new statChart.ChartManager();
-  console.log(chartManager);
+
+
+
+
+
+
+
 
 block display
   div#chart_div
