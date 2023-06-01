@@ -41,3 +41,4 @@ $accent-d-3: #f7768e;
 
 // Some gradients, which may or may not survive the palette switch
 $bg-gradient-0: linear-gradient($bg-colour-0 0%, $bg-colour-2 33%, $bg-colour-4 100%);
+$bg-gradient-0-reverse: linear-gradient($bg-colour-4 0%, $bg-colour-2 66%, $bg-colour-0 100%);
