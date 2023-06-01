@@ -37,6 +37,7 @@ export function createNumericInput() {
       input.value = input.value
          .replaceAll(/[^\d.-]|(?<=\.)\./g, '')
          .replace(/^(-?\d*\.\d+)(\.)(\d*)/, '$1$3')
+         .replace(/^(.+)(-)(.*)/, '$1$3')
    });
 
    return input;
