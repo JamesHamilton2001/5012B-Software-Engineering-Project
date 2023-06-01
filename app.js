@@ -66,10 +66,6 @@ app.get('/progress' , (req, res) => {
   res.render('progress');
 });
 
-app.get('/weight' , (req, res) => {
-   res.render('weight');
-});
-
 app.get("/profile", (req, res) => {
   res.render("profile");
 });
