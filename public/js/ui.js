@@ -35,7 +35,7 @@ export function createNumericInput() {
    input.addEventListener('input', () => {
       // TODO: see if it's possible to stop this jumping the cursor to the end of the input
       input.value = input.value
-         .replaceAll(/[^\d.]|(?<=\.)\./g, '')
+         .replaceAll(/[^\d.-]|(?<=\.)\./g, '')
          .replace(/^(-?\d*\.\d+)(\.)(\d*)/, '$1$3')
    });
 
