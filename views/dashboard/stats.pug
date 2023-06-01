@@ -1,22 +1,10 @@
 script(src="https://cdn.jsdelivr.net/npm/chart.js")
 script(type="module").
-
   import * as statChart from "/javascripts/dashboard/stats.js";
-  import * as api from "/js/api.js";
-
-  // ! convert unix timestamps before
-  const fetchWeightData = async (utsStart, utsEnd) => {
-    return await api.get("user/weight", { start: utsStart, end: utsEnd });
-  };
-
-  // TODO: user entry for start and end date
-  const weightData = await fetchWeightData(1674434000, 1675796400);
-  const weightValues = weightData.map(entry => entry.weight);
-  const weightTimes = weightData.map(entry => entry.timestamp);
-  // TODO: convert unix timestamps into string dates
 
   const chartManager = new statChart.ChartManager();
-  chartManager.setData("Weight", weightValues, weightTimes, "rgb(0, 255, 0)");
+  chartManager.graphWeight();
+
 
 block display
   div#chart_div
