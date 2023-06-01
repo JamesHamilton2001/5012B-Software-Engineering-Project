@@ -4,25 +4,28 @@ export class ChartManager
 {
   constructor()
   {
+    // attributes
     this.chart;
     this.chartData;
     this.chartOptions;
     this.context = document.getElementById("chart_canvas").getContext("2d");
 
-    // no grid lines
+    // no grid lines, render x labels sideways
     this.chartOptions = {
       scales: {
-        x: { grid: { display: false } },
-        y: { grid: { display: false } }
+        x: { grid: { display: false }, ticks:{ minRotation: 90, maxRotation: 90 }, },
+        y: { grid: { display: false }, }
       }
     }
 
-    // initialise (line) chart
+    // initialise as line chart, no grid lines, x lables render sideways
     this.chart = new Chart(this.context, {
-      type:     "line",
-      fill:     "origin",
-      data:     this.chartData,
-      options:  this.chartOptions,
+      type: "line",
+      options:{ scales: {
+          x: { grid: { display: false }, ticks:{ minRotation: 90, maxRotation: 90 }, },
+          y: { grid: { display: false }, }
+        }
+      }
     });
   }
 
@@ -48,7 +51,7 @@ export class ChartManager
         ? await api.get("user/weight")
         : await api.get("user/weight", { start: startDate, end: endDate, limit: entryLimit, offset: utsOffset })
     ).reverse();
-    
+
     // just weight values
     const valueArr = entries.map(entry => entry.weight);
 
@@ -63,5 +66,6 @@ export class ChartManager
 
     // set data into graph and update
     this.setData("Weight", dateStrArr, valueArr, "rgb(0, 255, 0)");
+    this.chart
   }
 }
