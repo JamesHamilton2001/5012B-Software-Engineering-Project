@@ -6,11 +6,6 @@ import * as ui from './ui.js';
 export const types = await api.get('exercise/types');
 
 
-export async function createSelect() {
-   const typeSelect = ui.createTypeSelect(types, 'Exercise type...');
-}
-
-
 // Constructs a standard widget thing for entering exercise data.
 export function createFieldset(cb) {
    const fieldset = document.createElement('fieldset');
