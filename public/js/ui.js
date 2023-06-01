@@ -22,7 +22,7 @@ export function createTypeSelect(types, placeholder, callback) {
 
 
 // Create an inout element which only accepts numeric input.
-export function createNumericInput() {
+export function createNumericInput(min = Number.MIN_VALUE, max = Number.MAX_VALUE, unit = '') {
    const input = document.createElement('input');
 
    // Instruct e.g. phones to display a numeric keypad.
@@ -39,6 +39,26 @@ export function createNumericInput() {
          .replace(/^(-?\d*\.\d+)(\.)(\d*)/, '$1$3')
          .replace(/^(.+)(-)(.*)/, '$1$3')
    });
+
+   // Validate input against min/max values, split out for multiple event types
+   function validateMinMax() {
+      const v = input.getData();;
+      if(v > max) {
+         input.setCustomValidity(`Value must be ${max}${unit} or less`);
+         input.reportValidity();
+      }
+      if(v < min) {
+         input.setCustomValidity(`Value must be ${min}${unit} or more`);
+         input.reportValidity();
+      }
+   }
+
+   // Validate input against min/max values
+   input.addEventListener('change', validateMinMax);
+   input.addEventListener('focusout', validateMinMax);
+
+   // Overridable function to get the input value, enabling e.g. unit conversion
+   input.getData = () => parseFloat(input.value);
 
    return input;
 };
