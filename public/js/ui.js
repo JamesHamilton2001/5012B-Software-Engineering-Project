@@ -28,7 +28,7 @@ export function createNumericInput() {
    // Instruct e.g. phones to display a numeric keypad.
    input.setAttribute('inputmode', 'decimal');
 
-   input.pattern = /^-?\d*\.?\d+$/;
+   input.pattern = /^-?\d*\.?\d+$/.toString().slice(1, -1);
 
    // TODO: setup built-in html validation
 
