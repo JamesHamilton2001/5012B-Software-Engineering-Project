@@ -1,7 +1,6 @@
 import * as api from './api.js';
 import * as ui from './ui.js';
 import * as exercise from './exercise.js';
-//import Goal from '../../model/Goal.js';
 
 export const goals = await api.get('/goal');
 
@@ -12,8 +11,6 @@ export async function createWeightGoalForm() {
   const form = document.createElement("form");
   //set form attributes
   form.id = 'weightGoal';
-  // form.setAttribute("action", "/api/goal");
-  // form.setAttribute("method", "post");
 
   const fieldset = form.appendChild(document.createElement('fieldset'));
 
@@ -64,8 +61,6 @@ export async function createExerciseGoalForm() {
   //create 2 forms, one for weightGoal, one for exerciseGoal
   const form = document.createElement("form");
   form.id = 'exerciseGoal';
-  // form.setAttribute("action", "/api/goal");
-  // form.setAttribute("method", "post");
 
   const fieldset = form.appendChild(document.createElement('fieldset'));
 
@@ -113,8 +108,6 @@ export async function createExerciseGoalForm() {
 
 export async function displayGoals() {
   const div = document.createElement("div");
-
-  
 
   goals.forEach((goal) => {
     console.log(goals.target)
