@@ -55,7 +55,7 @@ export async function createWeightGoalForm() {
       form.replaceWith(message);
    });
 
-  return fieldset;
+  return form;
   
 
 }
@@ -79,9 +79,33 @@ export async function createExerciseGoalForm() {
   endTime.id = 'exerciseEndTime';
   endTime.type = 'date'
   endTime.name = 'endTime'
-  
 
-  return fieldset;
+  form.getData = () => {
+    return {
+       target: target.getData(),
+       endTime: endTime.value,
+    };
+ };
+  
+  const submit = fieldset.appendChild(document.createElement('input'))
+  submit.id = 'newExerciseGoal'
+  submit.type = 'submit'
+  submit.value = 'Create Goal'
+
+  submit.addEventListener('click', async () => {
+    // Disable changes to prevent e.g. multiple submissions
+      fieldset.disabled = true;
+      // Send the data to the API
+      const response = await api.post('newGoal', form.getData());
+      // TODO: handle response better than just logging
+      console.log(response);
+      // TODO: go fix the api.post() function to return a better object (e.g. include status, etc?)
+      const message = document.createElement('p');
+      message.textContent = 'Goal added successfully!';
+      form.replaceWith(message);
+   });
+
+  return form;
   
 
 }
