@@ -24,11 +24,11 @@ export default class Goal {
 
    // Main factory method.
    static async getByUserID(user_id) {
-      const sql = 'SELECT * FROM goal WHERE user_id = :user_id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit OFFSET :offset';
+      const sql = 'SELECT * FROM goal WHERE user_id = :user_id AND end_time BETWEEN :start AND :end ORDER BY end_time DESC LIMIT :limit OFFSET :offset';
       const rows = await db.all(sql, {
          ':user_id': user_id,
          ':start': start || 0,
-         ':end': end || Math.floor(Date.now() / 1000),
+         ':end': end || 9223372036854775807,
          ':limit': limit || -1,
          ':offset': offset || 0,
       });
@@ -39,12 +39,12 @@ export default class Goal {
 
 
    static async getByTypeAndUserID(user_id) {
-      const sql = 'SELECT * FROM goal WHERE user_id = :user_id AND exercise_type_id = :exercise_type_id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit OFFSET :offset';
+      const sql = 'SELECT * FROM goal WHERE user_id = :user_id AND exercise_type_id = :exercise_type_id AND end_time BETWEEN :start AND :end ORDER BY end_time DESC LIMIT :limit OFFSET :offset';
       const rows = await db.all(sql, {
          ':user_id': user_id,
          ':exercise_type_id': exercise_type_id,
          ':start': start || 0,
-         ':end': end || Math.floor(Date.now() / 1000),
+         ':end': end || 9223372036854775807,
          ':limit': limit || -1,
          ':offset': offset || 0,
       });
