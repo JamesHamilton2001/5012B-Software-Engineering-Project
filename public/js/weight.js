@@ -35,6 +35,13 @@ export async function createForm() {
          value.value = (value.value * LB_PER_KG).toFixed(2);
    });
 
+   // Block return key.
+   // TODO: route to submit.
+   form.addEventListener('keypress', e => {
+      if(e.key == 'Enter')
+         e.preventDefault();
+   });
+
    // Return data suitable for POSTing to the JSON API.
    form.getData = () => {
       let weight = parseFloat(value.value);
