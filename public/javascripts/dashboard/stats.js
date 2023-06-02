@@ -1,5 +1,15 @@
 import * as api from "/js/api.js";
 
+function getDateStrings(entries) {
+  return entries.map(entry => {
+    const date = new Date(entry.timestamp * 1000);
+    const dd = String(date.getDate()).padStart(2, "0");
+    const mm = String(date.getMonth()+1).padStart(2, "0");
+    const yy = String(date.getYear()).slice(-2);
+    return `${dd}/${mm}/${yy}`;
+  });
+}
+
 export class ChartManager
 {
   constructor()
@@ -30,15 +40,16 @@ export class ChartManager
   }
 
   // set chart information and data, update chart display
-  setData(nameStr, xDataArr, yDataArr, lineColourStr, fillStr)
+  setData(nameStr, xDataArr, yDataArr, lineColourStr)
   {
+    this.chart.data = {};
     this.chart.data = {
       labels: xDataArr,
       datasets: [{
         label:        nameStr,
         data:         yDataArr,
         borderColor:  lineColourStr,
-        fill:         fillStr
+        fill:         "origin"
       }]
     };
     this.chart.update();
@@ -47,25 +58,34 @@ export class ChartManager
   // get user weight data specified by args, formats and graph data into chart
   async graphWeight(startDate, endDate, entryLimit, utsOffset)
   {
-    // get entries, only provide api args if argc > 0, reverse to make ascending by uts/date
+    // get entries according to args, reverse order
     const entries = ((!startDate && !endDate && !entryLimit && !utsOffset)
         ? await api.get("user/weight")
         : await api.get("user/weight", { start: startDate, end: endDate, limit: entryLimit, offset: utsOffset })
     ).reverse();
 
-    // just weight values
+    // get values and dates
     const valueArr = entries.map(entry => entry.weight);
-
-    // just UTSs as dd/mm/yy strings
-    const dateStrArr = entries.map(entry => {
-      const date = new Date(entry.timestamp * 1000);
-      const dd = String(date.getDate()).padStart(2, "0");
-      const mm = String(date.getMonth()+1).padStart(2, "0");
-      const yy = String(date.getYear()).slice(-2);
-      return `${dd}/${mm}/${yy}`;
-    });
+    const dateStrArr = getDateStrings(entries);
 
     // set data into graph and update
-    this.setData("Weight", dateStrArr, valueArr, "rgb(0, 255, 0)", "origin");
+    this.setData("Weight", dateStrArr, valueArr, "rgb(0, 255, 0)");
+  }
+
+  async graphExercise(type_id, startDate, endDate, entryLimit, utsOffset)
+  {
+    // get entries according to args, reverse order
+    const entries = ((startDate===undefined && endDate===undefined && entryLimit===undefined && utsOffset===undefined)
+      ? await api.get("exercise", { type: 1 })
+      : await api.get("exercise", { type: type_id, start: startDate, end: endDate, limit: entryLimit, offset: utsOffset })
+    ).reverse();
+    
+    // get values and dates
+    const valueArr = entries.map(entry => entry.value);
+    const dateStrArr = getDateStrings(entries);
+    // const dateStrArr = entries.map(entry => new Date(entry.timestamp * 1000));
+
+    // set data into graph and update
+    this.setData(entries[0].type, dateStrArr, valueArr, "rgb(0, 255, 0)");
   }
 }

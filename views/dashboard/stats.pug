@@ -1,10 +1,10 @@
 script(src="https://cdn.jsdelivr.net/npm/chart.js")
+script(src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns")
 script(type="module").
   import * as statChart from "/javascripts/dashboard/stats.js";
 
   const chartManager = new statChart.ChartManager();
-  chartManager.graphWeight();
-
+  chartManager.graphExercise();
 
 block display
   div#chart_div
