@@ -4,7 +4,9 @@ script(type='module').
   import * as exercise from './js/exercise.js';
 
   const slot = document.getElementById('formContainer');
-  
+  const goalsContainer = document.getElementById('goalsContainer');
+  goalsContainer.appendChild(await goal.displayGoals());
+
   const displayGoals = slot.appendChild(await goal.displayGoals());
   const weightForm = slot.appendChild(await goal.createWeightGoalForm());
   const exerciseForm = slot.appendChild(await goal.createExerciseGoalForm());
@@ -12,3 +14,4 @@ script(type='module').
 block display 
   h2 Goals
   slot#formContainer
+  div#goalsContainer

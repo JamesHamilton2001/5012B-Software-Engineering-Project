@@ -85,14 +85,6 @@ app.get('/exercise' , (req, res) => {
    });
 });
 
-app.get('/goal', (req, res) => {
-  res.render('goal');
-})
-
-app.get('/goal_created', (req,res) => {
-  res.render('goal_created');
-})
-
 
 
 

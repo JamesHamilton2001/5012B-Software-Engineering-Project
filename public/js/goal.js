@@ -1,8 +1,9 @@
 import * as api from './api.js';
 import * as ui from './ui.js';
 import * as exercise from './exercise.js';
+//import Goal from '../../model/Goal.js';
 
-export const types = await api.get('/goal');
+export const goals = await api.get('/goal');
 
 //create 2 forms, one for weightGoal, one for exerciseGoal
 export async function createWeightGoalForm() {
@@ -109,10 +110,15 @@ export async function createExerciseGoalForm() {
 
 }
 
+
 export async function displayGoals() {
-  const viewGoal = document.createElement('div');
-  const goal = await api.get('goal');
-  const display = document.createElement('p');
-  display.textContent = goal.value;
-  return viewGoal;
+  const div = document.createElement("div");
+
+  
+
+  goals.forEach((goal) => {
+    console.log(goals.target)
+  });
+
+  return div;
 }
