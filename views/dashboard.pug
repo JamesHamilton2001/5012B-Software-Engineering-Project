@@ -3,6 +3,7 @@ include navBar
 
 block append head
   link(rel='stylesheet' href='/css/dashboard.scss')/
+  link(rel='stylesheet' href='/css/exercise.scss')
   script(src="/javascripts/dashboard.js" defer)
   script(src="https://cdn.jsdelivr.net/npm/chart.js")
   +navBarLinkAndScripts()
@@ -11,12 +12,18 @@ block content
   +navBar("My Dashboard")
 
   menu
-    li(data-display='stats') Stats
-    li(data-display='groups') Groups
-    li(data-display='goals') Goals
-    li(data-display='exercise') Exercise
-    li(data-display='meal') Meals
-    li(data-display='weight') Weight
+    li(data-display='stats')
+       span Stats
+    li(data-display='groups')
+       span Groups
+    li(data-display='goals')
+       span Goals
+    li(data-display='exercise')
+       span Exercise
+    li(data-display='meal')
+       span Meals
+    li(data-display='weight')
+       span Weight
 
   main
 
