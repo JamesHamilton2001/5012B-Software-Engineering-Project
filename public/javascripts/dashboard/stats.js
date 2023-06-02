@@ -67,6 +67,5 @@ export class ChartManager
 
     // set data into graph and update
     this.setData("Weight", dateStrArr, valueArr, "rgb(0, 255, 0)", "origin");
-    this.chart
   }
 }
