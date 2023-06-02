@@ -10,7 +10,7 @@ export default class User {
    // Validation regexes. These are used internally for backend validation, and also
    // can be supplied to the frontend via the API for DRYness.
    static USERNAME_REGEX = /^\w{4,16}$/;
-   static PASSWORD_REGEX = /^.{3,72}$/;
+   static PASSWORD_REGEX = /^.{20,72}$/;
 
    constructor(data) {
       // JCopy/clone the properties from the given object to the new User object.
@@ -28,7 +28,7 @@ export default class User {
       return Exercise.getByUserID(this.id, start, end, limit, offset);
    }
    //Returns all goals with the users id
-   async getGoal(){
+   async getGoals(){
     return Goal.getByUserID(this.id);
    }
 

@@ -66,7 +66,7 @@ user.route('/weight')
 //access current user goal data  
 router.route('/goal')
   .get(async (req, res) => {
-    const data = await req.user.getGoal(user.id)
+    const data = await req.user.getGoals(user.id)
     res.json(data);
   })
   .post(async (req,res) => {

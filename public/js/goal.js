@@ -11,8 +11,8 @@ export async function createWeightGoalForm() {
   const form = document.createElement("form");
   //set form attributes
   form.id = 'weightGoal';
-  form.setAttribute("action", "/api/goal");
-  form.setAttribute("method", "post");
+  // form.setAttribute("action", "/api/goal");
+  // form.setAttribute("method", "post");
 
   const fieldset = form.appendChild(document.createElement('fieldset'));
 
@@ -63,8 +63,8 @@ export async function createExerciseGoalForm() {
   //create 2 forms, one for weightGoal, one for exerciseGoal
   const form = document.createElement("form");
   form.id = 'exerciseGoal';
-  form.setAttribute("action", "/api/goal");
-  form.setAttribute("method", "post");
+  // form.setAttribute("action", "/api/goal");
+  // form.setAttribute("method", "post");
 
   const fieldset = form.appendChild(document.createElement('fieldset'));
 
