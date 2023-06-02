@@ -23,9 +23,12 @@ form {
    margin: auto;
 
    fieldset {
+      legend { margin-top: -10px; }
       display: flex;
       flex-direction: column;
       gap: 0.3rem;
+      border: 2px solid;
+      border-image: linear-gradient(135deg, $accent-b-0, $accent-b-2) 1;
    }
 
    #username, #password {
@@ -36,7 +39,7 @@ form {
       text-shadow: 0.1rem 0.1rem 0.2rem black;
       border-radius: 0.2rem;
       border: 2px solid #414868;
-      box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
+      //box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
       padding: 7px;
    }
 
