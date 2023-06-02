@@ -12,6 +12,7 @@ export async function createForm() {
    const form = document.createElement('form');
 
    const fieldset = form.appendChild(document.createElement('fieldset'));
+   
 
    const legend = fieldset.appendChild(document.createElement('legend'));
    legend.textContent = 'New Weight';
