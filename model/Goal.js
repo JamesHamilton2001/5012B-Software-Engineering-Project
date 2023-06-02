@@ -1,4 +1,3 @@
-import * as bcrypt from 'bcrypt';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
@@ -9,10 +8,8 @@ export default class Goal {
 
       // TODO: load/init other shit?
    }
-   //add method that creates a new goal, taking
-   //user_id, target, exercise_type_id, end_time
-   //from goal form
-   //!needs testing!
+   
+   //Method adds goal to the database given (user_id,  exercise_type_id, target, end_time)
    static async add(user_id,  exercise_type_id, target, end_time){
     
     const sql = 'INSERT INTO goal(user_id, exercise_type_id, target, start_time, end_time) VALUES(:user_id, :exercise_type_id, :target, :start_time, :end_time)';
@@ -33,7 +30,6 @@ export default class Goal {
       const rows = await db.all(sql, {
         ':user_id': user_id
       })
-      console.log(user_id)
       if(rows === undefined)
          return null;
       return rows.map(x => new Goal(x));

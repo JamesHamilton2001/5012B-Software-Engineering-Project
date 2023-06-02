@@ -2,7 +2,7 @@ import * as api from './api.js';
 import * as ui from './ui.js';
 import * as exercise from './exercise.js';
 
-export const types = await api.get('/newGoal');
+export const types = await api.get('/goal');
 
 //create 2 forms, one for weightGoal, one for exerciseGoal
 export async function createWeightGoalForm() {
@@ -11,7 +11,7 @@ export async function createWeightGoalForm() {
   const form = document.createElement("form");
   //set form attributes
   form.id = 'weightGoal';
-  form.setAttribute("action", "/api/newGoal");
+  form.setAttribute("action", "/api/goal");
   form.setAttribute("method", "post");
 
   const fieldset = form.appendChild(document.createElement('fieldset'));
@@ -44,9 +44,8 @@ export async function createWeightGoalForm() {
   submit.addEventListener('click', async () => {
     // Disable changes to prevent e.g. multiple submissions
       fieldset.disabled = true;
-
       // Send the data to the API
-      const response = await api.post('newGoal', form.getData());
+      const response = await api.post('goal', form.getData());
       // TODO: handle response better than just logging
       console.log(response);
       // TODO: go fix the api.post() function to return a better object (e.g. include status, etc?)
@@ -64,7 +63,7 @@ export async function createExerciseGoalForm() {
   //create 2 forms, one for weightGoal, one for exerciseGoal
   const form = document.createElement("form");
   form.id = 'exerciseGoal';
-  form.setAttribute("action", "/api/newGoal");
+  form.setAttribute("action", "/api/goal");
   form.setAttribute("method", "post");
 
   const fieldset = form.appendChild(document.createElement('fieldset'));
@@ -96,7 +95,7 @@ export async function createExerciseGoalForm() {
     // Disable changes to prevent e.g. multiple submissions
       fieldset.disabled = true;
       // Send the data to the API
-      const response = await api.post('newGoal', form.getData());
+      const response = await api.post('goal', form.getData());
       // TODO: handle response better than just logging
       console.log(response);
       // TODO: go fix the api.post() function to return a better object (e.g. include status, etc?)
@@ -108,4 +107,12 @@ export async function createExerciseGoalForm() {
   return form;
   
 
+}
+
+export async function displayGoals() {
+  const viewGoal = document.createElement('div');
+  const goal = await api.get('goal');
+  const display = document.createElement('p');
+  display.textContent = goal.value;
+  return viewGoal;
 }

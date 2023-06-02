@@ -3,9 +3,6 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import sass from 'sass';
-import bodyParser from 'body-parser';
-
-import 'chart.js';
 
 import api from './api.js';
 import auth from './auth.js';
@@ -89,7 +86,7 @@ app.get('/exercise' , (req, res) => {
 });
 
 app.get('/goal', (req, res) => {
-  res.render('goal' ,{title: 'New Goal'});
+  res.render('goal');
 })
 
 app.get('/goal_created', (req,res) => {
