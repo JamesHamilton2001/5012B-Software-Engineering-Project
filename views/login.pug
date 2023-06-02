@@ -2,21 +2,30 @@ extends layout
 
 block content
 
-  h1=title
 
+  
+  link(rel='stylesheet' href='/css/login.scss')
+
+
+  h1=title
+  
+
+            
   .panel
-    a.button(href='/auth/login') Log in
-    a.button(href='/auth/signup') Sign up
+   
     #Login
+    h3 #{error}
       form(method='post')
-        //- TODO: determine best tag for this possible error message
-        h2 #{error}
 
         input#username(type='text' name='username' placeholder='Username' value=`${username}` required)
 
         input#password(type='password' name='password' placeholder='Password' required)
 
-        input(type='submit' value='Log In')
+        input(type='submit' value=' Log In')
+
+          //- TODO: determine best tag for this possible error message
+        a.button(href='/auth/signup') Click here to Sign up
 
   script(src="/javascripts/tabManager.js")
+  
 

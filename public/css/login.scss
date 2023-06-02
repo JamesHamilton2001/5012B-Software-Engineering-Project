@@ -1,0 +1,130 @@
+@use 'tokyonight' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+html {
+    font-size: 1.6em;
+    background-color: #1a1b26;
+    background-image: linear-gradient(#1a1b26, #1f2335);
+    background-attachment: fixed;
+    color: #c0caf5;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+
+h1 {
+  background-image: $bg-gradient-0;
+  color: $fg-colour-2;
+  text-shadow: 0.05rem 0.05rem 0.1rem $accent-a-0;
+
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-image: linear-gradient(to right, $accent-b-0, $accent-b-1, $accent-b-2) 1;
+}
+
+h3 {
+ font-family: inherit;
+ text-shadow: 0.1rem 0.1rem 0.2rem black;
+ text-align: center;
+ padding-bottom: 100px;
+ margin-bottom: 100px;
+ font-size: 60%;
+
+}
+
+
+.panel {
+  background-color: #2a2d52;
+  background-image: linear-gradient(180deg, $mid-colour-0, $mid-colour-1, $mid-colour-0);
+  background-attachment: fixed;
+  color: #c0caf5;
+  font-family: 'Montserrat Alternates', sans-serif;
+  text-shadow: 0.1rem 0.1rem 0.2rem black;
+  text-align: center;
+//  border: 0.1rem solid #c0caf5;
+ // border-radius: 0.5rem;
+  padding: 1.8rem;
+  outline: none;
+  box-shadow: none;
+}
+
+body {
+  background-image: linear-gradient(180deg, $mid-colour-0, $mid-colour-1, $mid-colour-0);
+  grid-area: main;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.button{
+  color: inherit;
+  font-family: inherit;
+  background-color: #24283b;
+  background-image: linear-gradient(#292e42, #24283b);
+  text-shadow: 0.1rem 0.1rem 0.2rem black;
+  border-radius: 0.2rem;
+  border: 2px solid #414868;
+  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
+  position: fixed;
+  flex-direction: row;
+  margin-left: 160px;
+
+  margin-top: 101px;
+  padding: 8.8px 25px 8.8px 25px;
+}
+
+form{
+  color: inherit;
+  font-family: inherit;
+  background-color: #24283b;
+  background-image: linear-gradient(#292e42, #24283b);
+  text-shadow: 0.1rem 0.1rem 0.2rem black;
+  border-radius: 0.2rem;
+  border: 2px solid #414868;
+  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width:400px;
+  padding: 5px 0px 10px 5px;
+}
+
+
+
+input[type="submit"] {
+  color: inherit;
+  font-family: inherit;
+  background-color: #24283b;
+  background-image: linear-gradient(#292e42, #24283b);
+  text-shadow: 0.1rem 0.1rem 0.2rem black;
+  border-radius: 0.2rem;
+  border: 2px solid #414868;
+  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
+  display: flex;
+  flex-direction: column;
+  margin: right;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  margin-right: 290px;
+  padding: 10px 15px 10px 15px;
+}
+
+input{
+  color: inherit;
+  font-family: inherit;
+  background-color: #24283b;
+  background-image: linear-gradient(#292e42, #24283b);
+  text-shadow: 0.1rem 0.1rem 0.2rem black;
+  border-radius: 0.2rem;
+  border: 2px solid #414868;
+  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;;
+  // margin: right;
+  // margin-right: 10px;
+   margin-top: 7px;
+  padding: 7px
+
+}
+
