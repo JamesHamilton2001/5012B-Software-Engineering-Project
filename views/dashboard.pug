@@ -3,13 +3,15 @@ include navBar
 
 block append head
   link(rel='stylesheet' href='/css/dashboard.scss')/
-  link(rel='stylesheet' href='/css/exercise.scss')
+  link(rel='stylesheet' href='/css/exercise.scss')/
+  link(rel='stylesheet' href='/css/meal.scss')/
+  link(rel='stylesheet' href='/css/weight.scss')/
   script(src="/javascripts/dashboard.js" defer)
   script(src="https://cdn.jsdelivr.net/npm/chart.js")
   +navBarLinkAndScripts()
 
 block content
-  +navBar("My Dashboard")
+  +navBar("Welcome to Healthmate ")
 
   menu
     li(data-display='stats')
@@ -26,6 +28,7 @@ block content
        span Weight
 
   main
+
 
 block append footer
    a(href='/auth/logout') Logout
