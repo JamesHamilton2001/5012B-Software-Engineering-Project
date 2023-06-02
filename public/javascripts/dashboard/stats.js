@@ -86,9 +86,9 @@ export class ChartManager
   // get user exercise sessions specified by args, formats and graph data into chart
   async graphExercise(type_id, startDate, endDate, entryLimit, utsOffset)
   {
-    // get entries according to args
-      // undefined type_id handled downstream, default type_id to 1, needed to fetch users data
-    const entries = await getEntries("exercise", startDate, endDate, entryLimit, utsOffset, { type: 1 });
+    if (type_id === undefined) type_id = 1;
+    // get entries according to args default type_id to 1, needed to fetch users data
+    const entries = await getEntries("exercise", startDate, endDate, entryLimit, utsOffset, { type: type_id });
 
     // get values and dates
     const valueArr = entries.map(entry => entry.value);
@@ -115,9 +115,17 @@ export class ChartManager
     this.setData("Calorie Intake", dateStrArr, valueArr, "rgb(0, 255, 0)");
   }
   
-  async graphGoalProgress(startDate, endDate, entryLimit, utsOffset)
+  async graphGoalProgress(goal_id)
   {
-
+    // const entries = await getEntries("user/goals");
+    const entry = await api.get("user/goal", { goal_id: goal_id });
+    console.log(entry);
+    
+    const valueArr = await api.get("exercise", {
+      type: entry.exercise_type_id,
+      startDate: entry.startTime,
+      endDate: entry.endTime,
+    });
+    console.log(valueArr);
   }
 }
-
