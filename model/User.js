@@ -3,6 +3,7 @@ import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
 import Exercise from './Exercise.js';
+import Goal from './Goal.js';
 
 
 export default class User {
@@ -25,6 +26,10 @@ export default class User {
    // Returns a collection of the user's exercise data.
    async getExercise(start, end, limit, offset) {
       return Exercise.getByUserID(this.id, start, end, limit, offset);
+   }
+   //Returns all goals with the users id
+   async getGoal(){
+    return Goal.getByUserID(this.id);
    }
 
 

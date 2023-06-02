@@ -2,6 +2,7 @@ import * as bcrypt from 'bcrypt';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
+
 export default class Goal {
   constructor(data){
     Object.assign(this, data);
@@ -28,9 +29,14 @@ export default class Goal {
    // Main factory method.
   
    static async getByUserID(user_id) {
-      const rows = await db.all('SELECT * FROM goal WHERE user_id = ?', user_id);
+      const sql = 'SELECT * FROM goal WHERE user_id = :user_id';
+      const rows = await db.all(sql, {
+        ':user_id': user_id
+      })
+      console.log(user_id)
       if(rows === undefined)
          return null;
       return rows.map(x => new Goal(x));
+
    }
 }
