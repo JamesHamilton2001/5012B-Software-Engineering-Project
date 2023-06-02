@@ -62,8 +62,7 @@ user.route('/weight')
       res.status(201).json("weight record added");
    })
 
-//help needed here
-//access current user goal data  
+// access current user goal data
 router.route('/goal')
   .get(async (req, res) => {
     const data = await req.user.getGoals(user.id)

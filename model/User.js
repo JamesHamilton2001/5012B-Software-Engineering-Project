@@ -27,9 +27,11 @@ export default class User {
    async getExercise(start, end, limit, offset) {
       return Exercise.getByUserID(this.id, start, end, limit, offset);
    }
-   //Returns all goals with the users id
-   async getGoals(){
-    return Goal.getByUserID(this.id);
+
+
+   // Returns all goals for the current user
+   async getGoals() {
+      return Goal.getByUserID(this.id);
    }
 
 

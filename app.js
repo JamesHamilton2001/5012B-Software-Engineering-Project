@@ -86,7 +86,5 @@ app.get('/exercise' , (req, res) => {
 });
 
 
-
-
 export { app as app };
 
