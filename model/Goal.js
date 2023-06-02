@@ -23,7 +23,7 @@ export default class Goal {
 
 
    // Main factory method.
-   static async getByUserID(user_id) {
+   static async getByUserID(user_id, start, end, limit, offset) {
       const sql = 'SELECT * FROM goal WHERE user_id = :user_id AND end_time BETWEEN :start AND :end ORDER BY end_time DESC LIMIT :limit OFFSET :offset';
       const rows = await db.all(sql, {
          ':user_id': user_id,

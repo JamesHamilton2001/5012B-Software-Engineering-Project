@@ -4,8 +4,6 @@ script(type='module').
   import * as exercise from './js/exercise.js';
 
   const slot = document.getElementById('formContainer');
-  const goalsContainer = document.getElementById('goalsContainer');
-  goalsContainer.appendChild(await goal.displayGoals());
 
   const displayGoals = slot.appendChild(await goal.displayGoals());
   const weightForm = slot.appendChild(await goal.createWeightGoalForm());
