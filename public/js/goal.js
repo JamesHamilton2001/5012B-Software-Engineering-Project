@@ -6,17 +6,13 @@ export const goals = await api.get('/goal');
 
 //create 2 forms, one for weightGoal, one for exerciseGoal
 export async function createWeightGoalForm() {
-
-  //create form
   const form = document.createElement("form");
-  //set form attributes
   form.id = 'weightGoal';
 
   const fieldset = form.appendChild(document.createElement('fieldset'));
 
   const legend = fieldset.appendChild(document.createElement('legend'));
   legend.textContent = 'New Weight Goal';
-
 
   const target = fieldset.appendChild(ui.createNumericInput());
   target.id = 'weightTarget';
@@ -38,7 +34,6 @@ export async function createWeightGoalForm() {
   submit.type = 'submit'
   submit.value = 'Create Goal'
 
-
   submit.addEventListener('click', async () => {
     // Disable changes to prevent e.g. multiple submissions
       fieldset.disabled = true;
@@ -53,9 +48,8 @@ export async function createWeightGoalForm() {
    });
 
   return form;
-  
-
 }
+
 
 export async function createExerciseGoalForm() {
   //create 2 forms, one for weightGoal, one for exerciseGoal
@@ -89,20 +83,18 @@ export async function createExerciseGoalForm() {
 
   submit.addEventListener('click', async () => {
     // Disable changes to prevent e.g. multiple submissions
-      fieldset.disabled = true;
-      // Send the data to the API
-      const response = await api.post('goal', form.getData());
-      // TODO: handle response better than just logging
-      console.log(response);
-      // TODO: go fix the api.post() function to return a better object (e.g. include status, etc?)
-      const message = document.createElement('p');
-      message.textContent = 'Goal added successfully!';
-      form.replaceWith(message);
-   });
+    fieldset.disabled = true;
+    // Send the data to the API
+    const response = await api.post('goal', form.getData());
+    // TODO: handle response better than just logging
+    console.log(response);
+    // TODO: go fix the api.post() function to return a better object (e.g. include status, etc?)
+    const message = document.createElement('p');
+    message.textContent = 'Goal added successfully!';
+    form.replaceWith(message);
+  });
 
   return form;
-  
-
 }
 
 
