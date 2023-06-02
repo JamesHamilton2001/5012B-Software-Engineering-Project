@@ -1,5 +1,4 @@
 
-import * as api from "/js/api.js";
 const displayElement = document.querySelector('body > main');
 
 // add event listener to each sidebar item, that changes the dashboard display accordingly
@@ -18,15 +17,3 @@ document.querySelectorAll('menu > li').forEach((item) => {
       .catch(error => console.error("Unable to load template: ", error));
  });
 });
-
-async function fetchData() {
-  try {
-    const Userdata = await api.get("user/");
-    //const Userexercise = await api.get("user/exercise");
-    //console.log(Userexercise);
-    console.log(Userdata);
-    return String (Userdata.username); // Process the Userdata or assign it to a variable
-  } catch (error) {
-    console.error(error); // Handle any errors that occur during the request
-  }}
-document.getElementById("User").textContent += await fetchData() + "!";
