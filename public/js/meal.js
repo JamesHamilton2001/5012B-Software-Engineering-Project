@@ -71,16 +71,20 @@ export async function createMealForm() {
 async function createItemFieldset() {
    const fieldset = document.createElement('fieldset');
    fieldset.classList.add('mealItem');
+   fieldset.id = 'mealFeildSet';
 
    const legend = fieldset.appendChild(document.createElement('legend'));
    legend.textContent = 'Food item';
 
    const type = fieldset.appendChild(ui.createTypeSelect(await api.get('meal/foodTypes'), 'Food type...'));
    type.classList.add('type');
+   type.id = 'type';
+
 
    const quantity = fieldset.appendChild(ui.createNumericInput());
    quantity.classList.add('quantity');
    quantity.required = true;
+   quantity.id = 'quantity';
 
    const unit = fieldset.appendChild(document.createElement('span'));
    unit.classList.add('unit');
@@ -90,6 +94,7 @@ async function createItemFieldset() {
    remove.type = 'button';
    remove.classList.add('remove');
    remove.textContent = 'Remove';
+   remove.id = 'removeBut'
    remove.addEventListener('click', () => fieldset.remove(), {once: true});
 
    // Return data suitable for POSTing to the JSON API.
