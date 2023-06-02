@@ -1,3 +1,4 @@
+@use "sass:color";
 @use 'tokyonight' as *;
 
 
@@ -10,26 +11,28 @@ h3 {
 
 
 form {
-  color: inherit;
-  font-family: inherit;
-  background-color: #24283b;
-  background-image: linear-gradient(#292e42, #24283b);
-  text-shadow: 0.1rem 0.1rem 0.2rem black;
-  border-radius: 0.2rem;
-  border: 2px solid #414868;
-  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width:400px;
-  padding: 0.8rem 0.5rem;
-  gap: 0.3rem;
+   font-family: inherit;
+   background-color: #24283b;
+   background-image: linear-gradient(#292e42, #24283b);
+   text-shadow: 0.1rem 0.1rem 0.2rem black;
+   border-radius: 0.2rem;
+   border: 2px solid #414868;
+   box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
+   width:400px;
+   padding: 0.8rem 0.5rem;
+   margin: auto;
+
+   fieldset {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+   }
 
    #username, #password {
       color: inherit;
       font-family: inherit;
       background-color: #24283b;
-      background-image: linear-gradient(#292e42, #24283b);
+      background-image: linear-gradient(#292e42, color.scale(#292e42, $lightness: 10%));
       text-shadow: 0.1rem 0.1rem 0.2rem black;
       border-radius: 0.2rem;
       border: 2px solid #414868;
