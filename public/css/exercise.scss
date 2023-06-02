@@ -48,13 +48,44 @@ h2 {
   font-family: inherit;
   text-shadow: 0.1rem 0.1rem 0.2rem black;
   text-align: center;
+  display: none;
 }
 
+legend{
+    font-family: inherit;
+    text-shadow: 0.1rem 0.1rem 0.2rem black;
+    text-align: center;
+}
 
 $glow: #6183bb;
 
 $input-bg-colour: #292e42;
 $input-bg-gradient: linear-gradient($input-bg-colour, color.scale($input-bg-colour, $lightness: 10%));
+
+
+
+#formContainer > form{
+  background-clip: content-box;
+  background-color: #24283b;
+  background-image: linear-gradient(#292e42, #24283b);
+  > fieldset{
+    border: 2px solid;
+    border-image: linear-gradient(135deg, $accent-b-0, $accent-b-2) 1;
+    margin: 10px;
+    margin-top: 0;
+  }
+  border-radius: 0.2rem;
+  border: 2px solid #414868;
+  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
+  display: flex;
+  flex-direction: row;
+  font-family: inherit;
+  margin: auto;
+  margin-top: 50px;
+  overflow: hidden;
+  padding: 0;
+  width: max-content;
+}
 
 
 #exerciseFieldset{
@@ -140,3 +171,4 @@ $input-bg-gradient: linear-gradient($input-bg-colour, color.scale($input-bg-colo
    }
 
 }
+
