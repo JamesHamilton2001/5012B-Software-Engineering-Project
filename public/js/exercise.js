@@ -7,7 +7,7 @@ export const types = await api.get('exercise/types');
 
 // Create just the type selection for use in varioous places.
 export function createSelection(cb) {
-   const typeSelect = fieldset.appendChild(ui.createTypeSelect(types, 'Exercise type...', cb);
+   const typeSelect = ui.createTypeSelect(types, 'Exercise type...', cb);
    return typeSelect;
 }
 
