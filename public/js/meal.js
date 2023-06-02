@@ -12,6 +12,7 @@ export async function createMealForm() {
 
    const legend = fieldset.appendChild(document.createElement('legend'));
    legend.textContent = 'New Meal';
+   legend.id = 'newMeal';
 
    const type = fieldset.appendChild(ui.createTypeSelect(await api.get('meal/types'), 'Meal type...'));
    type.id = 'mealType';
@@ -19,11 +20,13 @@ export async function createMealForm() {
    const typeLabel = fieldset.appendChild(document.createElement('label'));
    typeLabel.textContent = 'Meal type';
    typeLabel.htmlFor = type.id;
+   typeLabel.id = 'mealLabel';
 
    const addItem = fieldset.appendChild(document.createElement('button'));
    addItem.type = 'button';
    addItem.classList.add('addItem');
    addItem.textContent = 'Add item';
+   addItem.id = 'addItemBut';
    // TODO: perhaps add logic to allow only one 'unifished' item at a time?
    addItem.addEventListener('click', async () => fieldset.insertBefore(await createItemFieldset(), addItem));
 
@@ -41,6 +44,7 @@ export async function createMealForm() {
    submit.type = 'button';
    submit.classList.add('addMeal');
    submit.textContent = 'Add Meal';
+   submit.id = 'addMealBut';
    submit.addEventListener('click', async () => {
       // Short circuit out if the form is invalid
       if(!form.checkValidity())
