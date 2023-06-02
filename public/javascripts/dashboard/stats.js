@@ -1,8 +1,22 @@
 import * as api from "/js/api.js";
 
+// gets data entries from a given path, abiding by the given arguments
+async function getEntries(path, startDate, endDate, entryLimit, utsOffset, defaultArgs)
+{
+  return ((startDate===undefined && endDate===undefined &&
+           entryLimit===undefined && utsOffset===undefined)
+    ? ((defaultArgs === undefined))
+      ? await api.get(path)
+      : await api.get(path, defaultArgs)
+    : await api.get(path, {
+        start: startDate, end: endDate, limit: entryLimit, offset: utsOffset
+      })
+    ).reverse();
+}
 
 // returns entries timestamps in dd/mm/yy string array
-function getDateStrings(entries) {
+function getDateStrings(entries)
+{
   return entries.map(entry => {
     const date = new Date(entry.timestamp * 1000);
     const dd = String(date.getDate()).padStart(2, "0");
@@ -39,7 +53,6 @@ export class ChartManager
     });
   }
 
-
   // set chart information and data, update chart display
   setData(nameStr, xDataArr, yDataArr, lineColourStr)
   {
@@ -56,15 +69,11 @@ export class ChartManager
     this.chart.update();
   }
 
-
   // get user weights specified by args, formats and graph data into chart
   async graphWeight(startDate, endDate, entryLimit, utsOffset)
   {
-    // get entries according to args, reverse order
-    const entries = ((startDate===undefined && endDate===undefined && entryLimit===undefined && utsOffset===undefined)
-        ? await api.get("user/weight")
-        : await api.get("user/weight", { start: startDate, end: endDate, limit: entryLimit, offset: utsOffset })
-    ).reverse();
+    // get entries according to args
+    const entries = await getEntries("meal", startDate, endDate, entryLimit, utsOffset);
 
     // get values and dates
     const valueArr = entries.map(entry => entry.weight);
@@ -74,16 +83,13 @@ export class ChartManager
     this.setData("Weight", dateStrArr, valueArr, "rgb(0, 255, 0)");
   }
 
-
   // get user exercise sessions specified by args, formats and graph data into chart
   async graphExercise(type_id, startDate, endDate, entryLimit, utsOffset)
   {
-    // get entries according to args, reverse order   NOTE: undefined type_id handled downstream
-    const entries = ((startDate===undefined && endDate===undefined && entryLimit===undefined && utsOffset===undefined)
-      ? await api.get("exercise", { type: 1 })
-      : await api.get("exercise", { type: type_id, start: startDate, end: endDate, limit: entryLimit, offset: utsOffset })
-    ).reverse();
-    
+    // get entries according to args
+      // undefined type_id handled downstream, default type_id to 1, needed to fetch users data
+    const entries = await getEntries("exercise", startDate, endDate, entryLimit, utsOffset, { type: 1 });
+
     // get values and dates
     const valueArr = entries.map(entry => entry.value);
     const dateStrArr = getDateStrings(entries);
@@ -92,15 +98,10 @@ export class ChartManager
     this.setData(entries[0].type, dateStrArr, valueArr, "rgb(0, 255, 0)");
   }
 
-
   async graphCalories(startDate, endDate, entryLimit, utsOffset)
   {
     // get entries according to args, reverse order
-    const entries = ((startDate===undefined && endDate===undefined && entryLimit===undefined && utsOffset===undefined)
-    ? await api.get("meal")
-    : await api.get("meal", { start: startDate, end: endDate, limit: entryLimit, offset: utsOffset })
-    ).reverse();
-    console.log(entries);
+    const entries = await getEntries("meal", startDate, endDate, entryLimit, utsOffset);
     
     // get calories from meals, get dates
     const valueArr = entries.map(entry => {
@@ -113,7 +114,10 @@ export class ChartManager
     // set data into graph and update
     this.setData("Calorie Intake", dateStrArr, valueArr, "rgb(0, 255, 0)");
   }
-
   
+  async graphGoalProgress(startDate, endDate, entryLimit, utsOffset)
+  {
+    
+  }
 }
 
