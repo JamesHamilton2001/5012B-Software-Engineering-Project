@@ -32,6 +32,7 @@ export async function createWeightGoalForm() {
    const submit = fieldset.appendChild(document.createElement('button'));
    submit.id = 'newWeightGoal';
    submit.type = 'button';
+   submit.textContent = 'Add Goal';
 
    submit.addEventListener('click', async () => {
       // Disable changes to prevent e.g. multiple submissions
@@ -77,6 +78,7 @@ export async function createExerciseGoalForm() {
    const submit = fieldset.appendChild(document.createElement('button'));
    submit.id = 'newExerciseGoal';
    submit.type = 'button';
+   submit.textContent = 'Add Goal';
 
    submit.addEventListener('click', async () => {
       // Disable changes to prevent e.g. multiple submissions
