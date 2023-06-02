@@ -7,11 +7,17 @@ script(type='module').
 
   const slot = document.getElementById('formContainer');
 
-  const fieldset = slot.appendChild(exercise.createFieldset());
+  const form = slot.appendChild(document.createElement('form'));
+  const outerFieldset = form.appendChild(document.createElement('fieldset'));
 
-  const post = slot.appendChild(document.createElement('button'));
+  const legend = outerFieldset.appendChild(document.createElement('legend'));
+  legend.textContent = 'New Exercise Session';
+
+  const fieldset = outerFieldset.appendChild(exercise.createFieldset());
+
+  const post = outerFieldset.appendChild(document.createElement('button'));
   post.id = "pushButtonId"
-  post.textContent = 'Push data';
+  post.textContent = 'Add Session';
   post.addEventListener('click', async () => {
       const data = fieldset.getData();
         // TODO: validate
@@ -20,7 +26,7 @@ script(type='module').
       const message = document.createElement('p');
       message.textContent = await res;
       slot.replaceChildren(message);
-    });
+  });
 
 block display
    h2 Exercise
