@@ -85,8 +85,13 @@ router.route('/newGoal')
 // Access the current user's exercise data.
 router.route('/exercise')
    .get(async (req, res) => {
-      const data = await req.user.getExercise(req.query.start, req.query.end, req.query.limit, req.query.offset);
-      res.json(data);
+      if(req.query.type !== undefined) {
+         const data = await Exercise.getByTypeAndUserID(req.user.id, req.query.type, req.query.start, req.query.end, req.query.limit, req.query.offset);
+         res.json(data);
+      } else {
+         const data = await req.user.getExercise(req.query.start, req.query.end, req.query.limit, req.query.offset);
+         res.json(data);
+      }
    })
    .post(async (req, res) => {
       const data = await Exercise.add(req.user.id, req.body.type, req.body.value);

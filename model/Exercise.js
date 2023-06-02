@@ -56,6 +56,25 @@ export default class Exercise {
    }
 
 
+   // Secondary factory method. Pulls all exercise sessions associated with a given user
+   // that are of a given type from the database, and returns them as an array of Exercise objects.
+   static async getByTypeAndUserID(user_id, exercise_type_id, start, end, limit, offset) {
+      const sql = 'SELECT * FROM exercise_view WHERE user_id = :user_id AND exercise_type_id = :exercise_type_id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit OFFSET :offset';
+      const rows = await db.all(sql, {
+         ':user_id': user_id,
+         ':exercise_type_id': exercise_type_id,
+         ':start': start || 0,
+         ':end': end || Math.floor(Date.now() / 1000),
+         ':limit': limit || -1,
+         ':offset': offset || 0,
+      });
+      // TODO: reconsider this check
+      if(rows === undefined)
+         return null;
+      return rows.map(x => new Exercise(x));
+   }
+
+
    // Return list of all exercise types in the database.
    static async getTypes() {
       const sql = 'SELECT * FROM exercise_type';
