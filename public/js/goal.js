@@ -17,10 +17,10 @@ export async function createWeightGoalForm() {
    const target = fieldset.appendChild(ui.createNumericInput());
    target.id = 'weightTarget';
 
-   const endTime = fieldset.appendChild(document.createElement('input'))
+   const endTime = fieldset.appendChild(document.createElement('input'));
    endTime.id = 'weightEndTime';
-   endTime.type = 'date'
-   endTime.name = 'endTime'
+   endTime.type = 'date';
+   endTime.name = 'endTime';
 
    form.getData = () => {
       return {
@@ -29,10 +29,9 @@ export async function createWeightGoalForm() {
       };
    };
 
-   const submit = fieldset.appendChild(document.createElement('input'))
-   submit.id = 'newWeightGoal'
-   submit.type = 'submit'
-   submit.value = 'Create Goal'
+   const submit = fieldset.appendChild(document.createElement('button'));
+   submit.id = 'newWeightGoal';
+   submit.type = 'button';
 
    submit.addEventListener('click', async () => {
       // Disable changes to prevent e.g. multiple submissions
@@ -64,10 +63,10 @@ export async function createExerciseGoalForm() {
    const target = fieldset.appendChild(exercise.createFieldset());
    target.id = 'exerciseTarget';
 
-   const endTime = fieldset.appendChild(document.createElement('input'))
+   const endTime = fieldset.appendChild(document.createElement('input'));
    endTime.id = 'exerciseEndTime';
-   endTime.type = 'date'
-   endTime.name = 'endTime'
+   endTime.type = 'date';
+   endTime.name = 'endTime';
 
    form.getData = () => {
       return {
@@ -76,9 +75,9 @@ export async function createExerciseGoalForm() {
       };
    };
 
-   const submit = fieldset.appendChild(document.createElement('button'))
-   submit.id = 'newExerciseGoal'
-   submit.type = 'button'
+   const submit = fieldset.appendChild(document.createElement('button'));
+   submit.id = 'newExerciseGoal';
+   submit.type = 'button';
 
    submit.addEventListener('click', async () => {
       // Disable changes to prevent e.g. multiple submissions
