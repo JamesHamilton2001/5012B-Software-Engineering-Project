@@ -30,8 +30,8 @@ export async function createWeightGoalForm() {
 
   form.getData = () => {
     return {
-       target: parseInt(target.value),
-       endTime: endTime.value
+      target: parseInt(target.value),
+      endTime: new Date(endTime.value),
     };
  };
 
@@ -81,8 +81,8 @@ export async function createExerciseGoalForm() {
 
   form.getData = () => {
     return {
-       target: target.getData(),
-       endTime: endTime.value,
+      target: parseInt(target.getData()),
+      endTime: new Date(endTime.value),
     };
  };
   
