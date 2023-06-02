@@ -1,31 +1,18 @@
 extends layout
 
-block content
-
-
-  
+block append head
   link(rel='stylesheet' href='/css/login.scss')
 
-
+block content
   h1=title
-  
+  h3 #{error}
+    form(method='post')
+      input#username(type='text' name='username' placeholder='Username' value=`${username}` required)
 
-            
-  .panel
-   
-    #Login
-    h3 #{error}
-      form(method='post')
+      input#password(type='password' name='password' placeholder='Password' required)
 
-        input#username(type='text' name='username' placeholder='Username' value=`${username}` required)
+      .buttons
+         input(type='submit' value=' Log In')
 
-        input#password(type='password' name='password' placeholder='Password' required)
-
-        input(type='submit' value=' Log In')
-
-          //- TODO: determine best tag for this possible error message
-        a.button(href='/auth/signup') Click here to Sign up
-
-  script(src="/javascripts/tabManager.js")
-  
+         a.button(href='/auth/signup') Click here to Sign up
 
