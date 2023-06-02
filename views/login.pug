@@ -1,22 +1,27 @@
 extends layout
 
+block append head
+  link(rel='stylesheet' href='/css/login.scss')
+
 block content
+   header
+      h1 HealthMate
 
-  h1=title
-
-  .panel
-    a.button(href='/auth/login') Log in
-    a.button(href='/auth/signup') Sign up
-    #Login
+   main
+      h3 #{error}
       form(method='post')
-        //- TODO: determine best tag for this possible error message
-        h2 #{error}
+         fieldset
+            legend Log In
+            input#username(type='text' name='username' pattern=".{4,16}" title="Use a Username between 4-16 Characters" placeholder='Username' value=`${username}` required)
 
-        input#username(type='text' name='username' placeholder='Username' value=`${username}`)
+            input#password(type='password' name='password' pattern=".{20,72}" title="Password between 20-72 Characters" placeholder='Password' required)
 
-        input#password(type='password' name='password' placeholder='Password')
 
-        input(type='submit' value='Log In')
+            .buttons
+               input(type='submit' value=' Log In')
 
-  script(src="/javascripts/tabManager.js")
+               a.button(href='/auth/signup') Click here to Sign up
+
+block footer
+   p &copy; 2023
 
