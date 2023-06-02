@@ -15,8 +15,7 @@ async function fetchData() {
     const Userdata = await api.get("user/");
     //const Userexercise = await api.get("user/exercise");
     //console.log(Userexercise);
-    console.log(Userdata.username);
-    return String (Userdata.username); // Process the Userdata or assign it to a variable
+    return String (Userdata.real_name); // Process the Userdata or assign it to a variable
   } catch (error) {
     console.error(error); // Handle any errors that occur during the request
   }}
