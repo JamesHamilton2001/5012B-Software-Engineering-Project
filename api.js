@@ -66,8 +66,13 @@ user.route('/weight')
 // Access current user goal data
 router.route('/goal')
    .get(async (req, res) => {
-      const data = await req.user.getGoals(user.id)
-      res.json(data);
+      if(req.query.type !== undefined) {
+         const data = await Goal.getByTypeAndUserID(req.user.id, req.query.type, req.query.start, req.query.end, req.query.limit, req.query.offset);
+         res.json(data);
+      } else {
+         const data = await Goal.getByUserID(req.user.id, req.query.start, req.query.end, req.query.limit, req.query.offset);
+         res.json(data);
+      }
    })
    .post(async (req, res) => {
       const data = await Goal.add(req.user.id, req.body.exerciseType, req.body.target, req.body.endTime );
