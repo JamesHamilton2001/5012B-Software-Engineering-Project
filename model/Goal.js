@@ -24,10 +24,30 @@ export default class Goal {
 
    // Main factory method.
    static async getByUserID(user_id) {
-      const sql = 'SELECT * FROM goal WHERE user_id = :user_id';
+      const sql = 'SELECT * FROM goal WHERE user_id = :user_id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit OFFSET :offset';
       const rows = await db.all(sql, {
-         ':user_id': user_id
-      })
+         ':user_id': user_id,
+         ':start': start || 0,
+         ':end': end || Math.floor(Date.now() / 1000),
+         ':limit': limit || -1,
+         ':offset': offset || 0,
+      });
+      if(rows === undefined)
+         return null;
+      return rows.map(x => new Goal(x));
+   }
+
+
+   static async getByTypeAndUserID(user_id) {
+      const sql = 'SELECT * FROM goal WHERE user_id = :user_id AND exercise_type_id = :exercise_type_id AND timestamp BETWEEN :start AND :end ORDER BY timestamp DESC LIMIT :limit OFFSET :offset';
+      const rows = await db.all(sql, {
+         ':user_id': user_id,
+         ':exercise_type_id': exercise_type_id,
+         ':start': start || 0,
+         ':end': end || Math.floor(Date.now() / 1000),
+         ':limit': limit || -1,
+         ':offset': offset || 0,
+      });
       if(rows === undefined)
          return null;
       return rows.map(x => new Goal(x));
