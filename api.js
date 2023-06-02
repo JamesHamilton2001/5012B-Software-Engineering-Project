@@ -69,10 +69,9 @@ router.route('/goal')
       const data = await req.user.getGoals(user.id)
       res.json(data);
    })
-   .post(async (req,res) => {
+   .post(async (req, res) => {
       const data = await Goal.add(req.user.id, req.body.exerciseType, req.body.target, req.body.endTime );
       res.json(data);
-      return;
    })
 
 
