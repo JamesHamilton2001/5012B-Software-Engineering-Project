@@ -19,14 +19,33 @@ a {
    }
 }
 
-button {
+#pushButtonId {
    color: inherit;
    font-family: inherit;
+   background-color: #24283b;
+   background-image: linear-gradient(#292e42, #24283b);
+   text-shadow: 0.1rem 0.1rem 0.2rem black;
+   border-radius: 0.2rem;
+   border: 2px solid #414868;
+   box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
+   display: flex;
+   flex-direction: row;
+   font-family: inherit;
+   margin: auto;
+   padding: 0.3rem;
+   
 }
 
 h1 {
    font-family: inherit;
    text-shadow: 0.1rem 0.1rem 0.2rem black;
+   text-align: center;
+}
+
+h2 {
+  font-family: inherit;
+  text-shadow: 0.1rem 0.1rem 0.2rem black;
+  text-align: center;
 }
 
 
@@ -117,4 +136,5 @@ $input-bg-gradient: linear-gradient($input-bg-colour, color.scale($input-bg-colo
       text-align: left;
       padding-top: 0.3rem;
    }
+
 }
