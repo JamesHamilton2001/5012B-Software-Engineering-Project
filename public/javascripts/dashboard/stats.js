@@ -30,14 +30,15 @@ export class ChartManager
   }
 
   // set chart information and data, update chart display
-  setData(nameStr, xDataArr, yDataArr, colourStr)
+  setData(nameStr, xDataArr, yDataArr, lineColourStr, fillStr)
   {
     this.chart.data = {
       labels: xDataArr,
       datasets: [{
-        label: nameStr,
-        data: yDataArr,
-        borderColor: colourStr
+        label:        nameStr,
+        data:         yDataArr,
+        borderColor:  lineColourStr,
+        fill:         fillStr
       }]
     };
     this.chart.update();
@@ -65,7 +66,7 @@ export class ChartManager
     });
 
     // set data into graph and update
-    this.setData("Weight", dateStrArr, valueArr, "rgb(0, 255, 0)");
+    this.setData("Weight", dateStrArr, valueArr, "rgb(0, 255, 0)", "origin");
     this.chart
   }
 }
