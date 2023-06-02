@@ -1,25 +1,25 @@
 
-block head 
-  link(rel='stylesheet' href='/css/exercise.scss')
-  script(type='module').
-    import * as exercise from '/js/exercise.js';
-    import * as api from '/js/api.js';
 
-    const slot = document.getElementById('formContainer');
 
-    const fieldset = slot.appendChild(exercise.createFieldset());
+script(type='module').
+  import * as exercise from '/js/exercise.js';
+  import * as api from '/js/api.js';
 
-    const post = slot.appendChild(document.createElement('button'));
-    post.id = "pushButtonId"
-    post.textContent = 'Push data';
-    post.addEventListener('click', async () => {
-        const data = fieldset.getData();
+  const slot = document.getElementById('formContainer');
+
+  const fieldset = slot.appendChild(exercise.createFieldset());
+
+  const post = slot.appendChild(document.createElement('button'));
+  post.id = "pushButtonId"
+  post.textContent = 'Push data';
+  post.addEventListener('click', async () => {
+      const data = fieldset.getData();
         // TODO: validate
-        fieldset.disabled = true;
-        const res = api.post('exercise', data);
-        const message = document.createElement('p');
-        message.textContent = await res;
-        slot.replaceChildren(message);
+      fieldset.disabled = true;
+      const res = api.post('exercise', data);
+      const message = document.createElement('p');
+      message.textContent = await res;
+      slot.replaceChildren(message);
     });
 
 block display
