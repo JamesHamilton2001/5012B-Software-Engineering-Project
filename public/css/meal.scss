@@ -139,6 +139,7 @@ $input-bg-gradient: linear-gradient($input-bg-colour, color.scale($input-bg-colo
     font-family: inherit;
     background-color: #24283b;
     background-image: linear-gradient(#292e42, #24283b);
+    border:none;
     border-left: 2px solid #414868;
     display: inline-block;
     flex-direction: row;
