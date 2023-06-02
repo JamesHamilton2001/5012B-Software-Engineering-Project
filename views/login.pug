@@ -4,15 +4,21 @@ block append head
   link(rel='stylesheet' href='/css/login.scss')
 
 block content
-  h1=title
-  h3 #{error}
-    form(method='post')
-      input#username(type='text' name='username' placeholder='Username' value=`${username}` required)
+   header
+      h1=title
 
-      input#password(type='password' name='password' placeholder='Password' required)
+   main
+      h3 #{error}
+      form(method='post')
+         input#username(type='text' name='username' placeholder='Username' value=`${username}` required)
 
-      .buttons
-         input(type='submit' value=' Log In')
+         input#password(type='password' name='password' placeholder='Password' required)
 
-         a.button(href='/auth/signup') Click here to Sign up
+         .buttons
+            input(type='submit' value=' Log In')
+
+            a.button(href='/auth/signup') Click here to Sign up
+
+block footer
+   p &copy; 2023
 

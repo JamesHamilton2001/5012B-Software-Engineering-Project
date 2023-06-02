@@ -13,6 +13,27 @@ html {
 }
 
 
+body {
+   background-image: linear-gradient(180deg, $mid-colour-0, $mid-colour-1, $mid-colour-0);
+   overflow-x: hidden;
+   overflow-y: auto;
+   display: grid;
+   grid-template-areas: "header" "main" "footer";
+   grid-template-rows: max-content 1fr max-content;
+   height: 100vh;
+}
+
+header {
+   grid-area: header;
+}
+main {
+   grid-area: main;
+}
+footer {
+   grid-area: footer;
+}
+
+
 h1 {
   background-image: $bg-gradient-0;
   color: $fg-colour-2;
@@ -27,53 +48,11 @@ h3 {
  font-family: inherit;
  text-shadow: 0.1rem 0.1rem 0.2rem black;
  text-align: center;
- padding-bottom: 100px;
- margin-bottom: 100px;
  font-size: 60%;
-
 }
 
 
-.panel {
-  background-color: #2a2d52;
-  background-image: linear-gradient(180deg, $mid-colour-0, $mid-colour-1, $mid-colour-0);
-  background-attachment: fixed;
-  color: #c0caf5;
-  font-family: 'Montserrat Alternates', sans-serif;
-  text-shadow: 0.1rem 0.1rem 0.2rem black;
-  text-align: center;
-//  border: 0.1rem solid #c0caf5;
- // border-radius: 0.5rem;
-  padding: 1.8rem;
-  outline: none;
-  box-shadow: none;
-}
-
-body {
-  background-image: linear-gradient(180deg, $mid-colour-0, $mid-colour-1, $mid-colour-0);
-  grid-area: main;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.button{
-  color: inherit;
-  font-family: inherit;
-  background-color: #24283b;
-  background-image: linear-gradient(#292e42, #24283b);
-  text-shadow: 0.1rem 0.1rem 0.2rem black;
-  border-radius: 0.2rem;
-  border: 2px solid #414868;
-  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
-  position: fixed;
-  flex-direction: row;
-  margin-left: 160px;
-
-  margin-top: 101px;
-  padding: 8.8px 25px 8.8px 25px;
-}
-
-form{
+form {
   color: inherit;
   font-family: inherit;
   background-color: #24283b;
@@ -86,45 +65,38 @@ form{
   flex-direction: column;
   margin: auto;
   width:400px;
-  padding: 5px 0px 10px 5px;
-}
+  padding: 0.8rem 0.5rem;
+  gap: 0.3rem;
 
+   #username, #password {
+      color: inherit;
+      font-family: inherit;
+      background-color: #24283b;
+      background-image: linear-gradient(#292e42, #24283b);
+      text-shadow: 0.1rem 0.1rem 0.2rem black;
+      border-radius: 0.2rem;
+      border: 2px solid #414868;
+      box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
+      padding: 7px;
+   }
 
+   div.buttons {
+      display: flex;
+      justify-content: space-between;
 
-input[type="submit"] {
-  color: inherit;
-  font-family: inherit;
-  background-color: #24283b;
-  background-image: linear-gradient(#292e42, #24283b);
-  text-shadow: 0.1rem 0.1rem 0.2rem black;
-  border-radius: 0.2rem;
-  border: 2px solid #414868;
-  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
-  display: flex;
-  flex-direction: column;
-  margin: right;
-  margin-top: 20px;
-  margin-bottom: 0px;
-  margin-right: 290px;
-  padding: 10px 15px 10px 15px;
-}
-
-input{
-  color: inherit;
-  font-family: inherit;
-  background-color: #24283b;
-  background-image: linear-gradient(#292e42, #24283b);
-  text-shadow: 0.1rem 0.1rem 0.2rem black;
-  border-radius: 0.2rem;
-  border: 2px solid #414868;
-  box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;;
-  // margin: right;
-  // margin-right: 10px;
-   margin-top: 7px;
-  padding: 7px
-
+      input, .button {
+         color: inherit;
+         font-family: inherit;
+         background-color: #24283b;
+         background-image: linear-gradient(#292e42, #24283b);
+         text-shadow: 0.1rem 0.1rem 0.2rem black;
+         border-radius: 0.2rem;
+         border: 2px solid #414868;
+         box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
+         font-size: 0.7rem;
+         text-decoration: none;
+         padding: 0.2rem;
+      }
+   }
 }
 
