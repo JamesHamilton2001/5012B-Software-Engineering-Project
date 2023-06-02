@@ -74,7 +74,7 @@ export class ChartManager
   {
     // get entries according to args
     const entries = await getEntries("user/weight", startDate, endDate, entryLimit, utsOffset);
-
+    console.log(entries);
     // get values and dates
     const valueArr = entries.map(entry => entry.weight);
     const dateStrArr = getDateStrings(entries);
@@ -113,19 +113,5 @@ export class ChartManager
     
     // set data into graph and update
     this.setData("Calorie Intake", dateStrArr, valueArr, "rgb(0, 255, 0)");
-  }
-  
-  async graphGoalProgress(goal_id)
-  {
-    // const entries = await getEntries("user/goals");
-    const entry = await api.get("user/goal", { goal_id: goal_id });
-    console.log(entry);
-    
-    const valueArr = await api.get("exercise", {
-      type: entry.exercise_type_id,
-      startDate: entry.startTime,
-      endDate: entry.endTime,
-    });
-    console.log(valueArr);
   }
 }
