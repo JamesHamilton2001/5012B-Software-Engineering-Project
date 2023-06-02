@@ -1,48 +1,5 @@
 @use 'tokyonight' as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-
-html {
-    font-size: 1.6em;
-    background-color: #1a1b26;
-    background-image: linear-gradient(#1a1b26, #1f2335);
-    background-attachment: fixed;
-    color: #c0caf5;
-    font-family: 'Montserrat Alternates', sans-serif;
-}
-
-
-body {
-   background-image: linear-gradient(180deg, $mid-colour-0, $mid-colour-1, $mid-colour-0);
-   overflow-x: hidden;
-   overflow-y: auto;
-   display: grid;
-   grid-template-areas: "header" "main" "footer";
-   grid-template-rows: max-content 1fr max-content;
-   height: 100vh;
-}
-
-header {
-   grid-area: header;
-}
-main {
-   grid-area: main;
-}
-footer {
-   grid-area: footer;
-}
-
-
-h1 {
-  background-image: $bg-gradient-0;
-  color: $fg-colour-2;
-  text-shadow: 0.05rem 0.05rem 0.1rem $accent-a-0;
-
-  border-bottom-width: 0.1rem;
-  border-bottom-style: solid;
-  border-image: linear-gradient(to right, $accent-b-0, $accent-b-1, $accent-b-2) 1;
-}
 
 h3 {
  font-family: inherit;
