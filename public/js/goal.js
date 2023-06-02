@@ -51,7 +51,6 @@ export async function createWeightGoalForm() {
 
 
 export async function createExerciseGoalForm() {
-   //create 2 forms, one for weightGoal, one for exerciseGoal
    const form = document.createElement("form");
    form.id = 'exerciseGoal';
 
