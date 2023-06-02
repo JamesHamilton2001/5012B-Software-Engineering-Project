@@ -20,4 +20,17 @@ async function fetchData() {
   } catch (error) {
     console.error(error); // Handle any errors that occur during the request
   }}
-document.getElementById("User").textContent += await fetchData() + " !";
+
+async function navbarExtraInfo(){
+  const currentPage = window.location.pathname;
+  switch (currentPage){
+    case "/dashboard":
+      document.getElementById("User").textContent += await fetchData() + " !";
+      break;
+    case "/progress":
+      document.getElementById("User").textContent = await fetchData() + "'s" + document.getElementById("User").textContent;
+      break;
+  }
+}
+
+navbarExtraInfo();
