@@ -51,7 +51,7 @@ export async function createForm() {
    };
 
    // Add a button to the form to submit the data to the API.
-   const submit = form.appendChild(document.createElement('button'));
+   const submit = fieldset.appendChild(document.createElement('button'));
    submit.type = 'button';
    submit.classList.add('addWeight');
    submit.textContent = 'Add Weight';
