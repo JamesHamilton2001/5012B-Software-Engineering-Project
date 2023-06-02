@@ -22,16 +22,46 @@ export function createTypeSelect(types, placeholder, callback) {
 
 
 // Create an inout element which only accepts numeric input.
-export function createNumericInput() {
+export function createNumericInput(min = Number.MIN_VALUE, max = Number.MAX_VALUE, unit = '') {
    const input = document.createElement('input');
 
-   // TODO: setup built-in html validation
+   // Default to required for form validation checking & reporting
+   input.required = true;
+
+   // Instruct e.g. phones to display a numeric keypad.
+   input.setAttribute('inputmode', 'decimal');
+
+   // Reasonably accurate regex to match a decimal
+   input.pattern = /^-?\d*\.?\d+$/.toString().slice(1, -1);
 
    // Attempt to prevent non-numeric input
    input.addEventListener('input', () => {
       // TODO: see if it's possible to stop this jumping the cursor to the end of the input
-      input.value = input.value.replaceAll(/[^\d.]|(?<=\.)\./g, '');
+      input.value = input.value
+         .replaceAll(/[^\d.-]|(?<=\.)\./g, '')
+         .replace(/^(-?\d*\.\d+)(\.)(\d*)/, '$1$3')
+         .replace(/^(.+)(-)(.*)/, '$1$3')
    });
+
+   // Validate input against min/max values, split out for multiple event types
+   function validateMinMax() {
+      const v = input.getData();;
+      if(v > max) {
+         input.setCustomValidity(`Value must be ${max}${unit} or less`);
+         input.reportValidity();
+      }
+      if(v < min) {
+         input.setCustomValidity(`Value must be ${min}${unit} or more`);
+         input.reportValidity();
+      }
+   }
+
+   // Validate input against min/max values
+   input.addEventListener('change', validateMinMax);
+   input.addEventListener('focusout', validateMinMax);
+
+   // Overridable function to get the input value, enabling e.g. unit conversion
+   input.getData = () => parseFloat(input.value);
 
    return input;
 };

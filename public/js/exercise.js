@@ -5,11 +5,16 @@ import * as ui from './ui.js';
 
 export const types = await api.get('exercise/types');
 
+// Create just the type selection for use in varioous places.
+export function createSelection(cb) {
+   const typeSelect = fieldset.appendChild(ui.createTypeSelect(types, 'Exercise type...', cb);
+   return typeSelect;
+}
 
 // Constructs a standard widget thing for entering exercise data.
 export function createFieldset(cb) {
    const fieldset = document.createElement('fieldset');
-   const typeSelect = fieldset.appendChild(ui.createTypeSelect(types, 'Exercise type...', e => {
+   const typeSelect = fieldset.appendChild(createSelection(e => {
       metricLabel.textContent = e.selection.metric;
    }));
    const valueInput = fieldset.appendChild(ui.createNumericInput());
