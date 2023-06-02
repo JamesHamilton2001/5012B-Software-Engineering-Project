@@ -13,15 +13,15 @@ block content
       form(method='post')
         h2 #{error}
 
-        input#username(type='text' name='username' placeholder='Username' value=`${username}`)
+        input#username(type='text' name='username' placeholder='Username' value=`${username}` required)
 
-        input#email(type='email' name='email' placeholder='Email' value=`${email}`)
+        input#email(type='email' name='email' placeholder='Email' value=`${email}` required)
 
-        input#password(type='password' name='password' placeholder='Password' value=`${password}`)
+        input#password(type='password' name='password' placeholder='Password' value=`${password}` required)
 
-        input#real_name(type='text' name='real_name' placeholder='Real Name' value=`${real_name}`)
+        input#real_name(type='text' name='real_name' placeholder='Real Name' value=`${real_name}` required)
 
-        input#height(type='text' name='height' placeholder='Height (e.g. 180cm, 5′4″)' value=`${height}`)
+        input#height(type='text' name='height' placeholder='Height (e.g. 180cm, 5′4″)' value=`${height}` required)
 
         input(type='submit' value='Sign Up')
 
