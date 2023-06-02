@@ -73,7 +73,7 @@ export class ChartManager
   async graphWeight(startDate, endDate, entryLimit, utsOffset)
   {
     // get entries according to args
-    const entries = await getEntries("meal", startDate, endDate, entryLimit, utsOffset);
+    const entries = await getEntries("user/weight", startDate, endDate, entryLimit, utsOffset);
 
     // get values and dates
     const valueArr = entries.map(entry => entry.weight);
@@ -117,7 +117,7 @@ export class ChartManager
   
   async graphGoalProgress(startDate, endDate, entryLimit, utsOffset)
   {
-    
+
   }
 }
 
