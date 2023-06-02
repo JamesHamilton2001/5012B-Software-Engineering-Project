@@ -10,9 +10,8 @@ block content
    main
       h3 #{error}
       form(method='post')
-         input#username(type='text' name='username' placeholder='Username' value=`${username}` required)
-
-         input#password(type='password' name='password' placeholder='Password' required)
+         input#username(type='text' name='username' placeholder='Username' pattern=".{4,16}" title="Use a Username between 4-16 Characters" value=`${username}` required)
+         input#password(type='password' name='password' pattern=".{20,72}" title="Password between 20-72 Characters" placeholder='Password' required)
 
          .buttons
             input(type='submit' value=' Log In')
