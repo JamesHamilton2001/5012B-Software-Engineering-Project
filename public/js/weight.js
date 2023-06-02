@@ -11,9 +11,7 @@ const LB_PER_KG = 1 / KG_PER_LB;
 export async function createForm() {
    const form = document.createElement('form');
 
-   const outerFieldset = form.appendChild(document.createElement('fieldset'));
-
-   const fieldset = outerFieldset.appendChild(document.createElement('fieldset'));
+   const fieldset = form.appendChild(document.createElement('fieldset'));
 
    const legend = fieldset.appendChild(document.createElement('legend'));
    legend.textContent = 'New Weight';
@@ -53,7 +51,7 @@ export async function createForm() {
    };
 
    // Add a button to the form to submit the data to the API.
-   const submit = outerFieldset.appendChild(document.createElement('button'));
+   const submit = form.appendChild(document.createElement('button'));
    submit.type = 'button';
    submit.classList.add('addWeight');
    submit.textContent = 'Add Weight';

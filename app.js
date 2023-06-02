@@ -8,7 +8,6 @@ import api from './api.js';
 import auth from './auth.js';
 import './db.js';
 import User from './model/User.js';
-import Goal from './model/Goal.js';
 
 const app = express();
 

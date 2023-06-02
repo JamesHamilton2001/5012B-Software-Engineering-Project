@@ -1,6 +1,6 @@
 mixin navBarLinkAndScripts()
   link(rel='stylesheet' href='/stylesheets/navBar.css')
-  script(type='module' src="/javascripts/navBar.js")
+  script(src="/javascripts/navBar.js")
 
 mixin navBar(pageTitle)
   header
@@ -16,4 +16,4 @@ mixin navBar(pageTitle)
           a.navLink(href="/tempPage2") Temp_Page_2
         li.navItem
           a.navLink(href="/tempPage3") Temp_Page_3
-    h1#User= pageTitle
+    h1= pageTitle

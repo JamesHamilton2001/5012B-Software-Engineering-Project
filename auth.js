@@ -45,7 +45,7 @@ router.all('/login', async (req, res) => {
    // Should additionally show an error message if there appears to have been a failed
    // login attempt.
    res.render('login', {
-      title: 'HealthMate Login',
+      title: 'Login ya cunt',
       username: req.body.username || '',
    });
 });

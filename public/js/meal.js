@@ -12,7 +12,6 @@ export async function createMealForm() {
 
    const legend = fieldset.appendChild(document.createElement('legend'));
    legend.textContent = 'New Meal';
-   legend.id = 'newMeal';
 
    const type = fieldset.appendChild(ui.createTypeSelect(await api.get('meal/types'), 'Meal type...'));
    type.id = 'mealType';
@@ -20,13 +19,11 @@ export async function createMealForm() {
    const typeLabel = fieldset.appendChild(document.createElement('label'));
    typeLabel.textContent = 'Meal type';
    typeLabel.htmlFor = type.id;
-   typeLabel.id = 'mealLabel';
 
    const addItem = fieldset.appendChild(document.createElement('button'));
    addItem.type = 'button';
    addItem.classList.add('addItem');
    addItem.textContent = 'Add item';
-   addItem.id = 'addItemBut';
    // TODO: perhaps add logic to allow only one 'unifished' item at a time?
    addItem.addEventListener('click', async () => fieldset.insertBefore(await createItemFieldset(), addItem));
 
@@ -44,7 +41,6 @@ export async function createMealForm() {
    submit.type = 'button';
    submit.classList.add('addMeal');
    submit.textContent = 'Add Meal';
-   submit.id = 'addMealBut';
    submit.addEventListener('click', async () => {
       // Short circuit out if the form is invalid
       if(!form.checkValidity())
@@ -71,20 +67,16 @@ export async function createMealForm() {
 async function createItemFieldset() {
    const fieldset = document.createElement('fieldset');
    fieldset.classList.add('mealItem');
-   fieldset.id = 'mealFeildSet';
 
    const legend = fieldset.appendChild(document.createElement('legend'));
    legend.textContent = 'Food item';
 
    const type = fieldset.appendChild(ui.createTypeSelect(await api.get('meal/foodTypes'), 'Food type...'));
    type.classList.add('type');
-   type.id = 'type';
-
 
    const quantity = fieldset.appendChild(ui.createNumericInput());
    quantity.classList.add('quantity');
    quantity.required = true;
-   quantity.id = 'quantity';
 
    const unit = fieldset.appendChild(document.createElement('span'));
    unit.classList.add('unit');
@@ -94,7 +86,6 @@ async function createItemFieldset() {
    remove.type = 'button';
    remove.classList.add('remove');
    remove.textContent = 'Remove';
-   remove.id = 'removeBut'
    remove.addEventListener('click', () => fieldset.remove(), {once: true});
 
    // Return data suitable for POSTing to the JSON API.

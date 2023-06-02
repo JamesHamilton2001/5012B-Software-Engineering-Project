@@ -1,11 +1,56 @@
 @use 'tokyonight' as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 /* Mobile (portrait) or other narrow screen styles */
 $breakpoint-phone: 500px;
 
 body {
+   // Include border in sizing
+   box-sizing: border-box;
+
+   // Header, sidebar, main content, and footer
+   display: grid;
+   grid-template-areas: "header header" "sidebar main" "footer footer";
+   grid-template-columns: max-content 1fr;
+   grid-template-rows: max-content 1fr max-content;
+
+   @media screen and (max-width: $breakpoint-phone) {
+      grid-template-areas: "header" "sidebar" "main" "footer";
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content max-content 1fr max-content;
+   }
+
+   // Fill height like an app boss
+   height: 100vh;
+
+   // Shrinkrwrap up this shit
+   margin: 0;
+   padding: 0;
+
+   // Header area; span full width
+   header {
+      grid-area: header;
+
+      h1 {
+         background-image: $bg-gradient-0;
+         color: $fg-colour-2;
+         text-shadow: 0.05rem 0.05rem 0.1rem $accent-a-0;
+
+         border-bottom-width: 0.1rem;
+         border-bottom-style: solid;
+         border-image: linear-gradient(to right, $accent-b-0, $accent-b-1, $accent-b-2) 1;
+      }
+   }
+
+   // Footer area; span full width
+   footer {
+      grid-area: footer;
+      background: $bg-gradient-0-reverse;
+
+      border-top-width: 0.1rem;
+      border-top-style: solid;
+      border-image: linear-gradient(to left, $accent-b-0, $accent-b-1, $accent-b-2) 1;
+   }
+
    menu {
       display: flex;
       flex-direction: column;
@@ -74,6 +119,13 @@ body {
             }
          }
       }
+   }
+
+   main {
+      background-image: linear-gradient(180deg, $mid-colour-0, $mid-colour-1, $mid-colour-0);
+      grid-area: main;
+      overflow-x: hidden;
+      overflow-y: auto;
    }
 }
 

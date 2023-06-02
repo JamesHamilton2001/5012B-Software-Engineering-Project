@@ -5,7 +5,6 @@ import express from 'express';
 import Exercise from './model/Exercise.js';
 import Meal from './model/Meal.js';
 import User from './model/User.js';
-import Goal from './model/Goal.js';
 
 const router = express.Router();
 
@@ -60,23 +59,6 @@ user.route('/weight')
    .post(async (req, res) => {
       const data = await req.user.addWeight(req.body.weight, Math.floor(Date.now() / 1000));
       res.status(201).json("weight record added");
-   })
-
-
-// Access current user goal data
-router.route('/goal')
-   .get(async (req, res) => {
-      if(req.query.type !== undefined) {
-         const data = await Goal.getByTypeAndUserID(req.user.id, req.query.type, req.query.start, req.query.end, req.query.limit, req.query.offset);
-         res.json(data);
-      } else {
-         const data = await Goal.getByUserID(req.user.id, req.query.start, req.query.end, req.query.limit, req.query.offset);
-         res.json(data);
-      }
-   })
-   .post(async (req, res) => {
-      const data = await Goal.add(req.user.id, req.body.exerciseType, req.body.target, req.body.endTime );
-      res.json(data);
    })
 
 
