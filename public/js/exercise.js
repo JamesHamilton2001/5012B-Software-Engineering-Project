@@ -19,7 +19,6 @@ export function createFieldset(cb) {
    }));
 
    const valueInput = fieldset.appendChild(ui.createNumericInput());
-   valueInput.size = 1;
 
    const metricLabel = fieldset.appendChild(document.createElement('span'));
 
