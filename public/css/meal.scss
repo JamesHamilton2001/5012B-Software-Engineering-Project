@@ -6,10 +6,19 @@
 @use 'main' as *;
 
 
+#mealForm {
+   > fieldset {
+      > label {
+         display: none;
+      }
+   }
+}
+
 // TODO: abstract probably most of this out for other similar widgets
 .mealItem {
    @include standard-input;
 
+   box-shadow: 0.1rem 0.1rem 0.2rem 0rem color.change($bg-colour-1, $alpha: 0.5);
    display: flex;
    flex-direction: row;
    overflow: clip;
@@ -63,6 +72,15 @@
    span {
       font-size: 0.7rem;
       padding-right: 0.3rem;
+   }
+
+   .remove {
+      border: {
+         bottom: 0;
+         radius: 0;
+         right: 0;
+         top: 0;
+      }
    }
 }
 
