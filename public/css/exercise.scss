@@ -1,96 +1,64 @@
 @use "sass:color";
 
 @use 'tokyonight' as *;
+
+// TODO: properly structure includes to not do this
 @use 'main' as *;
 
 
-$glow: #6183bb;
+// TODO: abstract probably most of this out for other similar widgets
+#exerciseFieldset {
+   @include standard-input;
 
-$input-bg-colour: #292e42;
-$input-bg-gradient: linear-gradient($input-bg-colour, color.scale($input-bg-colour, $lightness: 10%));
-
-
-#exerciseFieldset{
-   background-clip: content-box;
-   background-color: #24283b;
-   background-image: linear-gradient(#292e42, #24283b);
-   border-radius: 0.2rem;
-   border: 2px solid #414868;
-   box-shadow: 0.1rem 0.1rem 0.2rem 0rem #000A;
    display: flex;
    flex-direction: row;
-   font-family: inherit;
-   margin: auto;
-   overflow: hidden;
+   overflow: clip;
    padding: 0;
-   width: max-content;
 
    &:focus-within {
-      border: 2px solid $glow;
+      // TODO: define this properly where it can be used across UI elements
+      border-color: $fg-alt-colour-1;
    }
 
-   &::before {
-      //color: #9ece6a;
-      color: #41a6b5;
-      content: '⮋';
-      position: absolute;
-      pointer-events: none;
-      text-shadow: 1px 1px 2px #1a1b26;
-      margin-left: 0.2rem;
-      margin-top: 0.05em;
-   }
-
-   #typeSelect {
-      color: #c0caf5;
-      flex: 1 1 auto;
-      margin-right: 0.2rem;
-      text-align-last: right;
-      width: 7.2rem;
-      font-family: inherit;
-      font-size: 0.8rem;
-      appearance: none;
-      background: inherit;
-      border: none;
-      option {
-         direction: rtl;
+   select {
+      border: {
+         bottom: 0;
+         left: 0;
+         radius: 0;
+         top: 0;
       }
+      min-width: 6.4rem;
+      // TODO: retry adding in a custom dropdown arrow?
+      //appearance: none;
+      // TODO: try another pass at this right-align?
+      //text-align-last: right;
+      //option {
+      //   direction: rtl;
+      //}
    }
 
-   #valueInput {
-      background-image: $input-bg-gradient;
-      color: #c0caf5;
-      flex: 1 3 auto;
-      height: 1.5rem;
-      margin-top: -0.05rem;
-      text-align: right;
-      padding-right: 0.2rem;
-      width: 2.8rem;
-      font-style: italic;
-      font-size: 0.9rem;
+   input, span {
+      background: {
+         color: transparent;
+         image: none;
+      }
       border: none;
-      $valueInput-border: 4px ridge #24283b;
-      border-left: $valueInput-border;
+      font-style: italic;
+      line-height: 1.5rem;
+   }
+
+   input {
+      flex-grow: 1;
+      text-align: right;
 
       &:focus {
          outline: none;
-         border-left: $valueInput-border;
-         border-color: $glow;
       }
    }
 
-   #metricLabel {
-      background-image: $input-bg-gradient;
-      border-radius: 0 0.15rem 0.15rem 0;
-      min-width: 5rem;
-      font: {
-           size :  0.8rem;
-         weight :  normal;
-          style :  italic;
-         family : inherit;
-      }
-      text-align: left;
-      padding-top: 0.3rem;
+   span {
+      font-size: 0.7rem;
+      padding-right: 0.3rem;
    }
-
 }
 
