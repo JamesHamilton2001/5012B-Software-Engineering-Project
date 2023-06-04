@@ -17,7 +17,6 @@ script(type='module').
   const fieldset = outerFieldset.appendChild(exercise.createFieldset());
 
   const post = outerFieldset.appendChild(document.createElement('button'));
-  post.id = "pushButtonId"
   post.textContent = 'Add Session';
   post.addEventListener('click', async () => {
       const data = fieldset.getData();
