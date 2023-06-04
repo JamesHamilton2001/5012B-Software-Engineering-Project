@@ -81,6 +81,7 @@ body {
       background-color: $bg-colour-2;
       background-image: linear-gradient($bg-colour-2, $bg-colour-4);
       border-radius: 0.3rem;
+      // TODO: rework centreing style to avoid the width clipping?
       margin: auto;
       max-width: 20rem;
       padding: 0.3rem 0.5rem 0.8rem;
