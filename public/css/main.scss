@@ -112,6 +112,11 @@ form {
    font-size: 0.9rem;
    height: 1.5rem;
    padding: 0 0.2rem;
+
+   &:focus {
+      outline: none;
+      border-color: $hl-colour-2;
+   }
 }
 
 input, button, select {
