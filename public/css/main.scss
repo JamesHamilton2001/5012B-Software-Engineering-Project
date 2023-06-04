@@ -98,7 +98,7 @@ body {
          }
       }
 
-      input {
+      input, button {
          background-color: $bg-colour-4;
          background-image: linear-gradient($bg-colour-4, $mid-colour-0 80%);
          // TODO: probably not this border colour...
