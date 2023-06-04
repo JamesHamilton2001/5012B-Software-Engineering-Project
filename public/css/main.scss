@@ -114,11 +114,11 @@ form {
    padding: 0 0.2rem;
 }
 
-input, button {
+input, button, select {
    @include standard-input;
 }
 
-button, input[type=submit] {
+button, input[type=submit], select {
    background-color: $mid-colour-0;
    background-image: linear-gradient($mid-colour-0 -20%, $bg-colour-2);
    box-shadow: 0.1rem 0.1rem 0.2rem 0rem $bg-colour-1;
