@@ -1,3 +1,10 @@
+script(src="https://cdn.jsdelivr.net/npm/chart.js" type="module")
+script(type="module").
+  import * as statChart from "/javascripts/dashboard/stats.js";
+
+  const chartManager = new statChart.ChartManager();
+  chartManager.graphCalories();
 
 block display
-  h2 Statistics 
+  div#chart_div
+    canvas#chart_canvas
