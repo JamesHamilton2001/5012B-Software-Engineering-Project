@@ -17,7 +17,10 @@ export function createFieldset(cb) {
    const typeSelect = fieldset.appendChild(createSelection(e => {
       metricLabel.textContent = e.selection.metric;
    }));
+
    const valueInput = fieldset.appendChild(ui.createNumericInput());
+   valueInput.size = 1;
+
    const metricLabel = fieldset.appendChild(document.createElement('span'));
 
    // Disable the value input box until a type is selected, and focus it so the yser can start typing
