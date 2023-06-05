@@ -3,59 +3,7 @@
 @use 'ui';
 
 
-// TODO: abstract probably most of this out for other similar widgets
 #exerciseFieldset {
-   @include ui.standard-input;
-
-   display: flex;
-   flex-direction: row;
-   overflow: clip;
-   padding: 0;
-
-   &:focus-within {
-      // TODO: define this properly where it can be used across UI elements
-      border-color: $hl-colour-2;
-   }
-
-   select {
-      border: {
-         bottom: 0;
-         left: 0;
-         radius: 0;
-         top: 0;
-      }
-      min-width: 6.4rem;
-      // TODO: retry adding in a custom dropdown arrow?
-      //appearance: none;
-      // TODO: try another pass at this right-align?
-      //text-align-last: right;
-      //option {
-      //   direction: rtl;
-      //}
-   }
-
-   input, span {
-      background: {
-         color: transparent;
-         image: none;
-      }
-      border: none;
-      font-style: italic;
-      line-height: 1.5rem;
-   }
-
-   input {
-      flex-grow: 1;
-      text-align: right;
-
-      &:focus {
-         outline: none;
-      }
-   }
-
-   span {
-      font-size: 0.7rem;
-      padding-right: 0.3rem;
-   }
+   @include ui.typed-input-widget;
 }
 
