@@ -6,12 +6,18 @@
 /* Mobile (portrait) or other narrow screen styles */
 $breakpoint-phone: 500px;
 
+
+// Some gradients, which maybe should be moved out to a theme file, or inlined, or some shit...
+// Reduced to just points that can be passed to a gradient function, or manipulated
+// as a SASSScript list, or prepended with a direction, etc. etc.
+$bg-gradient-0: $bg-colour-0 0%, $bg-colour-2 33%, $bg-colour-4 100%;
+$accent-gradient-0: $accent-b-0, $accent-b-1, $accent-b-2;
+
+
 html {
    font-size: 1.6em;
-   background-color: #1a1b26;
-   background-image: linear-gradient(#1a1b26, #1f2335);
-   background-attachment: fixed;
-   color: #c0caf5;
+   background-color: $mid-colour-1;
+   color: $fg-colour-2;
    font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -42,16 +48,15 @@ body {
 
    // Header area; span full width
    header {
+      background-color: $bg-colour-2;
+      background-image: linear-gradient($bg-gradient-0);
       grid-area: header;
+      border-bottom: 0.1rem solid $accent-b-1;
+      border-image: linear-gradient(to right, $accent-gradient-0) 1;
 
       h1 {
-         background-image: $bg-gradient-0;
          color: $fg-colour-2;
          text-shadow: 0.05rem 0.05rem 0.1rem $accent-a-0;
-
-         border-bottom-width: 0.1rem;
-         border-bottom-style: solid;
-         border-image: linear-gradient(to right, $accent-b-0, $accent-b-1, $accent-b-2) 1;
          margin: 0;
       }
    }
@@ -60,16 +65,17 @@ body {
    // Footer area; span full width
    footer {
       grid-area: footer;
-      background: $bg-gradient-0-reverse;
+      background-color: $bg-colour-2;
+      background-image: linear-gradient(to top, $bg-gradient-0);
 
-      border-top-width: 0.1rem;
-      border-top-style: solid;
-      border-image: linear-gradient(to left, $accent-b-0, $accent-b-1, $accent-b-2) 1;
+      border-top: 0.1rem solid $accent-b-1;
+      border-image: linear-gradient(to left, $accent-gradient-0) 1;
    }
 
 
    // Main content area
    main {
+      background-color: $mid-colour-1;
       background-image: linear-gradient(180deg, $mid-colour-0, $mid-colour-1, $mid-colour-0);
       grid-area: main;
       overflow-x: hidden;
@@ -89,8 +95,8 @@ form {
    padding: 0.3rem 0.5rem 0.8rem;
 
    > fieldset {
-      border: 2px solid;
-      border-image: linear-gradient(135deg, $accent-b-0, $accent-b-2) 1;
+      border: 2px solid $accent-b-1;
+      border-image: linear-gradient(to bottom right, $accent-gradient-0) 1;
       display: flex;
       flex-direction: column;
       font-size: 0.8rem;
@@ -104,8 +110,7 @@ form {
 @mixin standard-input {
    background-color: $bg-colour-4;
    background-image: linear-gradient($bg-colour-4, $mid-colour-0 80%);
-   // TODO: probably not this border colour...
-   border: 2px solid $mid-colour-1;
+   border: 2px solid $bg-colour-2;
    border-radius: 0.2rem;
    color: inherit;
    font-family: inherit;
