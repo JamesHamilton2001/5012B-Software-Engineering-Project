@@ -96,14 +96,3 @@ export async function createExerciseGoalForm() {
    return form;
 }
 
-
-export async function displayGoals() {
-   const div = document.createElement("div");
-
-   goals.forEach((goal) => {
-      console.log(goals.target)
-   });
-
-   return div;
-}
-
