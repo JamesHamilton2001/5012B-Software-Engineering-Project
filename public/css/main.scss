@@ -1,5 +1,6 @@
 @use 'sass:color';
 @use 'tokyonight' as *;
+@use 'ui';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -107,32 +108,12 @@ form {
    }
 }
 
-@mixin standard-input {
-   background-color: $bg-colour-4;
-   background-image: linear-gradient($bg-colour-4, $mid-colour-0 80%);
-   border: 2px solid $bg-colour-2;
-   border-radius: 0.2rem;
-   color: inherit;
-   font-family: inherit;
-   font-size: 0.9rem;
-   height: 1.5rem;
-   padding: 0 0.2rem;
-
-   &:focus {
-      outline: none;
-      border-color: $hl-colour-2;
-   }
-}
 
 input, button, select {
-   @include standard-input;
+   @include ui.standard-input;
 }
 
 button, input[type=submit], select {
-   background-color: $mid-colour-0;
-   background-image: linear-gradient($mid-colour-0 -20%, $bg-colour-2);
-   // TODO: abstract this out
-   box-shadow: 0.1rem 0.1rem 0.2rem 0rem color.change($bg-colour-1, $alpha: 0.5);
-   font-size: 0.7rem;
+   @include ui.buttony-input;
 }
 

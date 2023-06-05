@@ -1,9 +1,6 @@
 @use 'sass:color';
-
 @use 'tokyonight' as *;
-
-// TODO: properly structure includes to not do this
-@use 'main' as *;
+@use 'ui';
 
 
 #mealForm {
@@ -16,7 +13,7 @@
 
 // TODO: abstract probably most of this out for other similar widgets
 .mealItem {
-   @include standard-input;
+   @include ui.standard-input;
 
    box-shadow: 0.1rem 0.1rem 0.2rem 0rem color.change($bg-colour-1, $alpha: 0.5);
    display: flex;

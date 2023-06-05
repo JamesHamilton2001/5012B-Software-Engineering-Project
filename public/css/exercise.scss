@@ -1,14 +1,12 @@
 @use 'sass:color';
 
 @use 'tokyonight' as *;
-
-// TODO: properly structure includes to not do this
-@use 'main' as *;
+@use 'ui';
 
 
 // TODO: abstract probably most of this out for other similar widgets
 #exerciseFieldset {
-   @include standard-input;
+   @include ui.standard-input;
 
    display: flex;
    flex-direction: row;
