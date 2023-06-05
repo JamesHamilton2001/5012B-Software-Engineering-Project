@@ -2,33 +2,32 @@ extends layout
 include navBar
 
 block append head
-  link(rel='stylesheet' href='/css/dashboard.scss')/
-  link(rel='stylesheet' href='/css/exercise.scss')/
-  link(rel='stylesheet' href='/css/meal.scss')/
-  link(rel='stylesheet' href='/css/weight.scss')/
-  script(src="/javascripts/dashboard.js" defer)
-  script(src="https://cdn.jsdelivr.net/npm/chart.js")
-  +navBarLinkAndScripts()
+   link(rel='stylesheet' href='/css/dashboard.scss')/
+   link(rel='stylesheet' href='/css/exercise.scss')/
+   link(rel='stylesheet' href='/css/meal.scss')/
+   link(rel='stylesheet' href='/css/weight.scss')/
+   script(src="/javascripts/dashboard.js" defer)
+   script(src="https://cdn.jsdelivr.net/npm/chart.js")
+   +navBarLinkAndScripts()
 
-block content
-  +navBar("Welcome to Healthmate ")
+block append header
+   +navBar("Welcome to Healthmate ")
 
+block append pre
   menu
-    li(data-display='stats')
-       span Stats
-    li(data-display='groups')
-       span Groups
-    li(data-display='goals')
-       span Goals
-    li(data-display='exercise')
-       span Exercise
-    li(data-display='meal')
-       span Meals
-    li(data-display='weight')
-       span Weight
-
-  main
-
+      //- TODO: generate this out dynamically
+      li(data-display='stats')
+         span Stats
+      li(data-display='groups')
+         span Groups
+      li(data-display='goals')
+         span Goals
+      li(data-display='exercise')
+         span Exercise
+      li(data-display='meal')
+         span Meals
+      li(data-display='weight')
+         span Weight
 
 block append footer
    a(href='/auth/logout') Logout
