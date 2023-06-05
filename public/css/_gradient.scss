@@ -6,7 +6,7 @@
    @for $i from 1 through list.length($points) {
       $from: list.nth($points, $i);
       $to: list.nth($points, $i % $n + 1);
-      &:nth-child(#{$n}n + #{$i}) #{selector.parse(#{$sub})} {
+      &:nth-child(#{$n}n + #{$i}) #{$sub} {
          background-color: list.nth($points, $i);
          background-image: linear-gradient($direction, $from, $to);
       }
