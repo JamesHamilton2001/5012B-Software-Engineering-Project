@@ -46,6 +46,7 @@ router.all('/login', async (req, res) => {
    // login attempt.
    res.render('login', {
       title: 'HealthMate Login',
+      // TODO: check if this is sanitised at all automatically!
       username: req.body.username || '',
    });
 });
