@@ -112,8 +112,10 @@ async function authCookie(req, res, next) {
       const auth = JSON.parse(req.cookies.auth);
       const usr = await User.getByUsername(auth.username);
       if(usr !== null && await usr.matchPassword(auth.password)) {
-         // Authentication successful; set the user object in the response locals
+         // Authentication successful; store a canonical reference to the authenticated
+         // user in the request, and a copy out in the response locals.
          req.user = usr;
+         res.locals.user = Object.assign(req.user, res.locals.user);
       }
    }
    // Proceed to the next middleware/route
