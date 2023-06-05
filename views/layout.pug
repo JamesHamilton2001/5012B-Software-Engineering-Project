@@ -1,17 +1,26 @@
 doctype html
 
-//- !! get rid of xmlns on release !!
-html(xmlns="http://www.w3.org/1999/xhtml")
-  head
-    block head
-      title Health Mate
-      meta(charset='UTF-8')/
-      meta(name='viewport' content='width=device-width, initial-scale=1.0')/
-      link(rel='stylesheet' href='/css/main.scss')/
+html(xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB")
+   head
+      block head
+         meta(charset='utf-8')/
+         meta(name='viewport' content='width=device-width, initial-scale=1.0')/
+         meta(name='description' content=`${description}`)/
 
-  body
-    block content
+         link(rel='icon' href='/favicon.svg' type='image/svg+xml')/
 
-  footer
-    block footer
+         link(rel='stylesheet' href='/css/main.scss')/
+
+         title HealthMate
+
+   body
+      header
+         block header
+
+      main
+         block main
+
+      footer
+         block footer
+            p &copy; 2023
 
