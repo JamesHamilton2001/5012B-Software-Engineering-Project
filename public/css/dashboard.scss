@@ -1,4 +1,7 @@
+@use 'sass:list';
+@use 'sass:selector';
 @use 'tokyonight' as *;
+@use 'gradient';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -54,16 +57,9 @@ body {
          &:hover {
             background-color: rgb(158, 145, 231);
 
-            // TODO: write this up as a mixin or some shit like that, got sass after all
-            &:nth-child(3n+1) > span {
-               background-image: linear-gradient(to right, $accent-b-0, $accent-b-1);
-            }
-            &:nth-child(3n+2) > span {
-               background-image: linear-gradient(to right, $accent-b-1, $accent-b-2);
-            }
-            &:nth-child(3n+3) > span {
-               background-image: linear-gradient(to right, $accent-b-2, $accent-b-0);
-            }
+            // TODO: DRY this up
+            $accent-gradient-0: $accent-b-0, $accent-b-1, $accent-b-2;
+            @include gradient.sample($accent-gradient-0, '> span', to right);
 
             span {
                transform: scale(1.25);
