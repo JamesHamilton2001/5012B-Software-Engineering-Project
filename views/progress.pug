@@ -1,14 +1,14 @@
 extends layout 
-include navBar
+include navbar
 
 block append head 
   script(src="/javascripts/progressPage.js")
   script(src="https://cdn.jsdelivr.net/npm/chart.js")
-  +navBarLinkAndScripts()
+  +navbarLinkAndScripts()
 
 
 block content
-  +navBar(" Progress")
+  +navbar(" Progress")
 
   h2 Current Goal Progressions
   div#chart_div

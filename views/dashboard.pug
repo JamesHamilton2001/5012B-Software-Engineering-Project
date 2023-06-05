@@ -1,5 +1,5 @@
 extends layout
-include navBar
+include navbar
 
 block append head
    link(rel='stylesheet' href='/css/dashboard.scss')/
@@ -8,10 +8,10 @@ block append head
    link(rel='stylesheet' href='/css/weight.scss')/
    script(src="/javascripts/dashboard.js" defer)
    script(src="https://cdn.jsdelivr.net/npm/chart.js")
-   +navBarLinkAndScripts()
+   +navbarLinkAndScripts()
 
 block append header
-   +navBar("Welcome to Healthmate ")
+   +navbar("Welcome to Healthmate ")
 
 block append pre
   menu
