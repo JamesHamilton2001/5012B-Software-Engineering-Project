@@ -72,6 +72,9 @@ router.all('/signup', async (req, res) => {
    }
    res.render('signup', {
       title: 'HealthMate Signup',
+      description: 'HealthMate signup page',
+      usernameRegex: User.USERNAME_REGEX.toString().slice(1, -1),
+      passwordRegex: User.PASSWORD_REGEX.toString().slice(1, -1),
       username: req.body.username || '',
       email: req.body.email || '',
       password: req.body.password || '',
