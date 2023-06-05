@@ -80,11 +80,6 @@ app.use('/dashboard/:name', (req, res, next) => {
    next();
 });
 
-app.get('/exercise' , (req, res) => {
-   res.render('exercise', {
-   });
-});
-
 
 export { app as app };
 
