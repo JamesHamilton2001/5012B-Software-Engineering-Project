@@ -1,6 +1,7 @@
 @use 'sass:list';
 @use 'sass:selector';
 @use 'tokyonight' as *;
+@use 'gradient';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -61,15 +62,7 @@ body {
             $points: $accent-gradient-0;
             $sub: "> span";
             $direction: to right;
-            $n: length($points);
-            @for $i from 1 through list.length($points) {
-               $from: list.nth($points, $i);
-               $to: list.nth($points, $i % $n + 1);
-               &:nth-child(#{$n}n + #{$i}) #{selector.parse(#{$sub})} {
-                  background-color: list.nth($points, $i);
-                  background-image: linear-gradient($direction, $from, $to);
-               }
-            }
+            @include gradient.sample($accent-gradient-0, '> span', to right);
 
             span {
                transform: scale(1.25);
