@@ -1,5 +1,4 @@
 @use 'sass:list';
-@use 'sass:selector';
  
 @mixin sample($points, $sub: '', $direction: to right) {
    $n: length($points);
