@@ -59,16 +59,16 @@ app.get('/', (req, res) => {
    res.redirect('/dashboard');
 });
 
-app.get('/dashboard' , (req, res) => {
-  res.render('dashboard');
+app.get('/dashboard', (req, res) => {
+   res.render('dashboard');
 });
 
-app.get('/progress' , (req, res) => {
-  res.render('progress');
+app.get('/progress', (req, res) => {
+   res.render('progress');
 });
 
-app.get("/profile", (req, res) => {
-  res.render("profile");
+app.get('/profile', (req, res) => {
+   res.render('profile');
 });
 
 // Middleware to dynamically render any dashboard partial which actually exists.
