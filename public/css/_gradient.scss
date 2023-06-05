@@ -1,5 +1,5 @@
 @use 'sass:list';
- 
+
 @mixin sample($points, $sub: '', $direction: to right) {
    $n: length($points);
    @for $i from 1 through list.length($points) {
