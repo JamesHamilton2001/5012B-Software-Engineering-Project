@@ -8,6 +8,8 @@
 /* Mobile (portrait) or other narrow screen styles */
 $breakpoint-phone: 500px;
 
+
+// 'Sidebar' menu
 body > menu {
    display: flex;
    flex-direction: column;
