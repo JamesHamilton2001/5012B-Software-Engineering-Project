@@ -41,6 +41,7 @@ router.all('/login', async (req, res) => {
       // Login failed; set an error message and re-render the login form.
       res.locals.error = 'Invalid username or password.';
    }
+
    // Render the login form, potentially with the previously entered username re-filled.
    // Should additionally show an error message if there appears to have been a failed
    // login attempt.
