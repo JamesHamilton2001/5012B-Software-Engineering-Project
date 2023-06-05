@@ -1,36 +1,31 @@
+import Chart from "https://esm.run/chart.js/auto";
+
 import * as api from "/js/api.js";
 
-// gets data entries from a given path, abiding by the given arguments
-async function getEntries(path, startDate, endDate, entryLimit, utsOffset, defaultArgs)
-{
-  return ((startDate===undefined && endDate===undefined &&
-           entryLimit===undefined && utsOffset===undefined)
-    ? ((defaultArgs === undefined))
+
+// returns specified data in { x:xVal, y:yVal } array
+  //  if not a single arg for start/end/limit/offset
+  //    use defaultArgs if given, otherwise provide none
+  //  otherwise, use given arguments, validaiton of which handled downstream
+const getData = async (path, start, end, limit, offset, defaultArgs) => (
+  (start===undefined && end===undefined && limit===undefined && offset===undefined)
+    ? ((defaultArgs===undefined))
       ? await api.get(path)
       : await api.get(path, defaultArgs)
-    : await api.get(path, {
-        start: startDate, end: endDate, limit: entryLimit, offset: utsOffset
-      })
-    ).reverse();
-}
+    : await api.get(path, { start: start, end: end, limit: limit, offset: offset })
+).reverse().map(entry => ({ x: entry.timestamp, y: entry.weight }));
 
-// returns entries timestamps in dd/mm/yy string array
-function getDateStrings(entries)
-{
-  return entries.map(entry => {
-    const date = new Date(entry.timestamp * 1000);
-    const dd = String(date.getDate()).padStart(2, "0");
-    const mm = String(date.getMonth()+1).padStart(2, "0");
-    const yy = String(date.getYear()).slice(-2);
-    return `${dd}/${mm}/${yy}`;
-  });
-}
+// returns a DD/MM/YY string from a given date object
+const DateToString = (date) => `
+  ${String(date.getDate()).padStart(2,"0")}/
+  ${String(date.getMonth()+1).padStart(2,"0")}/
+  ${String(date.getYear()).slice(-2)}
+`;
 
 export class ChartManager
 {
   constructor()
   {
-    // attributes
     this.chart;
     this.chartData;
     this.chartOptions;
@@ -38,85 +33,49 @@ export class ChartManager
 
     // initialise as line chart, no grid lines, x lables render sideways
     this.chart = new Chart(this.context, {
-      type: "line",
+      type: "scatter",
       options:{
         scales: {
           x: {
-            grid: { display: false },
-            ticks: { minRotation: 90, maxRotation: 90 },
+            // set x axis labels to be displayed at 90 degrees in dd/mm/yy format
+            ticks: {
+              callback: (value, index, values) => {
+                const date = new Date(value * 1000);
+                return `${date.getDate()}/${date.getMonth()+1}/${date.getYear().toString().slice(-2)}`;
+              },
+              minRotation: 90, maxRotation: 90,
+            },
           },
-          y: {
-            grid: { display: false },
-          }
-        }
+        },
       }
     });
   }
 
-  // set chart information and data, update chart display
-  setData(nameStr, xDataArr, yDataArr, lineColourStr)
+  // set chart data and title from arguments
+  setData(nameStr, data)
   {
     this.chart.data = {};
     this.chart.data = {
-      labels: xDataArr,
       datasets: [{
         label:        nameStr,
-        data:         yDataArr,
-        borderColor:  lineColourStr,
+        data:         data,
+        borderColor:  "rgb(0, 255, 0)",
         fill:         "origin"
       }]
     };
     this.chart.update();
   }
 
-  // get user weights specified by args, formats and graph data into chart
-  async graphWeight(startDate, endDate, entryLimit, utsOffset)
+  // gets user weight data specified by args, graphs said data
+  async graphWeight(start, end, limit, offset)
   {
-    // get entries according to args
-    const entries = await getEntries("user/weight", startDate, endDate, entryLimit, utsOffset);
-
-    // get values and dates
-    const valueArr = entries.map(entry => entry.weight);
-    const dateStrArr = getDateStrings(entries);
-
-    // set data into graph and update
-    this.setData("Weight", dateStrArr, valueArr, "rgb(0, 255, 0)");
+    this.setData("Weight", await getData("user/weight", start, end, limit, offset));
   }
 
-  // get user exercise sessions specified by args, formats and graph data into chart
-  async graphExercise(type_id, startDate, endDate, entryLimit, utsOffset)
-  {
-    // get entries according to args
-      // undefined type_id handled downstream, default type_id to 1, needed to fetch users data
-    const entries = await getEntries("exercise", startDate, endDate, entryLimit, utsOffset, { type: 1 });
+  // async graphExercise(type_id, start, end, limit, offset)
+  // {
+  //   const data = await getData("exercise", start, end, limit, offset, { type: 1 });
+  //   this.setData("Exercise", await getData("exercise", start, end, limit, offset, { type: type_id }));
+  // }
 
-    // get values and dates
-    const valueArr = entries.map(entry => entry.value);
-    const dateStrArr = getDateStrings(entries);
-
-    // set data into graph and update
-    this.setData(entries[0].type, dateStrArr, valueArr, "rgb(0, 255, 0)");
-  }
-
-  async graphCalories(startDate, endDate, entryLimit, utsOffset)
-  {
-    // get entries according to args, reverse order
-    const entries = await getEntries("meal", startDate, endDate, entryLimit, utsOffset);
-    
-    // get calories from meals, get dates
-    const valueArr = entries.map(entry => {
-      var cals = 0;
-      entry.items.forEach(item => { cals += item.calories });
-      return cals;
-    });
-    const dateStrArr = getDateStrings(entries);
-    
-    // set data into graph and update
-    this.setData("Calorie Intake", dateStrArr, valueArr, "rgb(0, 255, 0)");
-  }
-  
-  async graphGoalProgress(startDate, endDate, entryLimit, utsOffset)
-  {
-
-  }
 }
