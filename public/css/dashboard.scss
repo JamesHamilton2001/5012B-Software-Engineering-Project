@@ -57,11 +57,7 @@ body {
          &:hover {
             background-color: rgb(158, 145, 231);
 
-            // TODO: rework this further into some kind of usable function...
             $accent-gradient-0: $accent-b-0, $accent-b-1, $accent-b-2;
-            $points: $accent-gradient-0;
-            $sub: "> span";
-            $direction: to right;
             @include gradient.sample($accent-gradient-0, '> span', to right);
 
             span {
