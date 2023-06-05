@@ -116,6 +116,7 @@ async function authCookie(req, res, next) {
          // user in the request, and a copy out in the response locals.
          req.user = usr;
          res.locals.user = Object.assign(req.user, res.locals.user);
+         // TODO: maybe strip out the password hash from the response locals?
       }
    }
    // Proceed to the next middleware/route
