@@ -8,68 +8,71 @@
 /* Mobile (portrait) or other narrow screen styles */
 $breakpoint-phone: 500px;
 
-body {
-   menu {
-      display: flex;
-      flex-direction: column;
-      grid-area: sidebar;
-      justify-content: space-evenly;
-      list-style: none;
-      margin: 0;
-      padding: 0;
+body > menu {
+   display: flex;
+   flex-direction: column;
+   grid-area: sidebar;
+   justify-content: space-evenly;
+   list-style: none;
+   margin: 0;
+   padding: 0;
 
-      border-image: linear-gradient(to bottom, $bg-colour-4, $hl-colour-0 20%, $hl-colour-1 70%, $hl-colour-0) 1;
-      border-right-style: solid;
-      border-right-width: 0.15rem;
+   border-image: linear-gradient(to bottom, $bg-colour-4, $hl-colour-0 20%, $hl-colour-1 70%, $hl-colour-0) 1;
+   border-right-style: solid;
+   border-right-width: 0.15rem;
+
+   @media screen and (max-width: $breakpoint-phone) {
+      flex-direction: row;
+      justify-content: normal;
+      overflow-x: auto;
+      width: 100vw;
+   }
+
+   li {
+      align-items: center;
+      background-color: rgb(162, 150, 231);
+      display: flex;
+      font-weight: bold;
+      height: 100%;
+      margin: auto 0;
+      padding: 0 3rem;
+
+      background-image: linear-gradient(to left, $bg-colour-4, $mid-colour-0);
+      color: $fg-colour-1;
+      text-shadow: 2px 2px 2px $bg-colour-4;
 
       @media screen and (max-width: $breakpoint-phone) {
-         flex-direction: row;
-         justify-content: normal;
-         overflow-x: auto;
-         width: 100vw;
+         height: max-content;
+         padding: 0.2rem 1rem;
       }
 
-      li {
-         align-items: center;
-         background-color: rgb(162, 150, 231);
-         display: flex;
-         font-weight: bold;
-         height: 100%;
-         margin: auto 0;
-         padding: 0 3rem;
+      // Wrapping the menu items allows for a nice gradient effect, plus better
+      // control over transitions, apparently.
+      span {
+         transition: color 1s ease;
+         transition: transform 0.5s ease;
+      }
 
-         background-image: linear-gradient(to left, $bg-colour-4, $mid-colour-0);
-         color: $fg-colour-1;
-         text-shadow: 2px 2px 2px $bg-colour-4;
+      &:hover {
+         background-color: rgb(158, 145, 231);
 
-         @media screen and (max-width: $breakpoint-phone) {
-            height: max-content;
-            padding: 0.2rem 1rem;
-         }
+         // TODO: DRY this up
+         $accent-gradient-0: $accent-b-0, $accent-b-1, $accent-b-2;
+         @include gradient.sample($accent-gradient-0, '> span', to right);
 
-         // Wrapping the menu items allows for a nice gradient effect, plus better
-         // control over transitions, apparently.
          span {
-            transition: color 1s ease;
-            transition: transform 0.5s ease;
-         }
-
-         &:hover {
-            background-color: rgb(158, 145, 231);
-
-            // TODO: DRY this up
-            $accent-gradient-0: $accent-b-0, $accent-b-1, $accent-b-2;
-            @include gradient.sample($accent-gradient-0, '> span', to right);
-
-            span {
-               transform: scale(1.25);
-               background-clip: text;
-               -webkit-background-clip: text;
-               color: transparent;
-               text-shadow: none;
-            }
+            transform: scale(1.25);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: none;
          }
       }
    }
+}
+
+// Hide to inner h2 element by default - the form legends convey basically the same information
+main > h2 {
+   display: none;
 }
 
