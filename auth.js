@@ -48,6 +48,8 @@ router.all('/login', async (req, res) => {
    res.render('login', {
       title: 'HealthMate Login',
       description: 'HealthMate login page',
+      usernameRegex: User.USERNAME_REGEX.toString().slice(1, -1),
+      passwordRegex: User.PASSWORD_REGEX.toString().slice(1, -1),
       // TODO: check if this is sanitised at all automatically!
       username: req.body.username || '',
    });
