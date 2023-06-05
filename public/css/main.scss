@@ -110,8 +110,7 @@ form {
 @mixin standard-input {
    background-color: $bg-colour-4;
    background-image: linear-gradient($bg-colour-4, $mid-colour-0 80%);
-   // TODO: probably not this border colour...
-   border: 2px solid $mid-colour-1;
+   border: 2px solid $bg-colour-2;
    border-radius: 0.2rem;
    color: inherit;
    font-family: inherit;
