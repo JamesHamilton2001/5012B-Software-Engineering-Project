@@ -4,7 +4,9 @@ script(type="module").
 
   const chartManager = new statChart.ChartManager();
   //- chartManager.graphWeight();
-  chartManager.graphExercise();
+  chartManager.graphExercise(1);
+  //- chartManager.graphCalories();
+  chartManager.graphGoal();
 
 block display
   div#chart_div

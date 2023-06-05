@@ -7,13 +7,13 @@ import * as api from "/js/api.js";
   //  if not a single arg for start/end/limit/offset
   //    use defaultArgs if given, otherwise provide none
   //  otherwise, use given arguments, validaiton of which handled downstream
-const getData = async (path, start, end, limit, offset, defaultArgs) => (
+const getData = async (path, mapFunc, start, end, limit, offset, defaultArgs) => (
   (start===undefined && end===undefined && limit===undefined && offset===undefined)
     ? ((defaultArgs===undefined))
       ? await api.get(path)
       : await api.get(path, defaultArgs)
     : await api.get(path, { start: start, end: end, limit: limit, offset: offset })
-).reverse().map(entry => ({ x: entry.timestamp, y: entry.weight }));
+).reverse().map(mapFunc);
 
 // returns a DD/MM/YY string from a given date object
 const DateToString = (date) => `
@@ -51,7 +51,6 @@ export class ChartManager
     });
   }
 
-  // set chart data and title from arguments
   setData(nameStr, data)
   {
     this.chart.data = {};
@@ -66,16 +65,38 @@ export class ChartManager
     this.chart.update();
   }
 
-  // gets user weight data specified by args, graphs said data
   async graphWeight(start, end, limit, offset)
   {
-    this.setData("Weight", await getData("user/weight", start, end, limit, offset));
+    this.setData("Weight", await getData(
+      "user/weight",
+      entry => ({ x: entry.timestamp, y: entry.weight }),
+      start, end, limit, offset
+    ));
   }
 
-  // async graphExercise(type_id, start, end, limit, offset)
-  // {
-  //   const data = await getData("exercise", start, end, limit, offset, { type: 1 });
-  //   this.setData("Exercise", await getData("exercise", start, end, limit, offset, { type: type_id }));
-  // }
+  async graphExercise(type_id, start, end, limit, offset)
+  {
+    if (type_id===undefined) type_id = 1;
+    this.setData("Exercise", await getData(
+      "exercise",
+      entry => ({ x: entry.timestamp, y: entry.value }),
+      start, end, limit, offset,
+      { type: type_id }
+    ));
+  }
 
+  async graphCalories(start, end, limit, offset)
+  {
+    this.setData("Calories", await getData(
+      "meal",
+      entry => ({ x: entry.timestamp, y: entry.items.reduce((sum, item) => sum + item.calories, 0) }),
+      start, end, limit, offset
+    ));
+  }
+
+  async graphGoal()
+  {
+    const data = await api.get("goal", { exercise_type_id: 1 });
+    console.log(data);
+  }
 }
