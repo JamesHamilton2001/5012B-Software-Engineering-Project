@@ -11,6 +11,7 @@
 .mealItem {
    @include ui.typed-input-widget;
 
+   // TODO: decide if the shadow is or isn't standard to the widget...
    box-shadow: 0.1rem 0.1rem 0.2rem 0rem color.change($bg-colour-1, $alpha: 0.5);
 
    // These labels exist for semantic purposes, but server little pupose in the UI
@@ -18,6 +19,7 @@
       display: none;
    }
 
+   // TODO: leave like this as a buttony button, or something like an 'x'?
    .remove {
       border: {
          bottom: 0;

@@ -3,6 +3,7 @@
 @use 'ui';
 
 
+// TODO: switch from ID to class
 #exerciseFieldset {
    @include ui.typed-input-widget;
 }
