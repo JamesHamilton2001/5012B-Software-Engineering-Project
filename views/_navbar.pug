@@ -3,8 +3,8 @@ mixin navbarLinkAndScripts()
    script(type='module' src='/js/navbar.js')
 
 mixin item(href, name)
-   li.navItem
-      a(href='#{href}') #{name}
+   li.navItem(class={ current: originalUrl == href, })
+      a(href=`${href}`) #{name}
 
 mixin navbar(pageTitle)
    nav
