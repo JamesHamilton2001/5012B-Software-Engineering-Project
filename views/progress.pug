@@ -2,15 +2,16 @@ extends _layout
 include _navbar
 
 block append head 
-  script(src='/javascripts/progressPage.js')
-  script(src='https://cdn.jsdelivr.net/npm/chart.js')
-  +navbarLinkAndScripts()
+   script(src='/javascripts/progressPage.js')
+   script(src='https://cdn.jsdelivr.net/npm/chart.js')
+   +navbarLinkAndScripts()
 
+block append header
+   +navbar
 
-block content
-  +navbar(" Progress")
+block append main
+   h2 Current Goal Progressions
+   div#chart_div
+      canvas#progress_chart
+         p Chart canvas failed, browser may not support canvas
 
-  h2 Current Goal Progressions
-  div#chart_div
-    canvas#progress_chart
-      p Chart canvas failed, browser may not support canvas
