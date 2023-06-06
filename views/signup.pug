@@ -5,7 +5,8 @@ block append main
       fieldset
          legend Sign Up
 
-         strong.error #{error}
+         if error
+            strong.error #{error}
 
          input#username(name='username' pattern=`${usernameRegex}` title='4-16 characters comprised of letters, numbers, and underscores' placeholder='Username' value=`${username}` required)/
 
