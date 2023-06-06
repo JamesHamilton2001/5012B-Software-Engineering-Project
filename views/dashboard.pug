@@ -1,34 +1,43 @@
-extends layout
-include navBar
+extends _layout
+include _navbar
 
 block append head
-  link(rel='stylesheet' href='/css/dashboard.scss')/
-  link(rel='stylesheet' href='/css/exercise.scss')/
-  link(rel='stylesheet' href='/css/meal.scss')/
-  link(rel='stylesheet' href='/css/weight.scss')/
-  script(src="/javascripts/dashboard.js" defer)
-  script(src="https://cdn.jsdelivr.net/npm/chart.js")
-  +navBarLinkAndScripts()
+   link(rel='stylesheet' href='/css/dashboard.scss')/
+   script(src='https://cdn.jsdelivr.net/npm/chart.js')
+   script(type='module').
+      document
+         .querySelector('body > menu')
+         .addEventListener('click', async e => {
+            document
+               .querySelector('main')
+               .replaceChildren(
+                  document
+                     .createRange()
+                     .createContextualFragment(
+                        await fetch(`/dashboard/${e.target.dataset.display}`)
+                           .then(res => res.text())
+                           .catch(err => `<strong class="error">${err}</strong>`)
+                     )
+               )
+         })
+   +navbarLinkAndScripts()
 
-block content
-  +navBar("Welcome to Healthmate ")
+block append header
+   +navbar("Welcome to Healthmate ")
 
-  menu
-    li(data-display='stats')
-       span Stats
-    li(data-display='groups')
-       span Groups
-    li(data-display='goals')
-       span Goals
-    li(data-display='exercise')
-       span Exercise
-    li(data-display='meal')
-       span Meals
-    li(data-display='weight')
-       span Weight
+block append pre
+   menu
+      mixin menu-item(display, text)
+         li(data-display=display)
+            span(style='pointer-events: none; user-select: none;') #{text}
 
-  main
-
+      //- TODO: generate this out more dynamically..?
+      +menu-item('stats', 'Stats')
+      +menu-item('groups', 'Groups')
+      +menu-item('goals', 'Goals')
+      +menu-item('exercise', 'Exercise')
+      +menu-item('meal', 'Meals')
+      +menu-item('weight', 'Weight')
 
 block append footer
    a(href='/auth/logout') Logout

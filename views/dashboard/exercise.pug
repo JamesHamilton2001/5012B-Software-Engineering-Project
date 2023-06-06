@@ -1,34 +1,33 @@
-
-
-
 script(type='module').
-  import * as exercise from '/js/exercise.js';
-  import * as api from '/js/api.js';
+   import * as exercise from '/js/exercise.js';
+   import * as api from '/js/api.js';
 
-  const slot = document.getElementById('formContainer');
+   const slot = document.getElementById('formContainer');
 
-  const form = slot.appendChild(document.createElement('form'));
-  const outerFieldset = form.appendChild(document.createElement('fieldset'));
+   // TODO: clean this mess up into js/exercise.js
+   const form = slot.appendChild(document.createElement('form'));
+   const outerFieldset = form.appendChild(document.createElement('fieldset'));
 
-  const legend = outerFieldset.appendChild(document.createElement('legend'));
-  legend.textContent = 'New Exercise Session';
- 
+   const legend = outerFieldset.appendChild(document.createElement('legend'));
+   legend.textContent = 'New Exercise Session';
 
-  const fieldset = outerFieldset.appendChild(exercise.createFieldset());
+   const fieldset = outerFieldset.appendChild(exercise.createFieldset());
 
-  const post = outerFieldset.appendChild(document.createElement('button'));
-  post.id = "pushButtonId"
-  post.textContent = 'Add Session';
-  post.addEventListener('click', async () => {
+   const post = outerFieldset.appendChild(document.createElement('button'));
+   // TODO: make a ui helper to prevent this stupid fucking busywork
+   post.type = 'button';
+   post.textContent = 'Add Session';
+   post.addEventListener('click', async () => {
       const data = fieldset.getData();
-        // TODO: validate
-      fieldset.disabled = true;
+      // TODO: validate?
+      outerFieldset.disabled = true;
       const res = api.post('exercise', data);
       const message = document.createElement('p');
       message.textContent = await res;
       slot.replaceChildren(message);
-  });
+   });
 
-block display
-   h2 Exercise
-   slot#formContainer
+
+h2 Exercise
+slot#formContainer
+

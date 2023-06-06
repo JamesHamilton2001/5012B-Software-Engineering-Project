@@ -13,10 +13,10 @@ export async function createForm() {
 
    const outerFieldset = form.appendChild(document.createElement('fieldset'));
 
-   const fieldset = outerFieldset.appendChild(document.createElement('fieldset'));
-
-   const legend = fieldset.appendChild(document.createElement('legend'));
+   const legend = outerFieldset.appendChild(document.createElement('legend'));
    legend.textContent = 'New Weight';
+
+   const fieldset = outerFieldset.appendChild(document.createElement('fieldset'));
 
    const value = fieldset.appendChild(ui.createNumericInput(20, 635));
    value.classList.add('value');

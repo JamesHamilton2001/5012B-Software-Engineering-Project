@@ -25,6 +25,9 @@ export function createTypeSelect(types, placeholder, callback) {
 export function createNumericInput(min = Number.MIN_VALUE, max = Number.MAX_VALUE, unit = '') {
    const input = document.createElement('input');
 
+   // Set a default 'size' for the input, as this is apparently necessary for correct scaling
+   input.size = 1;
+
    // Default to required for form validation checking & reporting
    input.required = true;
 

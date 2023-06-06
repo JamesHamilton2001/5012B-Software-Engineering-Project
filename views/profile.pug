@@ -1,21 +1,17 @@
-extends login
+extends _layout
+include _navbar
 
-block content
-  append head 
-    //- stylesheets and scripts
+block append head
+   +navbarLinkAndScripts()
 
-  -var pageTitle = "My Profile"
-  include navBar
+block append header
+   +navbar("Profile")
 
-  form(action="#" method='post')
-    label Current Weight:
-    input#currentWeight(type='text' name='cWeight' placeholder='Weight(KG)')
-    label Target Weight:
-    input#targetWeight(type='text' name='tWeight' placeholder='Weight(KG)')
-    label Height:
-    input#height(type='text' name='height' placeholder='Height(cm)')
-    p1= bmi
-    Label Date of Birth:
-    input#dob(type='date' name='dob')
-    input(type='submit' value='Submit')
+block append main
+   // TODO: Whatever the fuck it is that is meant to be here *shrug*
+   p #{user.id}
+   p #{user.username}
+   p #{user.real_name}
+   p #{user.email}
+   p #{user.height}
 

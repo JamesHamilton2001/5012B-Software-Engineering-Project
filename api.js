@@ -59,7 +59,7 @@ user.route('/weight')
    // Add a new weight record for the currently logged in user.
    .post(async (req, res) => {
       const data = await req.user.addWeight(req.body.weight, Math.floor(Date.now() / 1000));
-      res.status(201).json("weight record added");
+      res.status(201).json('weight record added');
    })
 
 
@@ -94,7 +94,7 @@ router.route('/exercise')
    .post(async (req, res) => {
       const data = await Exercise.add(req.user.id, req.body.type, req.body.value);
       // TODO: check for errors
-      res.status(201).json("exercise record added");
+      res.status(201).json('exercise record added');
    })
 
 

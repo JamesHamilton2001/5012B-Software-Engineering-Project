@@ -41,11 +41,16 @@ router.all('/login', async (req, res) => {
       // Login failed; set an error message and re-render the login form.
       res.locals.error = 'Invalid username or password.';
    }
+
    // Render the login form, potentially with the previously entered username re-filled.
    // Should additionally show an error message if there appears to have been a failed
    // login attempt.
    res.render('login', {
       title: 'HealthMate Login',
+      description: 'HealthMate login page',
+      usernameRegex: User.USERNAME_REGEX.toString().slice(1, -1),
+      passwordRegex: User.PASSWORD_REGEX.toString().slice(1, -1),
+      // TODO: check if this is sanitised at all automatically!
       username: req.body.username || '',
    });
 });
@@ -67,6 +72,9 @@ router.all('/signup', async (req, res) => {
    }
    res.render('signup', {
       title: 'HealthMate Signup',
+      description: 'HealthMate signup page',
+      usernameRegex: User.USERNAME_REGEX.toString().slice(1, -1),
+      passwordRegex: User.PASSWORD_REGEX.toString().slice(1, -1),
       username: req.body.username || '',
       email: req.body.email || '',
       password: req.body.password || '',
@@ -104,8 +112,11 @@ async function authCookie(req, res, next) {
       const auth = JSON.parse(req.cookies.auth);
       const usr = await User.getByUsername(auth.username);
       if(usr !== null && await usr.matchPassword(auth.password)) {
-         // Authentication successful; set the user object in the response locals
+         // Authentication successful; store a canonical reference to the authenticated
+         // user in the request, and a copy out in the response locals.
          req.user = usr;
+         res.locals.user = Object.assign(req.user, res.locals.user);
+         // TODO: maybe strip out the password hash from the response locals?
       }
    }
    // Proceed to the next middleware/route

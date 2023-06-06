@@ -1,30 +1,24 @@
-extends layout
+extends _layout
 
-block append head
-  link(rel='stylesheet' href='/css/signup.scss')
+block append main
+   form(method='post')
+      fieldset
+         legend Sign Up
 
-block content
-   header
-      h1 HealthMate
+         if error
+            strong.error #{error}
 
-   main
-      h3 #{error}
-      form(method='post')
+         input#username(name='username' pattern=usernameRegex title='4-16 characters comprised of letters, numbers, and underscores' placeholder='Username' value=username required)/
 
-         fieldset
-            legend Sign Up
-            input#username(type='text' name='username'  pattern=".{4,16}" title="Use a Username between 4-16 Characters" placeholder='Username' value=`${username}` required)
+         input#email(type='email' name='email' placeholder='Email' value=email required)/
 
-            input#email(type='email' name='email' placeholder='Email' value=`${email}` required)
+         input#password(type='password' name='password' pattern=passwordRegex title='20+ characters' placeholder='Password' value=password required)/
 
-            input#password(type='password' name='password' pattern=".{20,72}" title="Password between 20-72 Characters" placeholder='Password' value=`${password}` required)
+         input#real_name(type='text' name='real_name' placeholder='Real Name' value=real_name required)/
 
-            input#real_name(type='text' name='real_name' placeholder='Real Name' value=`${real_name}` required)
+         input#height(type='text' name='height' placeholder='Height (e.g. 180cm, 5′4″)' value=height required)/
 
-            input#height(type='text' name='height' placeholder='Height (e.g. 180cm, 5′4″)' value=`${height}` required)
+         input(type='submit' value='Sign Up')/
 
-            input(type='submit' value='Sign Up')
-
-block footer
-   p &copy; 2023
+         a(href='/auth/login') Login to existing account
 

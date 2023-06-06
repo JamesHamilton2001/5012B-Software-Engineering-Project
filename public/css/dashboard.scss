@@ -1,78 +1,120 @@
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:selector';
 @use 'tokyonight' as *;
+@use 'gradient';
+@use 'ui';
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /* Mobile (portrait) or other narrow screen styles */
 $breakpoint-phone: 500px;
 
-body {
-   menu {
-      display: flex;
-      flex-direction: column;
-      grid-area: sidebar;
-      justify-content: space-evenly;
-      list-style: none;
-      margin: 0;
-      padding: 0;
 
-      border-image: linear-gradient(to bottom, $bg-colour-4, $hl-colour-0 20%, $hl-colour-1 70%, $hl-colour-0) 1;
-      border-right-style: solid;
-      border-right-width: 0.15rem;
+// 'Sidebar' menu
+body > menu {
+   display: flex;
+   flex-direction: column;
+   grid-area: sidebar;
+   justify-content: space-evenly;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+
+   border-image: linear-gradient(to bottom, $bg-colour-4, $hl-colour-0 20%, $hl-colour-1 70%, $hl-colour-0) 1;
+   border-right-style: solid;
+   border-right-width: 0.15rem;
+
+   @media screen and (max-width: $breakpoint-phone) {
+      flex-direction: row;
+      justify-content: normal;
+      overflow-x: auto;
+      width: 100vw;
+   }
+
+   li {
+      align-items: center;
+      background-color: rgb(162, 150, 231);
+      display: flex;
+      font-weight: bold;
+      height: 100%;
+      margin: auto 0;
+      padding: 0 3rem;
+
+      background-image: linear-gradient(to left, $bg-colour-4, $mid-colour-0);
+      color: $fg-colour-1;
+      text-shadow: 2px 2px 2px $bg-colour-4;
 
       @media screen and (max-width: $breakpoint-phone) {
-         flex-direction: row;
-         justify-content: normal;
-         overflow-x: auto;
-         width: 100vw;
+         height: max-content;
+         padding: 0.2rem 1rem;
       }
 
-      li {
-         align-items: center;
-         background-color: rgb(162, 150, 231);
-         display: flex;
-         font-weight: bold;
-         height: 100%;
-         margin: auto 0;
-         padding: 0 3rem;
+      // Wrapping the menu items allows for a nice gradient effect, plus better
+      // control over transitions, apparently.
+      span {
+         transition: color 1s ease;
+         transition: transform 0.5s ease;
+      }
 
-         background-image: linear-gradient(to left, $bg-colour-4, $mid-colour-0);
-         color: $fg-colour-1;
-         text-shadow: 2px 2px 2px $bg-colour-4;
+      &:hover {
+         background-color: rgb(158, 145, 231);
 
-         @media screen and (max-width: $breakpoint-phone) {
-            height: max-content;
-            padding: 0.2rem 1rem;
-         }
+         // TODO: DRY this up
+         $accent-gradient-0: $accent-b-0, $accent-b-1, $accent-b-2;
+         @include gradient.sample($accent-gradient-0, '> span', to right);
 
-         // Wrapping the menu items allows for a nice gradient effect, plus better
-         // control over transitions, apparently.
          span {
-            transition: color 1s ease;
-            transition: transform 0.5s ease;
+            transform: scale(1.25);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: none;
          }
+      }
+   }
+}
 
-         &:hover {
-            background-color: rgb(158, 145, 231);
+// Hide to inner h2 element by default - the form legends convey basically the same information
+main > h2 {
+   display: none;
+}
 
-            // TODO: write this up as a mixin or some shit like that, got sass after all
-            &:nth-child(3n+1) > span {
-               background-image: linear-gradient(to right, $accent-b-0, $accent-b-1);
-            }
-            &:nth-child(3n+2) > span {
-               background-image: linear-gradient(to right, $accent-b-1, $accent-b-2);
-            }
-            &:nth-child(3n+3) > span {
-               background-image: linear-gradient(to right, $accent-b-2, $accent-b-0);
-            }
 
-            span {
-               transform: scale(1.25);
-               background-clip: text;
-               -webkit-background-clip: text;
-               color: transparent;
-               text-shadow: none;
-            }
-         }
+// === Exercise form shit ===
+// TODO: switch from ID to class
+#exerciseFieldset {
+   @include ui.typed-input-widget;
+}
+
+
+// === Meal form shit ===
+// TODO: possibly switch to class?
+#mealForm {
+   label {
+      display: none;
+   }
+}
+
+// 'Typed' input widget for idividual meal items
+.mealItem {
+   @include ui.typed-input-widget;
+
+   // TODO: decide if the shadow is or isn't standard to the widget...
+   box-shadow: 0.1rem 0.1rem 0.2rem 0rem color.change($bg-colour-1, $alpha: 0.5);
+
+   // These labels exist for semantic purposes, but server little pupose in the UI
+   > legend, > label {
+      display: none;
+   }
+
+   // TODO: leave like this as a buttony button, or something like an 'x'?
+   .remove {
+      border: {
+         bottom: 0;
+         radius: 0;
+         right: 0;
+         top: 0;
       }
    }
 }

@@ -6,7 +6,6 @@ import sass from 'sass';
 
 import api from './api.js';
 import auth from './auth.js';
-import './db.js';
 import User from './model/User.js';
 import Goal from './model/Goal.js';
 
@@ -59,16 +58,16 @@ app.get('/', (req, res) => {
    res.redirect('/dashboard');
 });
 
-app.get('/dashboard' , (req, res) => {
-  res.render('dashboard');
+app.get('/dashboard', (req, res) => {
+   res.render('dashboard');
 });
 
-app.get('/progress' , (req, res) => {
-  res.render('progress');
+app.get('/progress', (req, res) => {
+   res.render('progress');
 });
 
-app.get("/profile", (req, res) => {
-  res.render("profile");
+app.get('/profile', (req, res) => {
+   res.render('profile');
 });
 
 // Middleware to dynamically render any dashboard partial which actually exists.
@@ -78,11 +77,6 @@ app.use('/dashboard/:name', (req, res, next) => {
    if(fs.existsSync(fullpath))
       res.render(path.join('dashboard', req.params.name));
    next();
-});
-
-app.get('/exercise' , (req, res) => {
-   res.render('exercise', {
-   });
 });
 
 
