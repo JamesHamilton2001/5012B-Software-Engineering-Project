@@ -14,12 +14,13 @@ script(type='module').
    const fieldset = outerFieldset.appendChild(exercise.createFieldset());
 
    const post = outerFieldset.appendChild(document.createElement('button'));
+   post.type = 'button';
    post.textContent = 'Add Session';
    post.addEventListener('click', async () => {
       const data = fieldset.getData();
       console.log('data:', data);
       // TODO: validate?
-      fieldset.disabled = true;
+      outerFieldset.disabled = true;
       const res = api.post('exercise', data);
       console.log(await res);
       //const message = document.createElement('p');
