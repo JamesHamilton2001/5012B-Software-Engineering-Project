@@ -14,6 +14,7 @@ script(type='module').
    const fieldset = outerFieldset.appendChild(exercise.createFieldset());
 
    const post = outerFieldset.appendChild(document.createElement('button'));
+   // TODO: make a ui helper to prevent this stupid fucking busywork
    post.type = 'button';
    post.textContent = 'Add Session';
    post.addEventListener('click', async () => {
