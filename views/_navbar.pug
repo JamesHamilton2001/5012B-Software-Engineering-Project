@@ -1,15 +1,14 @@
 mixin navbarLinkAndScripts()
    link(rel='stylesheet' href='/css/navbar.scss')/
-   script(type='module' src='/js/navbar.js')
+
+mixin item(href, name)
+   li.navItem(class={ current: originalUrl == href, })
+      a(href=`${href}`) #{name}
 
 mixin navbar(pageTitle)
    nav
       ul#navList
-         //- TODO: generate this out dynamically
-         li.navItem
-            a.navLink(href='/dashboard') Dashboard
-         li.navItem
-            a.navLink(href='/progress') Progress
-         li.navItem
-            a.navLink(href='/profile') Profile
+         +item('/dashboard', 'Dashboard')
+         +item('/progress', 'Progress')
+         +item('/profile', 'Profile')
 

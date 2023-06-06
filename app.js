@@ -34,6 +34,13 @@ app.get('/css/*.scss', (req, res) => {
 app.use(express.static(path.join('./', 'public')));
 
 
+// TODO: move? expand> idk, Just nice to have a a middleware block to tag this basic kinda shit?
+app.use((req, res, next) => {
+   res.locals.originalUrl = req.originalUrl;
+   next();
+});
+
+
 // Middleware so we don't have to regex out our login cookie ourselves
 app.use(cookieParser());
 
