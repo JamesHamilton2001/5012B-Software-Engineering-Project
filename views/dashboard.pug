@@ -26,20 +26,18 @@ block append header
    +navbar("Welcome to Healthmate ")
 
 block append pre
-  menu
-      //- TODO: generate this out dynamically
-      li(data-display='stats')
-         span Stats
-      li(data-display='groups')
-         span Groups
-      li(data-display='goals')
-         span Goals
-      li(data-display='exercise')
-         span Exercise
-      li(data-display='meal')
-         span Meals
-      li(data-display='weight')
-         span Weight
+   menu
+      mixin menu-item(display, text)
+         li(data-display=display)
+            span(style='pointer-events: none; user-select: none;') #{text}
+
+      //- TODO: generate this out more dynamically..?
+      +menu-item('stats', 'Stats')
+      +menu-item('groups', 'Groups')
+      +menu-item('goals', 'Goals')
+      +menu-item('exercise', 'Exercise')
+      +menu-item('meal', 'Meals')
+      +menu-item('weight', 'Weight')
 
 block append footer
    a(href='/auth/logout') Logout
