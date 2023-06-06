@@ -22,10 +22,9 @@ script(type='module').
       // TODO: validate?
       outerFieldset.disabled = true;
       const res = api.post('exercise', data);
-      console.log(await res);
-      //const message = document.createElement('p');
-      //message.textContent = await res;
-      //slot.replaceChildren(message);
+      const message = document.createElement('p');
+      message.textContent = await res;
+      slot.replaceChildren(message);
    });
 
 
