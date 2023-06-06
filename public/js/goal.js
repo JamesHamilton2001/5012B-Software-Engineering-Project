@@ -6,7 +6,7 @@ export const goals = await api.get('/goal');
 
 
 export async function createWeightGoalForm() {
-   const form = document.createElement("form");
+   const form = document.createElement('form');
    form.id = 'weightGoal';
 
    const fieldset = form.appendChild(document.createElement('fieldset'));
@@ -52,7 +52,7 @@ export async function createWeightGoalForm() {
 
 
 export async function createExerciseGoalForm() {
-   const form = document.createElement("form");
+   const form = document.createElement('form');
    form.id = 'exerciseGoal';
 
    const fieldset = form.appendChild(document.createElement('fieldset'));

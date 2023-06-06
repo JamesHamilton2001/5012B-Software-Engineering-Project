@@ -1,24 +1,24 @@
 var isFirstLoad = true;
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
 
   if (isFirstLoad) {
-    const context = document.getElementById("progress_chart").getContext("2d");
+    const context = document.getElementById('progress_chart').getContext('2d');
     const chart = new Chart(context, {
   
-      type: "line",
+      type: 'line',
   
       data: {
-        labels: ["one","two","three","four"],
+        labels: ['one','two','three','four'],
   
         datasets: [{
-          label:        "data",
+          label:        'data',
           data:         [1,2,3,4],
-          borderColor:  "rgb(0, 255, 0)"
+          borderColor:  'rgb(0, 255, 0)'
         }, {
-          label:        "atad",
+          label:        'atad',
           data:         [4,-3,2,-1],
-          borderColor:  "rgb(255, 0, 0)"
+          borderColor:  'rgb(255, 0, 0)'
         }]
       },
       

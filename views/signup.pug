@@ -7,11 +7,11 @@ block append main
 
          strong.error #{error}
 
-         input#username(name='username' pattern=`${usernameRegex}` title="4-16 characters comprised of letters, numbers, and underscores" placeholder='Username' value=`${username}` required)/
+         input#username(name='username' pattern=`${usernameRegex}` title='4-16 characters comprised of letters, numbers, and underscores' placeholder='Username' value=`${username}` required)/
 
          input#email(type='email' name='email' placeholder='Email' value=`${email}` required)/
 
-         input#password(type='password' name='password' pattern=`${passwordRegex}` title="20+ characters" placeholder='Password' value=`${password}` required)/
+         input#password(type='password' name='password' pattern=`${passwordRegex}` title='20+ characters' placeholder='Password' value=`${password}` required)/
 
          input#real_name(type='text' name='real_name' placeholder='Real Name' value=`${real_name}` required)/
 

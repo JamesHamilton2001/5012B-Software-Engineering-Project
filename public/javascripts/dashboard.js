@@ -5,7 +5,7 @@ const displayElement = document.querySelector('body > main');
 document.querySelectorAll('menu > li').forEach((item) => {
  item.addEventListener('click', () => {
     // fetch dashboard display html corresponding to sidebar selection
-    fetch("/dashboard/" + item.dataset.display)
+    fetch('/dashboard/' + item.dataset.display)
       // convert html prototype into text
       .then(response => response.text())
       // insert html text into display div inner html and load script
@@ -14,6 +14,6 @@ document.querySelectorAll('menu > li').forEach((item) => {
          displayElement.replaceChildren(fragment);
       })
       // catch and log error (if that somehow happens...)
-      .catch(error => console.error("Unable to load template: ", error));
+      .catch(error => console.error('Unable to load template: ', error));
  });
 });

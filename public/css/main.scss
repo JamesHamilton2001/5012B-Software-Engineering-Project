@@ -29,12 +29,12 @@ body {
 
    // Header, sidebar, main content, and footer
    display: grid;
-   grid-template-areas: "header header" "sidebar main" "footer footer";
+   grid-template-areas: 'header header' 'sidebar main' 'footer footer';
    grid-template-columns: max-content 1fr;
    grid-template-rows: max-content 1fr max-content;
 
    @media screen and (max-width: $breakpoint-phone) {
-      grid-template-areas: "header" "sidebar" "main" "footer";
+      grid-template-areas: 'header' 'sidebar' 'main' 'footer';
       grid-template-columns: 1fr;
       grid-template-rows: max-content max-content 1fr max-content;
    }
