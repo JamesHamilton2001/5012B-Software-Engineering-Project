@@ -19,7 +19,6 @@ script(type='module').
    post.textContent = 'Add Session';
    post.addEventListener('click', async () => {
       const data = fieldset.getData();
-      console.log('data:', data);
       // TODO: validate?
       outerFieldset.disabled = true;
       const res = api.post('exercise', data);
