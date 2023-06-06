@@ -1,7 +1,6 @@
 import * as bcrypt from 'bcrypt';
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
 
+import db from '../db.js';
 import Exercise from './Exercise.js';
 import Goal from './Goal.js';
 

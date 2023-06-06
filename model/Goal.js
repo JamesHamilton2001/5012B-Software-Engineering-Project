@@ -1,6 +1,4 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
-
+import db from '../db.js';
 
 export default class Goal {
    constructor(data){

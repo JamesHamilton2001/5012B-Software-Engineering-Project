@@ -1,10 +1,11 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 
-const db_file = 'debug.db';
+export const db_file = 'debug.db';
 
-global.db = await open({
+export const db = await open({
    filename: db_file,
    driver: sqlite3.cached.Database
 });
+export default db;
 
